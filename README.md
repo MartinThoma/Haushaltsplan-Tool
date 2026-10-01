@@ -169,6 +169,7 @@ eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine ander
 | Haar                 | 2023–2024 (Ergebnis), 2025 (Nachtrag), 2026 (Ansatz) | Haushaltspläne 2025 und 2026, Einzelpläne aus dem Ratsinformationssystem                                        |
 | Merching             | 2024 (Ergebnis), 2025–2026 (Ansatz)                  | Haushaltsplan 2026, Gruppierungsübersicht                                                                       |
 | Wolfratshausen       | 2023–2025 (Ergebnis), 2026 (Ansatz)                  | Haushaltspläne 2025 und 2026, Gruppierungsübersicht; Rechenschaftsbericht 2025, Rechnungs-Gruppierungsübersicht |
+| Erding               | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht                 |
 
 Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
 hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,
