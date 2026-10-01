@@ -1,0 +1,150 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Wolfratshausen",
+    "ags": "09173147",
+    "jahr": 2025,
+    "einwohner": 19658,
+    "einwohner_stichtag": "2024-12-31",
+    "status": "Ergebnis",
+    "waehrung": "EUR",
+    "quelle": "Rechenschaftsbericht 2025 der Stadt Wolfratshausen, Rechnungs-Gruppierungsübersicht, Spalte „Rechnungsergebnis 2025“",
+    "hinweis": "Aus der Gruppierungsübersicht der Jahresrechnung; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 320,
+      "quelle": "Stadt Wolfratshausen, Hebesatzsatzung (Stadtratsbeschluss vom 19.11.2024, gültig ab 01.01.2025), laut Haushaltsplan 2025"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 400,
+      "quelle": "Stadt Wolfratshausen, Hebesatzsatzung (Stadtratsbeschluss vom 19.11.2024, gültig ab 01.01.2025), laut Haushaltsplan 2025"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 380,
+      "quelle": "Stadt Wolfratshausen, Hebesatzsatzung (Stadtratsbeschluss vom 19.11.2024, gültig ab 01.01.2025), laut Haushaltsplan 2025"
+    },
+    "schulden": {
+      "wert": 2147000,
+      "stichtag": "2024-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2024 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    },
+    "ruecklagen": {
+      "wert": 20501312.52,
+      "stichtag": "2024-12-31",
+      "quelle": "Rechenschaftsbericht 2025 der Stadt Wolfratshausen, Übersicht über den Stand der Rücklagen"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 3500000,
+      "quelle": "Stadt Wolfratshausen, Haushaltssatzung 2025, § 4"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 2518.8,
+        "001": 2570999.4,
+        "003": 15055060.08,
+        "010": 17780870.0,
+        "012": 2158745.0,
+        "022": 49076.67,
+        "041": 373196.0,
+        "061": 2113488.08,
+        "081": 293533.5,
+        "10": 396366.55,
+        "11": 1713958.9,
+        "13": 57535.51,
+        "14": 1675489.39,
+        "15": 472211.09,
+        "161": 30250.29,
+        "162": 584003.4,
+        "165": 10357.53,
+        "167": 24402.62,
+        "168": 50328.58,
+        "169": 1547635.08,
+        "171": 6407411.47,
+        "172": 221083.48,
+        "176": 15790.0,
+        "177": 66165.0,
+        "178": 38562.24,
+        "205": 391.39,
+        "207": 140865.04,
+        "22": 470532.17,
+        "26": 100988.01,
+        "270": 372257.5,
+        "275": 246973.0
+      },
+      "ausgaben": {
+        "40": 161017.84,
+        "410": 869028.34,
+        "414": 6731435.46,
+        "416": 15247.33,
+        "430": 663135.34,
+        "434": 534757.37,
+        "440": 5869.42,
+        "444": 1452990.6,
+        "448": 4027.58,
+        "45": 227338.2,
+        "46": 34659.29,
+        "50": 340993.05,
+        "51": 332564.36,
+        "52": 151046.43,
+        "53": 349828.94,
+        "54": 1444378.66,
+        "55": 96532.07,
+        "56": 82692.09,
+        "638": 2276498.52,
+        "639": 125121.6,
+        "64": 566765.47,
+        "65": 946795.09,
+        "660": 5968.39,
+        "661": 70200.63,
+        "662": 5267.98,
+        "670": 7614.8,
+        "672": 48450.0,
+        "675": 8000.0,
+        "679": 1547635.08,
+        "680": 372257.5,
+        "685": 246973.0,
+        "70": 10513535.42,
+        "711": 24187.0,
+        "712": 178875.55,
+        "715": 3434822.25,
+        "718": 106766.5,
+        "807": 94002.41,
+        "810": 1298174.0,
+        "832": 16678901.18,
+        "84": 20427.43,
+        "860": 2966263.6
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 2966263.6,
+        "310": 10966793.6,
+        "314": 172600.0,
+        "316": 103506.89,
+        "325": 9612.28,
+        "327": 38151.06,
+        "340": 26478.16,
+        "345": 5000.0,
+        "35": 30000.0,
+        "361": 6328541.66,
+        "363": 13133.87,
+        "367": 26675.0,
+        "368": 5074.21
+      },
+      "ausgaben": {
+        "910": 5301.43,
+        "914": 162882.14,
+        "916": 344.18,
+        "925": 1253997.86,
+        "932": 3611162.62,
+        "935": 1072157.26,
+        "94-96": 14270710.19,
+        "977": 311950.23,
+        "988": 3324.42
+      }
+    }
+  }
+}

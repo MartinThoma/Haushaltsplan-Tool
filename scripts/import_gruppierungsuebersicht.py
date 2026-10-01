@@ -25,6 +25,9 @@ import sys
 from budget_import import NUMBER, add_common_arguments, pdf_lines, to_number, write_datasets
 
 COLUMNS = ['ansatz', 'ansatz_vorjahr', 'ergebnis_vorvorjahr']
+# The Jahresrechnung's "Rechnungs-Gruppierungsübersicht" prints the result of the year itself,
+# followed by the amount per resident and the deviation from the Ansatz.
+RECHNUNG_COLUMNS = ['ergebnis']
 # A Gruppierungsziffer, a range of them ("866-869", "57-63", "0-2999") or a list ("081,092", "94,95,96").
 CODE = re.compile(r'^(?:\d{1,3}(?:-\d{1,4})?|5/6|\d{2,3}(?:,\d{2,3})+)$')
 # The plan's combined Gruppe "94, 95, 96 Baumaßnahmen".
@@ -40,11 +43,13 @@ GRN_SUBTOTAL = re.compile(r'^Summe (?:Gruppe|Hauptgruppe) (\S+)')
 GRN_TOTALS = {'Gesamteinnahmen': '0-3999', 'Gesamtausgaben': '4-9999'}
 
 
-def values_of(parts):
+def values_of(parts, rechnung=False):
     """The amounts of a line (plan year, previous year, result), or None for a heading."""
     count = 0
     while count < len(parts) and is_amount(parts[-1 - count]):
         count += 1
+    if rechnung:
+        return [amount(parts[-count])] if count >= 2 else None
     if count == 4:  # with a per-resident column after the plan year
         numbers = [parts[-4], parts[-2], parts[-1]]
     elif count == 3:
@@ -67,24 +72,31 @@ def amount(text):
 
 
 def parse(lines):
-    """Return (year, leaves, subtotals): leaves are (code, values, lineno), subtotals (spec, values, lineno)."""
+    """
+    Return (columns, year, leaves, subtotals): leaves are (code, values, lineno), subtotals
+    (spec, values, lineno), values in the order of `columns`.
+    """
     year = None
     leaves, subtotals = [], []
-    inside = False
+    inside = rechnung = False
     for lineno, raw in enumerate(lines, 1):
         if END in raw:
             break
         if not inside:
-            inside = 'Grupp.-Nr.' in raw or '3. Gruppierungsübersicht' in raw
+            # The overview is section 3 of the Gesamtplan (or of the Jahresrechnung);
+            # "Grupp.-Nr." also heads other tables.
+            found = re.search(r'\b3\.\s+(Rechnungs-)?Gruppierungsübersicht', raw)
+            inside, rechnung = bool(found), bool(found and found.group(1))
         if not inside:
             continue
-        if year is None and len(years := re.findall(r'\b(20\d\d)\b', raw)) >= 3:
+        years = re.findall(r'\b(20\d\d)\b', raw)
+        if year is None and (len(years) >= 3 or (rechnung and 'Grupp.-Nr.' in raw and years)):
             year = int(years[0])
         line = raw.strip().strip('│').strip()  # GRN tables are framed by box-drawing characters
         line = re.sub(r'^(\d{3}) - (\d{3})\b', r'\1-\2', line)  # "305 - 309" is a range of Untergruppen
         head, _, rest = line.partition(' ')
         parts = [head] + re.split(r'\s{2,}', rest.strip()) if rest else [head]
-        values = values_of(parts)
+        values = values_of(parts, rechnung)
         if values is None:
             continue
         if m := GRN_SUBTOTAL.match(line):
@@ -93,13 +105,17 @@ def parse(lines):
             subtotals.append((GRN_TOTALS[head], values, lineno))
             if head == 'Gesamtausgaben':
                 break
+        elif not CODE.match(head) and line.replace(' ', '').startswith('GESAMTAUSGABEN'):
+            # Total of both sections ("GESAMTAUSGABEN DES VWHH UND VMHH"): the overview ends here.
+            subtotals.append(('4-9999', values, lineno))
+            break
         elif CODE.match(head):
             label = parts[1] if len(parts) > 1 else ''
-            if re.match(r'(ZWISCHENSUMME|SUMME|GESAMT)', label):
+            if re.match(r'(ZWISCHENSUMME|SUMME|GESAMT)', label.replace(' ', '')):  # also "G E S A M T …"
                 subtotals.append((head, values, lineno))
             else:
                 leaves.append((head, values, lineno))
-    return year, leaves, subtotals
+    return (RECHNUNG_COLUMNS if rechnung else COLUMNS), year, leaves, subtotals
 
 
 def leaf_code(raw):
@@ -126,14 +142,14 @@ def covered(spec, code):
     return code.startswith(spec)
 
 
-def check(leaves, subtotals):
+def check(columns, leaves, subtotals):
     problems = []
     for spec, printed, lineno in subtotals:
-        sums = [0.0, 0.0, 0.0]
+        sums = [0.0] * len(columns)
         for raw, values, _ in leaves:
             if covered(spec, leaf_code(raw)):
                 sums = [s + v for s, v in zip(sums, values)]
-        for column, expected, got in zip(COLUMNS, printed, sums):
+        for column, expected, got in zip(columns, printed, sums):
             if abs(expected - got) > 0.005:
                 problems.append(f'Zeile {lineno}, Summe {spec}, {column}: PDF {expected:,.2f}, gelesen {got:,.2f}')
     return problems
@@ -143,28 +159,32 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('pdf', help='Haushaltsplan mit Gruppierungsübersicht')
     parser.add_argument('--nur-pruefen', action='store_true', help='nur lesen und prüfen, nichts schreiben')
-    add_common_arguments(parser, COLUMNS)
+    add_common_arguments(parser, COLUMNS + RECHNUNG_COLUMNS)
     args = parser.parse_args()
 
-    year, leaves, subtotals = parse(pdf_lines(args.pdf))
+    columns, year, leaves, subtotals = parse(pdf_lines(args.pdf))
     if year is None or not leaves:
         raise SystemExit('Keine Gruppierungsübersicht gefunden')
-    problems = check(leaves, subtotals)
+    problems = check(columns, leaves, subtotals)
     if problems:
         raise SystemExit('Abweichungen von den gedruckten Summen:\n  ' + '\n  '.join(problems))
-    print(f'Haushaltsjahr {year}: {len(leaves)} Positionen gelesen, alle {len(subtotals)} gedruckten Summen stimmen.')
+    kind = 'Rechnungsergebnis' if columns == RECHNUNG_COLUMNS else 'Haushaltsjahr'
+    print(f'{kind} {year}: {len(leaves)} Positionen gelesen, alle {len(subtotals)} gedruckten Summen stimmen.')
     if args.nur_pruefen:
         return
+    if unknown := [c for c in args.spalten if c not in columns]:
+        raise SystemExit(f'Diese Übersicht enthält die Spalten {", ".join(columns)}, nicht {", ".join(unknown)}')
 
     entries = {
-        column: [(leaf_code(raw), values[COLUMNS.index(column)]) for raw, values, _ in leaves]
+        column: [(leaf_code(raw), values[columns.index(column)]) for raw, values, _ in leaves]
         for column in args.spalten
     }
+    source = 'der Jahresrechnung' if columns == RECHNUNG_COLUMNS else 'des Haushaltsplans'
     write_datasets(
         args,
         year,
         entries,
-        'Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan '
+        f'Aus der Gruppierungsübersicht {source}; Untergruppen, die der Gruppierungsplan '
         'nicht kennt, sind ihrer Gruppe zugerechnet.',
     )
 

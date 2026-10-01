@@ -1,0 +1,146 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Wolfratshausen",
+    "ags": "09173147",
+    "jahr": 2026,
+    "einwohner": 19536,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2026 der Stadt Wolfratshausen, Gruppierungsübersicht, Spalte „Ansatz 2026“",
+    "hinweis": "Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 320,
+      "quelle": "Stadt Wolfratshausen, Hebesatzsatzung (Stadtratsbeschluss vom 19.11.2024, gültig ab 01.01.2025), laut Haushaltsplan 2026"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 400,
+      "quelle": "Stadt Wolfratshausen, Hebesatzsatzung (Stadtratsbeschluss vom 19.11.2024, gültig ab 01.01.2025), laut Haushaltsplan 2026"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 380,
+      "quelle": "Stadt Wolfratshausen, Hebesatzsatzung (Stadtratsbeschluss vom 19.11.2024, gültig ab 01.01.2025), laut Haushaltsplan 2026"
+    },
+    "schulden": {
+      "wert": 1834919.97,
+      "stichtag": "2025-12-31",
+      "quelle": "Rechenschaftsbericht 2025 der Stadt Wolfratshausen (Schuldenstand zum 31.12.2025)"
+    },
+    "ruecklagen": {
+      "wert": 9539820.35,
+      "stichtag": "2025-12-31",
+      "quelle": "Rechenschaftsbericht 2025 der Stadt Wolfratshausen, Übersicht über den Stand der Rücklagen"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 3500000,
+      "quelle": "Stadt Wolfratshausen, Haushaltssatzung 2026"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 3400.0,
+        "001": 2680000.0,
+        "003": 14940000.0,
+        "010": 17910000.0,
+        "012": 2500000.0,
+        "022": 75000.0,
+        "041": 990700.0,
+        "061": 2146000.0,
+        "081": 250000.0,
+        "10": 349400.0,
+        "11": 1675400.0,
+        "13": 47000.0,
+        "14": 1579100.0,
+        "15": 442600.0,
+        "161": 50000.0,
+        "162": 302600.0,
+        "165": 10300.0,
+        "167": 43000.0,
+        "168": 46800.0,
+        "169": 1676200.0,
+        "170": 90800.0,
+        "171": 6129200.0,
+        "172": 103400.0,
+        "176": 1000.0,
+        "177": 37500.0,
+        "178": 3200.0,
+        "205": 19300.0,
+        "207": 110300.0,
+        "22": 482300.0,
+        "26": 60600.0,
+        "270": 360300.0,
+        "275": 242400.0
+      },
+      "ausgaben": {
+        "40": 171000.0,
+        "410": 900400.0,
+        "414": 7602200.0,
+        "416": 22700.0,
+        "430": 776500.0,
+        "434": 596200.0,
+        "440": 5900.0,
+        "444": 1637800.0,
+        "448": 3500.0,
+        "45": 222000.0,
+        "46": 15000.0,
+        "50": 428500.0,
+        "51": 497100.0,
+        "52": 204100.0,
+        "53": 354200.0,
+        "54": 1632600.0,
+        "55": 92500.0,
+        "56": 153600.0,
+        "638": 2334500.0,
+        "639": 115000.0,
+        "64": 660200.0,
+        "65": 962400.0,
+        "660": 9000.0,
+        "661": 71100.0,
+        "662": 4000.0,
+        "670": 8600.0,
+        "671": 3000.0,
+        "672": 47000.0,
+        "675": 8000.0,
+        "679": 1676200.0,
+        "680": 360300.0,
+        "685": 242400.0,
+        "70": 10723200.0,
+        "711": 24000.0,
+        "712": 140000.0,
+        "715": 3335700.0,
+        "718": 189800.0,
+        "807": 124600.0,
+        "810": 1376100.0,
+        "832": 16893000.0,
+        "84": 52200.0,
+        "860": 681700.0
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 681700.0,
+        "310": 3239400.0,
+        "314": 55200.0,
+        "325": 636500.0,
+        "327": 164600.0,
+        "345": 10000.0,
+        "361": 4714200.0,
+        "377": 6000000.0
+      },
+      "ausgaben": {
+        "910": 5300.0,
+        "914": 8000.0,
+        "932": 110000.0,
+        "935": 1382000.0,
+        "94-96": 13526300.0,
+        "977": 345200.0,
+        "980": 8500.0,
+        "988": 116300.0
+      }
+    }
+  }
+}
