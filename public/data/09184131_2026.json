@@ -1,0 +1,146 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Kirchheim b. München",
+    "ags": "09184131",
+    "jahr": 2026,
+    "einwohner": 13708,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2026 der Gemeinde Kirchheim b. München (aktualisierte Fassung vom Juli 2026), Gruppierungsübersicht, Spalte „Ansatz 2026“",
+    "hinweis": "Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 385,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2026, § 4"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 385,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2026, § 4"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 360,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2026, § 4"
+    },
+    "schulden": {
+      "wert": 83584844,
+      "stichtag": "2025-12-31",
+      "quelle": "Haushaltsplan 2026 der Gemeinde Kirchheim b. München, Vorbericht (Stand der Schulden zum 31.12.2025)"
+    },
+    "ruecklagen": {
+      "wert": 3772000,
+      "stichtag": "2026-01-01",
+      "quelle": "Haushaltsplan 2026 der Gemeinde Kirchheim b. München, Übersicht über den voraussichtlichen Stand der Rücklagen (voraussichtlich, in 1.000 €)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 12000000,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2026, § 5"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 18000.0,
+        "001": 2700000.0,
+        "003": 21700000.0,
+        "010": 14000000.0,
+        "012": 2200000.0,
+        "022": 54000.0,
+        "061": 2400000.0,
+        "081": 120000.0,
+        "10": 201600.0,
+        "11": 2508600.0,
+        "13": 48000.0,
+        "14": 1054700.0,
+        "15": 1127300.0,
+        "161": 20000.0,
+        "162": 44400.0,
+        "163": 440500.0,
+        "167": 212000.0,
+        "168": 214400.0,
+        "169": 21000.0,
+        "170": 215500.0,
+        "171": 4450100.0,
+        "172": 143000.0,
+        "178": 85700.0,
+        "207": 40000.0,
+        "22": 410000.0,
+        "26": 161100.0,
+        "270": 112000.0,
+        "275": 112000.0
+      },
+      "ausgaben": {
+        "40": 146800.0,
+        "410": 217000.0,
+        "414": 7484000.0,
+        "430": 250000.0,
+        "434": 591800.0,
+        "444": 1529700.0,
+        "448": 7500.0,
+        "45": 181000.0,
+        "46": 800.0,
+        "50": 539900.0,
+        "51": 853000.0,
+        "52": 92700.0,
+        "53": 389000.0,
+        "54": 2229200.0,
+        "55": 289000.0,
+        "56": 145600.0,
+        "638": 2345600.0,
+        "64": 441200.0,
+        "65": 994800.0,
+        "660": 6000.0,
+        "661": 36400.0,
+        "662": 1500.0,
+        "670": 1500.0,
+        "672": 57100.0,
+        "675": 432000.0,
+        "676": 330000.0,
+        "678": 346400.0,
+        "679": 21000.0,
+        "680": 112000.0,
+        "685": 112000.0,
+        "70": 8919500.0,
+        "711": 22900.0,
+        "712": 297900.0,
+        "713": 946100.0,
+        "715": 50000.0,
+        "717": 1200.0,
+        "718": 168800.0,
+        "723": 2295400.0,
+        "725": 60000.0,
+        "788": 85200.0,
+        "807": 2230000.0,
+        "810": 2110000.0,
+        "832": 16777000.0,
+        "84": 30000.0,
+        "860": 635400.0
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 635400.0,
+        "310": 3000000.0,
+        "316": 229900.0,
+        "340": 7000000.0,
+        "35": 5032700.0,
+        "360": 3131500.0,
+        "361": 5085900.0,
+        "377": 1840300.0
+      },
+      "ausgaben": {
+        "916": 229900.0,
+        "926": 500000.0,
+        "932": 338000.0,
+        "935": 447600.0,
+        "936": 1265000.0,
+        "94-96": 17356500.0,
+        "977": 3360000.0,
+        "983": 1649300.0,
+        "991": 809400.0
+      }
+    }
+  }
+}

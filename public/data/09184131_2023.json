@@ -1,0 +1,141 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Kirchheim b. München",
+    "ags": "09184131",
+    "jahr": 2023,
+    "einwohner": 12515,
+    "einwohner_stichtag": "2022-12-31",
+    "status": "Ergebnis",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2025 der Gemeinde Kirchheim b. München, Gruppierungsübersicht, Spalte „Rechnungsergebnis 2023“",
+    "hinweis": "Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 280,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2023, § 4"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 280,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2023, § 4"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 360,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2023, § 4"
+    },
+    "schulden": {
+      "wert": 43850000,
+      "stichtag": "2022-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2023 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 3000000,
+      "quelle": "Gemeinde Kirchheim b. München, Haushaltssatzung 2023, § 5"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 19014.62,
+        "001": 1733247.42,
+        "003": 18426353.19,
+        "010": 12783463.0,
+        "012": 2018912.0,
+        "022": 50920.0,
+        "061": 1638648.43,
+        "081": 114422.0,
+        "10": 150638.41,
+        "11": 1634233.57,
+        "13": 60270.79,
+        "14": 660769.52,
+        "15": 83335.91,
+        "160": 3900.0,
+        "161": 14691.63,
+        "162": 54008.5,
+        "163": 353925.64,
+        "167": 93115.14,
+        "168": -59915.6,
+        "169": 13157.74,
+        "170": 147789.3,
+        "171": 2819714.43,
+        "172": 126920.52,
+        "178": 43983.43,
+        "207": 278924.12,
+        "22": 379568.93,
+        "26": 1183930.29,
+        "270": 101887.69,
+        "275": 106970.84
+      },
+      "ausgaben": {
+        "40": 115428.12,
+        "410": 206968.54,
+        "414": 6387473.06,
+        "430": 240903.76,
+        "434": 492565.55,
+        "444": 1242874.41,
+        "448": 7310.13,
+        "45": 162043.76,
+        "46": 1030.0,
+        "50": 500938.99,
+        "51": 537931.25,
+        "52": 70861.55,
+        "53": 563218.1,
+        "54": 1521354.88,
+        "55": 373914.37,
+        "56": 250438.68,
+        "638": 1735609.52,
+        "64": 404149.78,
+        "65": 1326826.41,
+        "660": 3849.25,
+        "661": 32876.3,
+        "662": 8195.39,
+        "672": 44463.07,
+        "676": 266760.25,
+        "678": 341388.77,
+        "679": 13157.74,
+        "680": 101887.69,
+        "685": 106970.84,
+        "70": 6312245.89,
+        "711": 18564.0,
+        "712": 134832.7,
+        "713": 738263.44,
+        "715": 50000.0,
+        "717": 100.0,
+        "718": 2189067.3,
+        "723": 413297.0,
+        "788": 35249.12,
+        "807": 672513.76,
+        "810": 1759600.0,
+        "832": 12353311.68,
+        "84": 13071.98,
+        "860": 3285294.43
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 3285294.43,
+        "310": 15000000.0,
+        "339": 3841.8,
+        "340": 48300.0,
+        "345": 2961.48,
+        "35": 6231211.1,
+        "360": 371265.25,
+        "361": 443679.95,
+        "362": 1000000.0,
+        "377": 9108900.0
+      },
+      "ausgaben": {
+        "910": 571699.6,
+        "926": 6484402.0,
+        "932": 765738.39,
+        "935": 92389.22,
+        "936": 350000.0,
+        "94-96": 24151255.84,
+        "977": 1425775.75,
+        "983": 1615305.0,
+        "988": 38888.21
+      }
+    }
+  }
+}

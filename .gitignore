@@ -6,3 +6,4 @@ dev-dist/
 
 # Original-PDFs der importierten Haushalte (nur lokal, Quellen stehen in den Datensätzen)
 import/
+__pycache__/

@@ -115,7 +115,7 @@ export const COMPUTED_KENNZAHLEN: readonly ComputedKennzahl[] = [
     label: 'Sachinvestitionen',
     unit: 'euro',
     description: 'Erwerb von Anlagevermögen und Baumaßnahmen (Gruppen 93–96)',
-    compute: (d) => amount(d, 'vmh', 'ausgaben', ['93', '94', '95', '96']),
+    compute: (d) => amount(d, 'vmh', 'ausgaben', ['93', '94', '95', '96', '94-96']),
   },
   {
     key: 'kreditaufnahmen',

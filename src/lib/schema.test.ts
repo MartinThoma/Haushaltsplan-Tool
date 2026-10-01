@@ -124,6 +124,15 @@ describe('validateDataset', () => {
     expect(result.ok && result.warnings.join('\n')).toContain('Gesamtbetrag');
   });
 
+  it('accepts Baumaßnahmen booked together as 94-96 and warns when mixed with 94, 95, 96', () => {
+    const data = valid() as Record<string, any>;
+    data.betraege.vmh.ausgaben['94-96'] = 500;
+    expect(validateDataset(data)).toMatchObject({ ok: true, warnings: [] });
+    data.betraege.vmh.ausgaben['950'] = 5;
+    const result = validateDataset(data);
+    expect(result.ok && result.warnings.join('\n')).toContain('zugleich zusammen');
+  });
+
   it('reports invalid JSON', () => {
     const result = validateDatasetText('{ "metadata": ');
     expect(result.ok).toBe(false);
