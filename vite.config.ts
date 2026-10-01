@@ -13,21 +13,22 @@ export default defineConfig({
     tailwindcss(),
     budgetData(),
     VitePWA({
+      // Registered in main.tsx, which reloads the page once a new version has taken over.
       registerType: 'autoUpdate',
-      injectRegister: 'script-defer',
+      injectRegister: false,
       manifest: false,
       workbox: {
+        // Without these, a new service worker waits until every tab is closed, and the old cached
+        // app keeps running against freshly fetched data in a newer format.
+        skipWaiting: true,
+        clientsClaim: true,
         globPatterns: ['**/*.{js,css,html,svg}'],
         globIgnores: ['data/**'],
         runtimeCaching: [
           {
-            urlPattern: ({ url }) => url.pathname.endsWith('/data/kommunen.json'),
-            handler: 'NetworkFirst',
-            options: { cacheName: 'budget-index' },
-          },
-          {
+            // Always the current data when online; the cache only serves offline use.
             urlPattern: ({ url }) => /\/data\/.+\.json$/.test(url.pathname),
-            handler: 'StaleWhileRevalidate',
+            handler: 'NetworkFirst',
             options: { cacheName: 'budget-data' },
           },
         ],
