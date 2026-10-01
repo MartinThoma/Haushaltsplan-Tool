@@ -1,0 +1,138 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Merching",
+    "ags": "09771145",
+    "jahr": 2026,
+    "einwohner": 3203,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2026 der Gemeinde Merching, Gruppierungsübersicht, Spalte „Ansatz 2026“",
+    "hinweis": "Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 340,
+      "quelle": "Gemeinde Merching, Haushaltssatzung 2026, § 4"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 240,
+      "quelle": "Gemeinde Merching, Haushaltssatzung 2026, § 4"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 340,
+      "quelle": "Gemeinde Merching, Haushaltssatzung 2026, § 4"
+    },
+    "schulden": {
+      "wert": 3430940,
+      "stichtag": "2025-12-31",
+      "quelle": "Haushaltsplan 2026 der Gemeinde Merching, Zusammenstellung nach Einzeldarlehen (voraussichtlich)"
+    },
+    "ruecklagen": {
+      "wert": 1500000,
+      "stichtag": "2026-01-01",
+      "quelle": "Haushaltsplan 2026 der Gemeinde Merching, Anlage „Übersicht über den voraussichtlichen Stand der Rücklagen“ (voraussichtlich, in 1.000 €)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 1500000,
+      "quelle": "Gemeinde Merching, Haushaltssatzung 2026, § 5"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 32000.0,
+        "001": 320000.0,
+        "003": 1200000.0,
+        "010": 2862000.0,
+        "012": 168000.0,
+        "022": 15700.0,
+        "041": 625000.0,
+        "061": 297800.0,
+        "081": 1500.0,
+        "10": 35400.0,
+        "11": 652300.0,
+        "13": 1900.0,
+        "14": 911900.0,
+        "15": 35700.0,
+        "161": 1000.0,
+        "162": 22800.0,
+        "163": 121600.0,
+        "166": 3600.0,
+        "168": 2000.0,
+        "169": 18500.0,
+        "171": 955900.0,
+        "207": 10000.0,
+        "22": 73000.0,
+        "26": 2600.0,
+        "270": 700600.0,
+        "275": 699400.0
+      },
+      "ausgaben": {
+        "40": 69000.0,
+        "410": 155200.0,
+        "414": 903200.0,
+        "416": 1500.0,
+        "430": 92600.0,
+        "434": 64100.0,
+        "444": 181000.0,
+        "448": 200.0,
+        "45": 27500.0,
+        "46": 9000.0,
+        "470": 24300.0,
+        "50": 62200.0,
+        "51": 175300.0,
+        "52": 28500.0,
+        "53": 40500.0,
+        "54": 84900.0,
+        "55": 36500.0,
+        "56": 39700.0,
+        "63": 524100.0,
+        "64": 145600.0,
+        "65": 107700.0,
+        "660": 1400.0,
+        "661": 10700.0,
+        "672": 25000.0,
+        "673": 2700.0,
+        "677": 3500.0,
+        "679": 18500.0,
+        "680": 700600.0,
+        "685": 699400.0,
+        "70": 1633900.0,
+        "711": 3500.0,
+        "713": 852700.0,
+        "717": 5100.0,
+        "718": 3500.0,
+        "806": 93400.0,
+        "807": 58800.0,
+        "810": 124000.0,
+        "832": 2285000.0,
+        "84": 4700.0,
+        "850": 100000.0,
+        "860": 371200.0
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 371200.0,
+        "310": 682100.0,
+        "340": 2000000.0,
+        "345": 130000.0,
+        "35": 6000.0,
+        "361": 2766900.0,
+        "377": 5000000.0
+      },
+      "ausgaben": {
+        "932": 275000.0,
+        "935": 192700.0,
+        "94": 9189700.0,
+        "95": 817500.0,
+        "96": 201000.0,
+        "976": 117600.0,
+        "977": 25000.0,
+        "988": 137700.0
+      }
+    }
+  }
+}
