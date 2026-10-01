@@ -1,0 +1,49 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Erding",
+    "ags": "09177117",
+    "jahr": 2025,
+    "einwohner": 37171,
+    "einwohner_stichtag": "2024-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Stadt Erding, Haushaltssatzung 2025 vom 19.05.2025, § 1",
+    "hinweis": "Nur die Gesamtbeträge laut Haushaltssatzung: Der Haushaltsplan selbst ist nicht veröffentlicht, er liegt im Rathaus Erding (Stadtkämmerei, Zimmer 016) zur Einsicht aus. Der Stadtrat hat 2025 einen Nachtragshaushalt beschlossen, dessen Beträge ebenfalls nicht veröffentlicht sind; die Werte zeigen den ursprünglichen Haushalt."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 450,
+      "quelle": "Stadt Erding, Haushaltssatzung 2025 vom 19.05.2025 (nachrichtlicher Hinweis zur Hebesatzsatzung)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 450,
+      "quelle": "Stadt Erding, Haushaltssatzung 2025 vom 19.05.2025 (nachrichtlicher Hinweis zur Hebesatzsatzung)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 325,
+      "quelle": "Stadt Erding, Haushaltssatzung 2025 vom 19.05.2025 (nachrichtlicher Hinweis zur Hebesatzsatzung)"
+    },
+    "schulden": {
+      "wert": 10550000,
+      "stichtag": "2024-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2024 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 14000000,
+      "quelle": "Stadt Erding, Haushaltssatzung 2025 vom 19.05.2025, § 4"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {},
+      "ausgaben": {},
+      "gesamt": 114785650
+    },
+    "vmh": {
+      "einnahmen": {},
+      "ausgaben": {},
+      "gesamt": 39815000
+    }
+  }
+}

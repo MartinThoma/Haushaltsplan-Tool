@@ -1,0 +1,44 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Erding",
+    "ags": "09177117",
+    "jahr": 2026,
+    "einwohner": 37341,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Stadt Erding, Haushaltssatzung 2026 vom 28.04.2026, § 1",
+    "hinweis": "Nur die Gesamtbeträge laut Haushaltssatzung: Der Haushaltsplan selbst ist nicht veröffentlicht, er liegt im Rathaus Erding (Stadtkämmerei, Zimmer 016) zur Einsicht aus."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 450,
+      "quelle": "Stadt Erding, Haushaltssatzung 2026 vom 28.04.2026 (nachrichtlicher Hinweis zur Hebesatzsatzung)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 450,
+      "quelle": "Stadt Erding, Haushaltssatzung 2026 vom 28.04.2026 (nachrichtlicher Hinweis zur Hebesatzsatzung)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 325,
+      "quelle": "Stadt Erding, Haushaltssatzung 2026 vom 28.04.2026 (nachrichtlicher Hinweis zur Hebesatzsatzung)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 14000000,
+      "quelle": "Stadt Erding, Haushaltssatzung 2026 vom 28.04.2026, § 4"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {},
+      "ausgaben": {},
+      "gesamt": 130914000
+    },
+    "vmh": {
+      "einnahmen": {},
+      "ausgaben": {},
+      "gesamt": 42467250
+    }
+  }
+}
