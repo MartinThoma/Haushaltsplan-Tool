@@ -106,6 +106,11 @@ python3 scripts/import_einzelplan.py \
   --status-plan Entwurf --quelle "Entwurf Haushaltsplan 2026 der Gemeinde Polling"
 ```
 
+Enthält der Haushaltsplan eine Gruppierungsübersicht (z. B. aus CIP-KOMMUNAL), ist
+[`scripts/import_gruppierungsuebersicht.py`](scripts/import_gruppierungsuebersicht.py) einfacher: Es liest
+Ansatz, Vorjahresansatz und Rechnungsergebnis direkt nach Gruppierung und prüft sie gegen alle gedruckten
+Zwischensummen (`--nur-pruefen` liest und prüft, ohne zu schreiben).
+
 Untergruppen, die der Gruppierungsplan nicht kennt (z. B. die frei gebildeten 100, 101 in
 Gruppe 10), werden ihrer Gruppe zugerechnet, damit Kommunen vergleichbar bleiben. Beim erneuten
 Import (`--force`) bleiben vorhandene `kennzahlen` erhalten.
@@ -140,19 +145,21 @@ Die Bezeichnungen der 408 Gruppierungsziffern in
 [`src/data/master-groupings.json`](src/data/master-groupings.json) stammen aus dem
 [Gruppierungsplan (Anlage 2 VVKommHSyst-Kameralistik, Bayern)](https://www.verkuendung-bayern.de/files/allmbl/2016/11/anhang/2023-I-2281-A002_PDFA.pdf).
 Wie dort ist „5/6 Sächlicher Verwaltungs- und Betriebsaufwand“ eine Hauptgruppe. Die Gruppen 94, 95
-und 96 fasst der Plan als „Baumaßnahmen“ zusammen; die Bezeichnungen Hochbau, Tiefbau und sonstige
-folgen der üblichen Buchungspraxis.
+und 96 fasst der Plan als „Baumaßnahmen“ zusammen; Haushalte, die das übernehmen, buchen sie unter
+`94-96`. Für Kommunen, die Hoch- und Tiefbau trennen, gibt es 94, 95 und 96 (Hochbau, Tiefbau,
+sonstige).
 
 Untergruppen, die der Plan nicht nennt, werden angezeigt, aber markiert. Steht unter einer Gruppe
 eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine andere Ziffer einen Hinweis.
 
 ## Mitgelieferte Daten
 
-| Kommune    | Jahre                                          | Quelle                                                                                          |
-| ---------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Plattling  | 2024–2026 (Ansatz)                             | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen         |
-| Polling    | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf) | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                      |
-| Osterhofen | 2025–2026 (Ansatz)                             | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht |
+| Kommune              | Jahre                                          | Quelle                                                                                          |
+| -------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Plattling            | 2024–2026 (Ansatz)                             | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen         |
+| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf) | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                      |
+| Osterhofen           | 2025–2026 (Ansatz)                             | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht |
+| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)       | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                       |
 
 Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
 hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,

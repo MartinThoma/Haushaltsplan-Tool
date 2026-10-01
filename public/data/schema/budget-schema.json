@@ -131,7 +131,7 @@
               "type": "object",
               "propertyNames": {
                 "type": "string",
-                "pattern": "^(?:9|[9][0-9]{1,2})$"
+                "pattern": "^(?:9|[9][0-9]{1,2}|94-96)$"
               },
               "additionalProperties": {
                 "type": "number"
@@ -364,7 +364,7 @@
               "type": "object",
               "propertyNames": {
                 "type": "string",
-                "pattern": "^(?:9|[9][0-9]{1,2})$"
+                "pattern": "^(?:9|[9][0-9]{1,2}|94-96)$"
               },
               "additionalProperties": {
                 "type": "string",

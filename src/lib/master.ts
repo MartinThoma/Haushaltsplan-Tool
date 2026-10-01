@@ -45,9 +45,17 @@ export function hauptgruppeOf(code: string): string {
   return code[0] === '5' || code[0] === '6' ? HAUPTGRUPPE_5_6 : code[0]!;
 }
 
+/**
+ * The plan lists "94, 95, 96 Baumaßnahmen" as one Gruppe; budgets that follow it book them together.
+ * Municipalities that split Hoch- and Tiefbau use 94, 95 and 96 instead.
+ */
+export const BAUMASSNAHMEN = '94-96';
+
 /** 1 = Hauptgruppe, 2 = Gruppe, 3 = Untergruppe. */
 export function codeLevel(code: string): number {
-  return code === HAUPTGRUPPE_5_6 ? 1 : code.length;
+  if (code === HAUPTGRUPPE_5_6) return 1;
+  if (code === BAUMASSNAHMEN) return 2;
+  return code.length;
 }
 
 export function parentCode(code: string): string | null {
@@ -61,7 +69,8 @@ export function codePattern(section: Section, side: Side): string {
   const digits = ALLOWED_HAUPTGRUPPEN[section][side];
   const hauptgruppen = [...digits].filter((d) => d !== '5' && d !== '6');
   if (digits.includes('5')) hauptgruppen.push(HAUPTGRUPPE_5_6);
-  return `^(?:${hauptgruppen.join('|')}|[${digits}][0-9]{1,2})$`;
+  const combined = digits.includes('9') ? `|${BAUMASSNAHMEN}` : '';
+  return `^(?:${hauptgruppen.join('|')}|[${digits}][0-9]{1,2}${combined})$`;
 }
 
 export function isKnownCode(code: string): boolean {

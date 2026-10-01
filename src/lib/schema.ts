@@ -7,6 +7,7 @@ import {
   SECTION_LABEL,
   SIDES,
   SIDE_LABEL,
+  BAUMASSNAHMEN,
   codeLevel,
   codePattern,
   codeTitle,
@@ -185,6 +186,11 @@ function collectWarnings(data: BudgetDataset): string[] {
             `${where}: Untergruppe ${code} ist im Gruppierungsplan nicht vorgesehen; Gruppe ${group} (${codeTitle(group)}) kennt ${listedChildren(group).join(', ')}`,
           );
         }
+      }
+      if (BAUMASSNAHMEN in amounts && Object.keys(amounts).some((c) => c !== BAUMASSNAHMEN && /^9[456]/.test(c))) {
+        warnings.push(
+          `${SECTION_LABEL[section]}, ${SIDE_LABEL[side]}: Baumaßnahmen sind zugleich zusammen (${BAUMASSNAHMEN}) und getrennt (94, 95, 96) angegeben`,
+        );
       }
       const gesamt = data.betraege[section].gesamt;
       const parts = sideTotal(aggregate(amounts));
