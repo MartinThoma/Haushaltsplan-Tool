@@ -1,0 +1,131 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Merching",
+    "ags": "09771145",
+    "jahr": 2024,
+    "einwohner": 3246,
+    "einwohner_stichtag": "2023-12-31",
+    "status": "Ergebnis",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2026 der Gemeinde Merching, Gruppierungsübersicht, Spalte „Rechnungsergebnis 2024“",
+    "hinweis": "Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 340,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 340,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 340,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "schulden": {
+      "wert": 139335.51,
+      "stichtag": "2023-12-31",
+      "quelle": "Haushaltsplan 2026 der Gemeinde Merching, Zusammenstellung nach Einzeldarlehen"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 41130.82,
+        "001": 285895.3,
+        "003": 1536522.55,
+        "010": 2632403.0,
+        "012": 138823.0,
+        "022": 10830.5,
+        "041": 297268.0,
+        "061": 332323.05,
+        "081": 1180.0,
+        "10": 39491.87,
+        "11": 664272.1,
+        "13": 1985.38,
+        "14": 790271.98,
+        "15": 75177.6,
+        "161": 9816.32,
+        "162": 37352.91,
+        "163": 125879.38,
+        "166": 5654.77,
+        "168": 2437.98,
+        "169": 16389.98,
+        "171": 775765.18,
+        "176": 400.0,
+        "177": 5285.63,
+        "207": 36153.63,
+        "21": 5.1,
+        "22": 76289.04,
+        "26": 2531.5,
+        "270": 701032.52,
+        "275": 699943.33
+      },
+      "ausgaben": {
+        "40": 57756.69,
+        "410": 140124.02,
+        "414": 773017.41,
+        "416": 450.0,
+        "430": 103471.25,
+        "434": 63153.95,
+        "444": 161479.01,
+        "448": 246.2,
+        "45": 22762.85,
+        "46": 8202.64,
+        "50": 39990.43,
+        "51": 182901.14,
+        "52": 21137.54,
+        "53": 49100.7,
+        "54": 75892.01,
+        "55": 40650.47,
+        "56": 26610.2,
+        "63": 382346.36,
+        "64": 178273.25,
+        "65": 29369.28,
+        "660": 300.0,
+        "661": 11979.83,
+        "672": 53329.09,
+        "673": 2996.95,
+        "677": 3537.37,
+        "679": 16389.98,
+        "680": 701032.52,
+        "685": 699943.33,
+        "70": 1226560.35,
+        "711": 3643.0,
+        "713": 677844.81,
+        "718": 2352.29,
+        "806": 3685.0,
+        "807": 1525.63,
+        "810": 158963.0,
+        "832": 2306433.92,
+        "84": 3024.37,
+        "860": 1112035.58
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 1112035.58,
+        "310": 3728788.69,
+        "345": 96297.82,
+        "35": 7395.25,
+        "361": 662965.16,
+        "363": 2448.68,
+        "376": 2000000.0
+      },
+      "ausgaben": {
+        "910": 4201415.12,
+        "932": 192753.13,
+        "935": 67213.2,
+        "94": 1593468.78,
+        "95": 1247312.61,
+        "96": 269988.49,
+        "976": 16667.0,
+        "977": 20587.37,
+        "987": 250.0,
+        "988": 275.48
+      }
+    }
+  }
+}

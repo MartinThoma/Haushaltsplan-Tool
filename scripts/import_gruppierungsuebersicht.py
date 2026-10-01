@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Import a Bavarian kameral budget from the "Gruppierungsübersicht" of its Haushaltsplan PDF.
 
-The Gruppierungsübersicht (e.g. CIP-KOMMUNAL / GRUBAYH) lists every Gruppe and Untergruppe with
+The Gruppierungsübersicht (CIP-KOMMUNAL / GRUBAYH or "GRN – Gruppierungsübersicht (neu)") lists every Gruppe and Untergruppe with
 the Ansatz of the plan year, the Ansatz of the previous year and the Rechnungsergebnis two years
 back, optionally with a per-resident column after the first value. The script
 
@@ -32,10 +32,18 @@ BAUMASSNAHMEN = {'94,95,96': '94-96'}
 END = 'Ende der Liste "Gruppierungsübersicht"'
 
 
+ZERO = {'-', '–'}
+# GRN prints negative amounts with a trailing minus ("4.925,62-").
+TRAILING_MINUS = re.compile(r'^\d{1,3}(?:\.\d{3})*(?:,\d+)?-$')
+# Subtotal labels of the "GRN – Gruppierungsübersicht (neu)" layout and the totals that end it.
+GRN_SUBTOTAL = re.compile(r'^Summe (?:Gruppe|Hauptgruppe) (\S+)')
+GRN_TOTALS = {'Gesamteinnahmen': '0-3999', 'Gesamtausgaben': '4-9999'}
+
+
 def values_of(parts):
     """The amounts of a line (plan year, previous year, result), or None for a heading."""
     count = 0
-    while count < len(parts) and NUMBER.match(parts[-1 - count]):
+    while count < len(parts) and is_amount(parts[-1 - count]):
         count += 1
     if count == 4:  # with a per-resident column after the plan year
         numbers = [parts[-4], parts[-2], parts[-1]]
@@ -43,7 +51,19 @@ def values_of(parts):
         numbers = parts[-3:]
     else:
         return None
-    return [to_number(n) for n in numbers]
+    return [amount(n) for n in numbers]
+
+
+def is_amount(text):
+    return bool(NUMBER.match(text) or TRAILING_MINUS.match(text)) or text in ZERO
+
+
+def amount(text):
+    if text in ZERO:
+        return 0.0
+    if TRAILING_MINUS.match(text):
+        return -to_number(text[:-1])
+    return to_number(text)
 
 
 def parse(lines):
@@ -51,26 +71,34 @@ def parse(lines):
     year = None
     leaves, subtotals = [], []
     inside = False
-    for lineno, line in enumerate(lines, 1):
-        if END in line:
+    for lineno, raw in enumerate(lines, 1):
+        if END in raw:
             break
         if not inside:
-            inside = 'Grupp.-Nr.' in line
+            inside = 'Grupp.-Nr.' in raw or '3. Gruppierungsübersicht' in raw
         if not inside:
             continue
-        if year is None and len(years := re.findall(r'\b(20\d\d)\b', line)) >= 3:
+        if year is None and len(years := re.findall(r'\b(20\d\d)\b', raw)) >= 3:
             year = int(years[0])
-        parts = re.split(r'\s{2,}', line.strip())
-        if not parts or not CODE.match(parts[0]):
-            continue
+        line = raw.strip().strip('│').strip()  # GRN tables are framed by box-drawing characters
+        line = re.sub(r'^(\d{3}) - (\d{3})\b', r'\1-\2', line)  # "305 - 309" is a range of Untergruppen
+        head, _, rest = line.partition(' ')
+        parts = [head] + re.split(r'\s{2,}', rest.strip()) if rest else [head]
         values = values_of(parts)
         if values is None:
             continue
-        label = parts[1] if len(parts) > 1 else ''
-        if re.match(r'(ZWISCHENSUMME|SUMME|GESAMT)', label):
-            subtotals.append((parts[0], values, lineno))
-        else:
-            leaves.append((parts[0], values, lineno))
+        if m := GRN_SUBTOTAL.match(line):
+            subtotals.append((m.group(1), values, lineno))
+        elif head in GRN_TOTALS:
+            subtotals.append((GRN_TOTALS[head], values, lineno))
+            if head == 'Gesamtausgaben':
+                break
+        elif CODE.match(head):
+            label = parts[1] if len(parts) > 1 else ''
+            if re.match(r'(ZWISCHENSUMME|SUMME|GESAMT)', label):
+                subtotals.append((head, values, lineno))
+            else:
+                leaves.append((head, values, lineno))
     return year, leaves, subtotals
 
 
