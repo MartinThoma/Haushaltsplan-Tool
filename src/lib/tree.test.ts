@@ -11,6 +11,28 @@ function dataset(vwhEinnahmen: Record<string, number>): BudgetDataset {
 
 const ids = (rows: RowItem[]) => rows.map((r) => (r.type === 'section' ? `#${r.section}` : r.node.id));
 
+describe('stated Gesamtbetrag', () => {
+  it('shows a total without Gruppierungen as one remainder row', () => {
+    const totalsOnly: BudgetDataset = {
+      ...dataset({}),
+      betraege: { vwh: { einnahmen: {}, ausgaben: {}, gesamt: 1000 }, vmh: { einnahmen: {}, ausgaben: {} } },
+    };
+    const detailed = dataset({ '003': 300 });
+    const einnahmen = buildTree([totalsOnly, detailed], ['vwh'])[0]!.sides[0]!;
+    expect(einnahmen.values).toEqual([1000, 300]);
+    const rest = einnahmen.children.at(-1)!;
+    expect(rest).toMatchObject({ kind: 'rest', code: null, depth: 1, values: [1000, null] });
+  });
+
+  it('covers only the part the Gruppierungen leave open', () => {
+    const partial = dataset({ '003': 300 });
+    partial.betraege.vwh.gesamt = 1000;
+    const ausgaben = buildTree([partial], ['vwh'])[0]!.sides[1]!;
+    expect(ausgaben.values).toEqual([1000]);
+    expect(ausgaben.children.at(-1)!.values).toEqual([990]);
+  });
+});
+
 describe('remainder rows', () => {
   it('shows the part of a stated total that is not broken down, with its label', () => {
     const a = dataset({ '00': 1000, '003': 600, '010': 5 });

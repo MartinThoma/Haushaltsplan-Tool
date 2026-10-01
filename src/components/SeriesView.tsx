@@ -46,13 +46,13 @@ interface Props {
 
 function seriesLabel(node: TreeNode): string {
   if (node.kind === 'side') return `${SIDE_LABEL[node.side]} ${SECTION_LABEL[node.section]}`;
-  if (node.kind === 'rest') return `${node.code} ${node.title}`;
+  if (node.kind === 'rest') return `${node.code ?? SIDE_LABEL[node.side]} ${node.title}`;
   return `${node.code} ${standaloneTitle(node.code!)}`;
 }
 
 function shortLabel(node: TreeNode): string {
   if (node.kind === 'side') return `${SIDE_LABEL[node.side].slice(0, 4)}. ${node.section === 'vwh' ? 'VwH' : 'VmH'}`;
-  return node.kind === 'rest' ? `${node.code} Rest` : node.code!;
+  return node.kind === 'rest' ? `${node.code ?? SIDE_LABEL[node.side].slice(0, 4) + '.'} Rest` : node.code!;
 }
 
 export function SeriesView({ datasets, stale, controls, chart, onChart }: Props) {

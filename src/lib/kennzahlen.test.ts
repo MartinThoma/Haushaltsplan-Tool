@@ -22,6 +22,17 @@ describe('computed key figures', () => {
     expect(compute('tilgung')).toBe(25);
   });
 
+  it('stays empty for datasets that only state totals', () => {
+    const totalsOnly: BudgetDataset = {
+      ...data,
+      betraege: {
+        vwh: { einnahmen: {}, ausgaben: {}, gesamt: 1000 },
+        vmh: { einnahmen: {}, ausgaben: {}, gesamt: 200 },
+      },
+    };
+    expect(COMPUTED_KENNZAHLEN.map((k) => k.compute(totalsOnly))).toEqual([null, null, null, null, null]);
+  });
+
   it('uses the Gruppe when a dataset gives no Untergruppen', () => {
     const coarse: BudgetDataset = {
       ...data,

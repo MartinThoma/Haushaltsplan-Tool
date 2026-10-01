@@ -1,5 +1,6 @@
-import { aggregate, sideTotal } from './aggregate.ts';
+import { aggregate } from './aggregate.ts';
 import type { BudgetDataset } from './schema.ts';
+import { sideAmount } from './tree.ts';
 
 /** hebesatz: percent ("v. H."), euro: amount (convertible per resident), anteil: ratio 0–1. */
 export type KennzahlUnit = 'hebesatz' | 'euro' | 'anteil';
@@ -57,17 +58,27 @@ interface ComputedKennzahl extends KennzahlDefinition {
   compute: (data: BudgetDataset) => number | null;
 }
 
-function amount(data: BudgetDataset, section: 'vwh' | 'vmh', side: 'einnahmen' | 'ausgaben', codes: string[]) {
+type Section = 'vwh' | 'vmh';
+type Side = 'einnahmen' | 'ausgaben';
+
+/** Aggregated values of one budget side; null if the dataset has no Gruppierungen there (totals only). */
+function sideValues(data: BudgetDataset, section: Section, side: Side) {
   const values = aggregate(data.betraege[section][side]).values;
-  return codes.reduce((sum, code) => sum + (values.get(code) ?? 0), 0);
+  return values.size > 0 ? values : null;
+}
+
+function amount(data: BudgetDataset, section: Section, side: Side, codes: string[]) {
+  const values = sideValues(data, section, side);
+  return values && codes.reduce((sum, code) => sum + (values.get(code) ?? 0), 0);
 }
 
 /**
  * Amount of a general Untergruppe such as 860. Falls back to its Gruppe only when the dataset has
  * no breakdown of that Gruppe, so special reserves (861–869) are not mixed in.
  */
-function general(data: BudgetDataset, section: 'vwh' | 'vmh', side: 'einnahmen' | 'ausgaben', untergruppe: string) {
-  const values = aggregate(data.betraege[section][side]).values;
+function general(data: BudgetDataset, section: Section, side: Side, untergruppe: string) {
+  const values = sideValues(data, section, side);
+  if (!values) return null;
   if (values.has(untergruppe)) return values.get(untergruppe)!;
   const gruppe = untergruppe.slice(0, 2);
   const broken = [...values.keys()].some((code) => code.length === 3 && code.startsWith(gruppe));
@@ -82,7 +93,11 @@ export const COMPUTED_KENNZAHLEN: readonly ComputedKennzahl[] = [
     unit: 'euro',
     description:
       'Allgemeine Zuführung (860) abzüglich Zuführung vom Vermögenshaushalt (280), ohne Sonderrücklagen: was der Verwaltungshaushalt für Investitionen und Tilgung erwirtschaftet',
-    compute: (d) => general(d, 'vwh', 'ausgaben', '860') - general(d, 'vwh', 'einnahmen', '280'),
+    compute: (d) => {
+      const zu = general(d, 'vwh', 'ausgaben', '860');
+      const vom = general(d, 'vwh', 'einnahmen', '280');
+      return zu === null && vom === null ? null : (zu ?? 0) - (vom ?? 0);
+    },
   },
   {
     key: 'personalquote',
@@ -90,8 +105,9 @@ export const COMPUTED_KENNZAHLEN: readonly ComputedKennzahl[] = [
     unit: 'anteil',
     description: 'Personalausgaben (Hauptgruppe 4) im Verhältnis zu den Ausgaben des Verwaltungshaushalts',
     compute: (d) => {
-      const total = sideTotal(aggregate(d.betraege.vwh.ausgaben));
-      return total ? amount(d, 'vwh', 'ausgaben', ['4']) / total : null;
+      const personal = amount(d, 'vwh', 'ausgaben', ['4']);
+      const total = sideAmount(d, 'vwh', 'ausgaben');
+      return personal === null || !total ? null : personal / total;
     },
   },
   {

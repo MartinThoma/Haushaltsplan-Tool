@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { de } from 'zod/locales';
-import { aggregate } from './aggregate.ts';
+import { aggregate, sideTotal } from './aggregate.ts';
 import {
   MASTER,
   SECTIONS,
@@ -67,6 +67,10 @@ function sectionSchema(section: Section) {
   return z.strictObject({
     einnahmen: amountsSchema(section, 'einnahmen'),
     ausgaben: amountsSchema(section, 'ausgaben'),
+    gesamt: z.number().nonnegative().optional().meta({
+      description:
+        'Gesamtbetrag laut Haushaltssatzung (Einnahmen = Ausgaben). Was die Gruppierungen nicht abdecken, erscheint als „nicht aufgeschlüsselt“.',
+    }),
   });
 }
 
@@ -181,6 +185,13 @@ function collectWarnings(data: BudgetDataset): string[] {
             `${where}: Untergruppe ${code} ist im Gruppierungsplan nicht vorgesehen; Gruppe ${group} (${codeTitle(group)}) kennt ${listedChildren(group).join(', ')}`,
           );
         }
+      }
+      const gesamt = data.betraege[section].gesamt;
+      const parts = sideTotal(aggregate(amounts));
+      if (gesamt !== undefined && parts !== null && parts - gesamt >= 0.005) {
+        warnings.push(
+          `${SECTION_LABEL[section]}, ${SIDE_LABEL[side]}: Gesamtbetrag ${formatEuro(gesamt)} ist kleiner als die Summe der Gruppierungen ${formatEuro(parts)}`,
+        );
       }
       // A stated total above the sum of its parts is a partial breakdown ("nicht aufgeschlüsselt");
       // below it, the figures contradict each other.
