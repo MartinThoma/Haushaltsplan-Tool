@@ -3,3 +3,6 @@ dist/
 dev-dist/
 *.local
 .DS_Store
+
+# Original-PDFs der importierten Haushalte (nur lokal, Quellen stehen in den Datensätzen)
+import/
