@@ -1,0 +1,144 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Wolfratshausen",
+    "ags": "09173147",
+    "jahr": 2024,
+    "einwohner": 19467,
+    "einwohner_stichtag": "2023-12-31",
+    "status": "Ergebnis",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2026 der Stadt Wolfratshausen, Gruppierungsübersicht, Spalte „Rechnungsergebnis 2024“",
+    "hinweis": "Aus der Gruppierungsübersicht des Haushaltsplans; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 320,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 400,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 380,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "schulden": {
+      "wert": 3664000,
+      "stichtag": "2023-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2024 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    },
+    "ruecklagen": {
+      "wert": 23092654.47,
+      "stichtag": "2024-01-01",
+      "quelle": "Rechenschaftsbericht 2025 der Stadt Wolfratshausen, Übersicht über den Stand der Rücklagen"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 3464.96,
+        "001": 2663590.16,
+        "003": 16179592.15,
+        "010": 16550087.0,
+        "012": 2074184.0,
+        "022": 48303.37,
+        "041": 708560.0,
+        "061": 2119970.99,
+        "081": 253993.39,
+        "10": 412855.61,
+        "11": 1620984.44,
+        "13": 30419.64,
+        "14": 1803283.39,
+        "15": 463033.05,
+        "161": 63030.82,
+        "162": 482805.17,
+        "165": 10357.53,
+        "167": 31398.16,
+        "168": 48257.15,
+        "169": 1471904.94,
+        "171": 5464287.41,
+        "172": 82957.8,
+        "176": 5390.0,
+        "177": 32995.0,
+        "178": 27510.09,
+        "205": 439.46,
+        "207": 325459.35,
+        "22": 478203.37,
+        "26": 81888.92,
+        "270": 358638.39,
+        "275": 233111.0
+      },
+      "ausgaben": {
+        "40": 165016.19,
+        "410": 890871.14,
+        "414": 6284660.06,
+        "416": 14361.85,
+        "430": 650033.8,
+        "434": 495753.93,
+        "440": 5282.03,
+        "444": 1294098.04,
+        "448": 3635.27,
+        "45": 244777.96,
+        "46": 8040.0,
+        "50": 497074.05,
+        "51": 331113.66,
+        "52": 137126.32,
+        "53": 341336.86,
+        "54": 1514247.65,
+        "55": 109985.41,
+        "56": 96567.45,
+        "638": 1972924.46,
+        "639": 108505.56,
+        "64": 643688.45,
+        "65": 559306.16,
+        "660": 4366.29,
+        "661": 67905.15,
+        "662": 3448.13,
+        "670": 7644.08,
+        "671": 2743.5,
+        "672": 45725.0,
+        "675": 8000.0,
+        "679": 1471904.94,
+        "680": 358638.39,
+        "685": 233111.0,
+        "70": 9451560.97,
+        "711": 23040.0,
+        "712": 146162.9,
+        "715": 3444339.91,
+        "718": 114298.79,
+        "807": 124694.17,
+        "810": 1371435.0,
+        "832": 15045069.59,
+        "84": 15224.51,
+        "860": 5823238.09
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 5823238.09,
+        "310": 2596630.38,
+        "314": 443685.64,
+        "325": 9612.28,
+        "327": 13864.71,
+        "340": 8023.33,
+        "345": 101.0,
+        "360": 185674.0,
+        "361": 703455.83,
+        "367": 14726.43,
+        "368": 21782.97
+      },
+      "ausgaben": {
+        "910": 5288.43,
+        "914": 451034.67,
+        "916": 414.48,
+        "932": 1533097.5,
+        "935": 1295798.14,
+        "94-96": 4965763.97,
+        "977": 1516819.03,
+        "988": 52578.44
+      }
+    }
+  }
+}

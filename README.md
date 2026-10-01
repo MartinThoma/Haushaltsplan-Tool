@@ -114,7 +114,8 @@ den Status.
 Enthält der Haushaltsplan eine Gruppierungsübersicht (z. B. aus CIP-KOMMUNAL oder als „GRN – Gruppierungsübersicht (neu)“), ist
 [`scripts/import_gruppierungsuebersicht.py`](scripts/import_gruppierungsuebersicht.py) einfacher: Es liest
 Ansatz, Vorjahresansatz und Rechnungsergebnis direkt nach Gruppierung und prüft sie gegen alle gedruckten
-Zwischensummen (`--nur-pruefen` liest und prüft, ohne zu schreiben).
+Zwischensummen (`--nur-pruefen` liest und prüft, ohne zu schreiben). Aus der „Rechnungs-Gruppierungsübersicht“
+einer Jahresrechnung oder eines Rechenschaftsberichts liest es das Rechnungsergebnis des Jahres (`--spalten ergebnis`).
 
 Untergruppen, die der Gruppierungsplan nicht kennt (z. B. die frei gebildeten 100, 101 in
 Gruppe 10), werden ihrer Gruppe zugerechnet, damit Kommunen vergleichbar bleiben. Beim erneuten
@@ -159,14 +160,15 @@ eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine ander
 
 ## Mitgelieferte Daten
 
-| Kommune              | Jahre                                                | Quelle                                                                                          |
-| -------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Plattling            | 2024–2026 (Ansatz)                                   | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen         |
-| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf)       | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                      |
-| Osterhofen           | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht |
-| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)             | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                       |
-| Haar                 | 2023–2024 (Ergebnis), 2025 (Nachtrag), 2026 (Ansatz) | Haushaltspläne 2025 und 2026, Einzelpläne aus dem Ratsinformationssystem                        |
-| Merching             | 2024 (Ergebnis), 2025–2026 (Ansatz)                  | Haushaltsplan 2026, Gruppierungsübersicht                                                       |
+| Kommune              | Jahre                                                | Quelle                                                                                                          |
+| -------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Plattling            | 2024–2026 (Ansatz)                                   | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen                         |
+| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf)       | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                                      |
+| Osterhofen           | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht                 |
+| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)             | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                                       |
+| Haar                 | 2023–2024 (Ergebnis), 2025 (Nachtrag), 2026 (Ansatz) | Haushaltspläne 2025 und 2026, Einzelpläne aus dem Ratsinformationssystem                                        |
+| Merching             | 2024 (Ergebnis), 2025–2026 (Ansatz)                  | Haushaltsplan 2026, Gruppierungsübersicht                                                                       |
+| Wolfratshausen       | 2023–2025 (Ergebnis), 2026 (Ansatz)                  | Haushaltspläne 2025 und 2026, Gruppierungsübersicht; Rechenschaftsbericht 2025, Rechnungs-Gruppierungsübersicht |
 
 Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
 hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,

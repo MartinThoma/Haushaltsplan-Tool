@@ -14,14 +14,15 @@ MASTER = json.loads((ROOT / 'src' / 'data' / 'master-groupings.json').read_text(
 NUMBER = re.compile(r'^-?\d{1,3}(?:\.\d{3})*(?:,\d+)?$')
 
 # Budget documents print the plan year Y next to earlier years; a column's year is Y minus the offset.
-COLUMN_OFFSET = {'ansatz': 0, 'ansatz_vorjahr': 1, 'ergebnis_vorjahr': 1, 'ergebnis_vorvorjahr': 2}
+COLUMN_OFFSET = {'ansatz': 0, 'ansatz_vorjahr': 1, 'ergebnis': 0, 'ergebnis_vorjahr': 1, 'ergebnis_vorvorjahr': 2}
 COLUMN_LABEL = {
     'ansatz': 'Ansatz',
     'ansatz_vorjahr': 'Ansatz',
+    'ergebnis': 'Rechnungsergebnis',
     'ergebnis_vorjahr': 'Rechnungsergebnis',
     'ergebnis_vorvorjahr': 'Rechnungsergebnis',
 }
-COLUMN_STATUS = {'ergebnis_vorjahr': 'Ergebnis', 'ergebnis_vorvorjahr': 'Ergebnis'}
+COLUMN_STATUS = {'ergebnis': 'Ergebnis', 'ergebnis_vorjahr': 'Ergebnis', 'ergebnis_vorvorjahr': 'Ergebnis'}
 SECTIONS = (('vwh', '012', '45678'), ('vmh', '3', '9'))
 LANDS = ['SH', 'HH', 'NI', 'HB', 'NW', 'HE', 'RP', 'BW', 'BY', 'SL', 'BE', 'BB', 'MV', 'SN', 'ST', 'TH']
 
