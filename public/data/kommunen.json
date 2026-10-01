@@ -1,0 +1,76 @@
+[
+  {
+    "ags": "09999002",
+    "name": "Beispielmarkt",
+    "plz": ["00102", "00103"],
+    "bundesland": "BY",
+    "jahre": [
+      {
+        "jahr": 2024,
+        "einwohner": 8350,
+        "file": "09999002_2024.json"
+      },
+      {
+        "jahr": 2025,
+        "einwohner": 8390,
+        "file": "09999002_2025.json"
+      },
+      {
+        "jahr": 2026,
+        "einwohner": 8420,
+        "file": "09999002_2026.json"
+      }
+    ]
+  },
+  {
+    "ags": "09999001",
+    "name": "Musterstadt",
+    "plz": ["00101"],
+    "bundesland": "BY",
+    "jahre": [
+      {
+        "jahr": 2022,
+        "einwohner": 12780,
+        "file": "09999001_2022.json"
+      },
+      {
+        "jahr": 2023,
+        "einwohner": 12880,
+        "file": "09999001_2023.json"
+      },
+      {
+        "jahr": 2024,
+        "einwohner": 12950,
+        "file": "09999001_2024.json"
+      },
+      {
+        "jahr": 2025,
+        "einwohner": 13040,
+        "file": "09999001_2025.json"
+      },
+      {
+        "jahr": 2026,
+        "einwohner": 13100,
+        "file": "09999001_2026.json"
+      }
+    ]
+  },
+  {
+    "ags": "09999003",
+    "name": "Neudorf am See",
+    "plz": ["00104"],
+    "bundesland": "BY",
+    "jahre": [
+      {
+        "jahr": 2025,
+        "einwohner": 21480,
+        "file": "09999003_2025.json"
+      },
+      {
+        "jahr": 2026,
+        "einwohner": 21650,
+        "file": "09999003_2026.json"
+      }
+    ]
+  }
+]

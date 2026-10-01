@@ -1,0 +1,2047 @@
+{
+  "0": {
+    "title": "Steuern, allgemeine Zuweisungen",
+    "level": 1,
+    "parent": null
+  },
+  "00": {
+    "title": "Realsteuern",
+    "level": 2,
+    "parent": "0"
+  },
+  "000": {
+    "title": "Grundsteuer A",
+    "level": 3,
+    "parent": "00"
+  },
+  "001": {
+    "title": "Grundsteuer B",
+    "level": 3,
+    "parent": "00"
+  },
+  "003": {
+    "title": "Gewerbesteuer (brutto)",
+    "level": 3,
+    "parent": "00"
+  },
+  "01": {
+    "title": "Gemeindeanteile an Gemeinschaftsteuern",
+    "level": 2,
+    "parent": "0"
+  },
+  "010": {
+    "title": "Einkommensteuer",
+    "level": 3,
+    "parent": "01"
+  },
+  "012": {
+    "title": "Umsatzsteuer",
+    "level": 3,
+    "parent": "01"
+  },
+  "02": {
+    "title": "Andere Steuern",
+    "level": 2,
+    "parent": "0"
+  },
+  "022": {
+    "title": "Hundesteuer",
+    "level": 3,
+    "parent": "02"
+  },
+  "027": {
+    "title": "Zweitwohnungssteuer",
+    "level": 3,
+    "parent": "02"
+  },
+  "029": {
+    "title": "Sonstige örtliche Steuern",
+    "level": 3,
+    "parent": "02"
+  },
+  "03": {
+    "title": "Steuerähnliche Einnahmen",
+    "level": 2,
+    "parent": "0"
+  },
+  "032": {
+    "title": "Sonstige steuerähnliche Einnahmen",
+    "level": 3,
+    "parent": "03"
+  },
+  "04": {
+    "title": "Schlüsselzuweisungen",
+    "level": 2,
+    "parent": "0"
+  },
+  "041": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "04"
+  },
+  "05": {
+    "title": "Bedarfszuweisungen (einschl. Stabilisierungshilfen)",
+    "level": 2,
+    "parent": "0"
+  },
+  "051": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "05"
+  },
+  "06": {
+    "title": "Sonstige allgemeine Zuweisungen",
+    "level": 2,
+    "parent": "0"
+  },
+  "060": {
+    "title": "vom Bund",
+    "level": 3,
+    "parent": "06"
+  },
+  "061": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "06"
+  },
+  "062": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "06"
+  },
+  "063": {
+    "title": "von Verwaltungsgemeinschaften",
+    "level": 3,
+    "parent": "06"
+  },
+  "07": {
+    "title": "Allgemeine Umlagen",
+    "level": 2,
+    "parent": "0"
+  },
+  "072": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "07"
+  },
+  "08": {
+    "title": "Allgemeine Zuweisungen aus besonderen Abrechnungsverfahren",
+    "level": 2,
+    "parent": "0"
+  },
+  "081": {
+    "title": "Überlassung des Aufkommens an Verwarnungsgeldern und Geldbußen",
+    "level": 3,
+    "parent": "08"
+  },
+  "09": {
+    "title": "Leistungen des Landes (Hartz IV)",
+    "level": 2,
+    "parent": "0"
+  },
+  "092": {
+    "title": "Leistungen des Landes aus der Umsetzung des Vierten Gesetzes für moderne Dienstleistungen am Arbeitsmarkt",
+    "level": 3,
+    "parent": "09"
+  },
+  "1": {
+    "title": "Einnahmen aus Verwaltung und Betrieb",
+    "level": 1,
+    "parent": null
+  },
+  "10": {
+    "title": "Verwaltungsgebühren",
+    "level": 2,
+    "parent": "1"
+  },
+  "11": {
+    "title": "Benutzungsgebühren und ähnliche Entgelte",
+    "level": 2,
+    "parent": "1"
+  },
+  "12": {
+    "title": "Zweckgebundene Abgaben",
+    "level": 2,
+    "parent": "1"
+  },
+  "13": {
+    "title": "Einnahmen aus Verkauf",
+    "level": 2,
+    "parent": "1"
+  },
+  "14": {
+    "title": "Mieten und Pachten",
+    "level": 2,
+    "parent": "1"
+  },
+  "15": {
+    "title": "Sonstige Verwaltungs- und Betriebseinnahmen",
+    "level": 2,
+    "parent": "1"
+  },
+  "16": {
+    "title": "Erstattungen von Ausgaben des Verwaltungshaushalts",
+    "level": 2,
+    "parent": "1"
+  },
+  "160": {
+    "title": "vom Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "16"
+  },
+  "161": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "16"
+  },
+  "162": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "16"
+  },
+  "163": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "16"
+  },
+  "164": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "16"
+  },
+  "165": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "16"
+  },
+  "166": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "16"
+  },
+  "167": {
+    "title": "von privaten Unternehmen",
+    "level": 3,
+    "parent": "16"
+  },
+  "168": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "16"
+  },
+  "169": {
+    "title": "Innere Verrechnungen",
+    "level": 3,
+    "parent": "16"
+  },
+  "17": {
+    "title": "Zuweisungen und Zuschüsse für laufende Zwecke",
+    "level": 2,
+    "parent": "1"
+  },
+  "170": {
+    "title": "vom Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "17"
+  },
+  "171": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "17"
+  },
+  "172": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "17"
+  },
+  "173": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "17"
+  },
+  "174": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "17"
+  },
+  "175": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "17"
+  },
+  "176": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "17"
+  },
+  "177": {
+    "title": "von privaten Unternehmen",
+    "level": 3,
+    "parent": "17"
+  },
+  "178": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "17"
+  },
+  "19": {
+    "title": "Aufgabenbezogene Leistungsbeteiligung des Bundes",
+    "level": 2,
+    "parent": "1"
+  },
+  "191": {
+    "title": "Leistungsbeteiligung bei Leistungen für Unterkunft und Heizung an Arbeitsuchende",
+    "level": 3,
+    "parent": "19"
+  },
+  "192": {
+    "title": "Leistungsbeteiligung bei Leistungen zur Sicherung des Lebensunterhalts nach SGB II (ohne Leistungen für Unterkunft und Heizung)",
+    "level": 3,
+    "parent": "19"
+  },
+  "193": {
+    "title": "Leistungsbeteiligung bei der Eingliederung von Arbeitsuchenden nach SGB II",
+    "level": 3,
+    "parent": "19"
+  },
+  "2": {
+    "title": "Sonstige Finanzeinnahmen",
+    "level": 1,
+    "parent": null
+  },
+  "20": {
+    "title": "Zinseinnahmen",
+    "level": 2,
+    "parent": "2"
+  },
+  "202": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "20"
+  },
+  "203": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "20"
+  },
+  "204": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "20"
+  },
+  "205": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "20"
+  },
+  "206": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "20"
+  },
+  "207": {
+    "title": "von privaten Unternehmen sowie von Kreditinstituten (einschl. Sparkassen)",
+    "level": 3,
+    "parent": "20"
+  },
+  "208": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "20"
+  },
+  "209": {
+    "title": "Innere Darlehen",
+    "level": 3,
+    "parent": "20"
+  },
+  "21": {
+    "title": "Gewinnanteile von wirtschaftlichen Unternehmen und aus Beteiligungen",
+    "level": 2,
+    "parent": "2"
+  },
+  "22": {
+    "title": "Konzessionsabgaben",
+    "level": 2,
+    "parent": "2"
+  },
+  "23": {
+    "title": "Schuldendiensthilfen",
+    "level": 2,
+    "parent": "2"
+  },
+  "230": {
+    "title": "vom Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "23"
+  },
+  "231": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "23"
+  },
+  "232": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "23"
+  },
+  "233": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "23"
+  },
+  "234": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "23"
+  },
+  "235": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "23"
+  },
+  "236": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "23"
+  },
+  "237": {
+    "title": "von privaten Unternehmen",
+    "level": 3,
+    "parent": "23"
+  },
+  "238": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "23"
+  },
+  "24": {
+    "title": "Ersatz von sozialen Leistungen außerhalb von Einrichtungen",
+    "level": 2,
+    "parent": "2"
+  },
+  "240": {
+    "title": "Kostenbeiträge und Aufwendungsersatz, Kostenersatz – überörtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "241": {
+    "title": "Kostenbeiträge und Aufwendungsersatz, Kostenersatz – örtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "242": {
+    "title": "Übergeleitete Unterhaltsansprüche gegen bürgerlich-rechtlich Unterhaltsverpflichtete – überörtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "243": {
+    "title": "Übergeleitete Unterhaltsansprüche gegen bürgerlich-rechtlich Unterhaltsverpflichtete – örtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "244": {
+    "title": "Leistungen von Sozialleistungsträgern – überörtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "245": {
+    "title": "Leistungen von Sozialleistungsträgern – örtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "246": {
+    "title": "Sonstige Ersatzleistungen – überörtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "247": {
+    "title": "Sonstige Ersatzleistungen – örtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "248": {
+    "title": "Rückzahlung gewährter Hilfen (Tilgung und Zinsen von Darlehen) – überörtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "249": {
+    "title": "Rückzahlung gewährter Hilfen (Tilgung und Zinsen von Darlehen) – örtlicher Träger",
+    "level": 3,
+    "parent": "24"
+  },
+  "25": {
+    "title": "Ersatz von sozialen Leistungen in Einrichtungen",
+    "level": 2,
+    "parent": "2"
+  },
+  "250": {
+    "title": "Kostenbeiträge und Aufwendungsersatz, Kostenersatz – überörtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "251": {
+    "title": "Kostenbeiträge und Aufwendungsersatz, Kostenersatz – örtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "252": {
+    "title": "Übergeleitete Unterhaltsansprüche gegen bürgerlich-rechtlich Unterhaltsverpflichtete – überörtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "253": {
+    "title": "Übergeleitete Unterhaltsansprüche gegen bürgerlich-rechtlich Unterhaltsverpflichtete – örtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "254": {
+    "title": "Leistungen von Sozialleistungsträgern – überörtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "255": {
+    "title": "Leistungen von Sozialleistungsträgern – örtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "256": {
+    "title": "Sonstige Ersatzleistungen – überörtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "257": {
+    "title": "Sonstige Ersatzleistungen – örtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "258": {
+    "title": "Rückzahlung gewährter Hilfen (Tilgung und Zinsen von Darlehen) – überörtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "259": {
+    "title": "Rückzahlung gewährter Hilfen (Tilgung und Zinsen von Darlehen) – örtlicher Träger",
+    "level": 3,
+    "parent": "25"
+  },
+  "26": {
+    "title": "Weitere Finanzeinnahmen",
+    "level": 2,
+    "parent": "2"
+  },
+  "27": {
+    "title": "Kalkulatorische Einnahmen",
+    "level": 2,
+    "parent": "2"
+  },
+  "270": {
+    "title": "Abschreibungen auf Anschaffungs- und Herstellungskosten",
+    "level": 3,
+    "parent": "27"
+  },
+  "271": {
+    "title": "Abschreibungen auf zuwendungsfinanziertes Vermögen",
+    "level": 3,
+    "parent": "27"
+  },
+  "272": {
+    "title": "Abschreibungen auf Wiederbeschaffungszeitwerte",
+    "level": 3,
+    "parent": "27"
+  },
+  "275": {
+    "title": "Verzinsung des Anlagekapitals",
+    "level": 3,
+    "parent": "27"
+  },
+  "28": {
+    "title": "Zuführung vom Vermögenshaushalt",
+    "level": 2,
+    "parent": "2"
+  },
+  "280": {
+    "title": "Zuführung vom Vermögenshaushalt (ohne Sonderrücklagen)",
+    "level": 3,
+    "parent": "28"
+  },
+  "281": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "282": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "283": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "284": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "285": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "286": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "287": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "288": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "289": {
+    "title": "Zuführung vom Vermögenshaushalt (aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen oder für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "28"
+  },
+  "29": {
+    "title": "Übertragungs- und Abschlussbuchungen",
+    "level": 2,
+    "parent": "2"
+  },
+  "295": {
+    "title": "Abschlusstechnische Vorgänge (Ist-Überschuss des Verwaltungshaushalts)",
+    "level": 3,
+    "parent": "29"
+  },
+  "3": {
+    "title": "Einnahmen des Vermögenshaushalts",
+    "level": 1,
+    "parent": null
+  },
+  "30": {
+    "title": "Zuführung vom Verwaltungshaushalt",
+    "level": 2,
+    "parent": "3"
+  },
+  "300": {
+    "title": "Zuführung vom Verwaltungshaushalt (ohne Sonderrücklagen)",
+    "level": 3,
+    "parent": "30"
+  },
+  "301": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "302": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "303": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "304": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "305": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "306": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "307": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "308": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "309": {
+    "title": "Zuführung vom Verwaltungshaushalt (für Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "30"
+  },
+  "31": {
+    "title": "Entnahmen aus Rücklagen",
+    "level": 2,
+    "parent": "3"
+  },
+  "310": {
+    "title": "Entnahmen aus Rücklagen (ohne Sonderrücklagen)",
+    "level": 3,
+    "parent": "31"
+  },
+  "311": {
+    "title": "Entnahmen aus Sonderrücklagen für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen",
+    "level": 3,
+    "parent": "31"
+  },
+  "312": {
+    "title": "Entnahmen aus Sonderrücklagen für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen",
+    "level": 3,
+    "parent": "31"
+  },
+  "313": {
+    "title": "Entnahmen aus Sonderrücklagen zum Ausgleich von Gebührenschwankungen",
+    "level": 3,
+    "parent": "31"
+  },
+  "314": {
+    "title": "Entnahmen aus Sonderrücklagen für Abschreibungserlöse aus Wiederbeschaffungszeitwerten",
+    "level": 3,
+    "parent": "31"
+  },
+  "315": {
+    "title": "Entnahmen aus Sonderrücklagen für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge",
+    "level": 3,
+    "parent": "31"
+  },
+  "316": {
+    "title": "Entnahmen aus sonstigen Sonderrücklagen",
+    "level": 3,
+    "parent": "31"
+  },
+  "317": {
+    "title": "Entnahmen aus sonstigen Sonderrücklagen",
+    "level": 3,
+    "parent": "31"
+  },
+  "318": {
+    "title": "Entnahmen aus sonstigen Sonderrücklagen",
+    "level": 3,
+    "parent": "31"
+  },
+  "319": {
+    "title": "Entnahmen aus sonstigen Sonderrücklagen",
+    "level": 3,
+    "parent": "31"
+  },
+  "32": {
+    "title": "Rückflüsse von Darlehen",
+    "level": 2,
+    "parent": "3"
+  },
+  "322": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "32"
+  },
+  "323": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "32"
+  },
+  "324": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "32"
+  },
+  "325": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "32"
+  },
+  "326": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "32"
+  },
+  "327": {
+    "title": "von privaten Unternehmen",
+    "level": 3,
+    "parent": "32"
+  },
+  "328": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "32"
+  },
+  "33": {
+    "title": "Einnahmen aus der Veräußerung von Beteiligungen und Rückflüsse von Kapitaleinlagen",
+    "level": 2,
+    "parent": "3"
+  },
+  "331": {
+    "title": "Wertpapiere ohne Anteilsrechte",
+    "level": 3,
+    "parent": "33"
+  },
+  "332": {
+    "title": "Anteilsrechte",
+    "level": 3,
+    "parent": "33"
+  },
+  "333": {
+    "title": "Investmentzertifikate",
+    "level": 3,
+    "parent": "33"
+  },
+  "334": {
+    "title": "Veräußerung von Finanzderivaten",
+    "level": 3,
+    "parent": "33"
+  },
+  "339": {
+    "title": "Sonstige Einnahmen",
+    "level": 3,
+    "parent": "33"
+  },
+  "34": {
+    "title": "Einnahmen aus der Veräußerung von Sachen des Anlagevermögens",
+    "level": 2,
+    "parent": "3"
+  },
+  "340": {
+    "title": "Grundstücke, bauliche Anlagen, grundstücksgleiche Rechte",
+    "level": 3,
+    "parent": "34"
+  },
+  "345": {
+    "title": "Bewegliche Sachen",
+    "level": 3,
+    "parent": "34"
+  },
+  "35": {
+    "title": "Beiträge und ähnliche Entgelte",
+    "level": 2,
+    "parent": "3"
+  },
+  "36": {
+    "title": "Zuweisungen und Zuschüsse für Investitionen und Investitionsförderungsmaßnahmen",
+    "level": 2,
+    "parent": "3"
+  },
+  "360": {
+    "title": "vom Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "36"
+  },
+  "361": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "36"
+  },
+  "362": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "36"
+  },
+  "363": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "36"
+  },
+  "364": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "36"
+  },
+  "365": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "36"
+  },
+  "366": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "36"
+  },
+  "367": {
+    "title": "von privaten Unternehmen",
+    "level": 3,
+    "parent": "36"
+  },
+  "368": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "36"
+  },
+  "37": {
+    "title": "Einnahmen aus Krediten und inneren Darlehen",
+    "level": 2,
+    "parent": "3"
+  },
+  "370": {
+    "title": "vom Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "37"
+  },
+  "371": {
+    "title": "vom Land",
+    "level": 3,
+    "parent": "37"
+  },
+  "372": {
+    "title": "von Gemeinden/Gv",
+    "level": 3,
+    "parent": "37"
+  },
+  "373": {
+    "title": "von Zweckverbänden u. dgl.",
+    "level": 3,
+    "parent": "37"
+  },
+  "374": {
+    "title": "von Trägern der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "37"
+  },
+  "375": {
+    "title": "von kommunalen Sonderrechnungen",
+    "level": 3,
+    "parent": "37"
+  },
+  "376": {
+    "title": "von sonstigen öffentlichen Sonderrechnungen",
+    "level": 3,
+    "parent": "37"
+  },
+  "377": {
+    "title": "von Kreditinstituten (einschl. Sparkassen)",
+    "level": 3,
+    "parent": "37"
+  },
+  "378": {
+    "title": "von übrigen Bereichen",
+    "level": 3,
+    "parent": "37"
+  },
+  "379": {
+    "title": "Innere Darlehen",
+    "level": 3,
+    "parent": "37"
+  },
+  "39": {
+    "title": "Übertragungs- und Abschlussbuchungen",
+    "level": 2,
+    "parent": "3"
+  },
+  "392": {
+    "title": "Durchbuchung von Soll-Fehlbeträgen",
+    "level": 3,
+    "parent": "39"
+  },
+  "395": {
+    "title": "Abschlusstechnische Vorgänge (Ist-Überschuss des Vermögenshaushalts)",
+    "level": 3,
+    "parent": "39"
+  },
+  "4": {
+    "title": "Personalausgaben",
+    "level": 1,
+    "parent": null
+  },
+  "40": {
+    "title": "Aufwendungen für ehrenamtliche Tätigkeit",
+    "level": 2,
+    "parent": "4"
+  },
+  "41": {
+    "title": "Dienstbezüge u. dgl.",
+    "level": 2,
+    "parent": "4"
+  },
+  "410": {
+    "title": "Beamte",
+    "level": 3,
+    "parent": "41"
+  },
+  "411": {
+    "title": "Versorgungsrücklage für aktive Beamte",
+    "level": 3,
+    "parent": "41"
+  },
+  "414": {
+    "title": "Tariflich Beschäftigte",
+    "level": 3,
+    "parent": "41"
+  },
+  "416": {
+    "title": "Beschäftigungsentgelte u. dgl.",
+    "level": 3,
+    "parent": "41"
+  },
+  "42": {
+    "title": "Versorgungsbezüge u. dgl.",
+    "level": 2,
+    "parent": "4"
+  },
+  "420": {
+    "title": "Beamte",
+    "level": 3,
+    "parent": "42"
+  },
+  "421": {
+    "title": "Versorgungsrücklage für Versorgungsempfänger",
+    "level": 3,
+    "parent": "42"
+  },
+  "424": {
+    "title": "Tariflich Beschäftigte",
+    "level": 3,
+    "parent": "42"
+  },
+  "428": {
+    "title": "Sonstige",
+    "level": 3,
+    "parent": "42"
+  },
+  "43": {
+    "title": "Beiträge zu Versorgungskassen",
+    "level": 2,
+    "parent": "4"
+  },
+  "430": {
+    "title": "Beamte",
+    "level": 3,
+    "parent": "43"
+  },
+  "434": {
+    "title": "Tariflich Beschäftigte",
+    "level": 3,
+    "parent": "43"
+  },
+  "438": {
+    "title": "Sonstige",
+    "level": 3,
+    "parent": "43"
+  },
+  "44": {
+    "title": "Beiträge zur gesetzlichen Sozialversicherung",
+    "level": 2,
+    "parent": "4"
+  },
+  "440": {
+    "title": "Beamte",
+    "level": 3,
+    "parent": "44"
+  },
+  "444": {
+    "title": "Tariflich Beschäftigte",
+    "level": 3,
+    "parent": "44"
+  },
+  "448": {
+    "title": "Sonstige",
+    "level": 3,
+    "parent": "44"
+  },
+  "45": {
+    "title": "Beihilfen, Unterstützungen u. dgl.",
+    "level": 2,
+    "parent": "4"
+  },
+  "46": {
+    "title": "Personal-Nebenausgaben",
+    "level": 2,
+    "parent": "4"
+  },
+  "47": {
+    "title": "Deckungsreserve für Personalausgaben",
+    "level": 2,
+    "parent": "4"
+  },
+  "470": {
+    "title": "Deckungsreserve gemäß § 11 KommHV-Kameralistik",
+    "level": 3,
+    "parent": "47"
+  },
+  "471": {
+    "title": "Summarischer Ansatz gemäß § 34 Abs. 2 KommHV-Kameralistik",
+    "level": 3,
+    "parent": "47"
+  },
+  "5": {
+    "title": "Sächlicher Verwaltungs- und Betriebsaufwand (Gruppen 50–59)",
+    "level": 1,
+    "parent": null
+  },
+  "50": {
+    "title": "Unterhalt der Grundstücke und baulichen Anlagen",
+    "level": 2,
+    "parent": "5"
+  },
+  "51": {
+    "title": "Unterhalt des sonstigen unbeweglichen Vermögens",
+    "level": 2,
+    "parent": "5"
+  },
+  "52": {
+    "title": "Geräte, Ausstattungs- und Ausrüstungsgegenstände, sonstige Gebrauchsgegenstände",
+    "level": 2,
+    "parent": "5"
+  },
+  "53": {
+    "title": "Mieten und Pachten",
+    "level": 2,
+    "parent": "5"
+  },
+  "54": {
+    "title": "Bewirtschaftung der Grundstücke, baulichen Anlagen usw.",
+    "level": 2,
+    "parent": "5"
+  },
+  "55": {
+    "title": "Haltung von Fahrzeugen",
+    "level": 2,
+    "parent": "5"
+  },
+  "56": {
+    "title": "Besondere Aufwendungen für Bedienstete",
+    "level": 2,
+    "parent": "5"
+  },
+  "57": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "5"
+  },
+  "58": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "5"
+  },
+  "59": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "5"
+  },
+  "6": {
+    "title": "Sächlicher Verwaltungs- und Betriebsaufwand (Gruppen 60–69)",
+    "level": 1,
+    "parent": null
+  },
+  "60": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "6"
+  },
+  "61": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "6"
+  },
+  "62": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "6"
+  },
+  "63": {
+    "title": "Weitere Verwaltungs- und Betriebsausgaben",
+    "level": 2,
+    "parent": "6"
+  },
+  "638": {
+    "title": "statistische Zusammenfassung der Gruppen 57 bis 63 ohne die Untergruppe 639",
+    "level": 3,
+    "parent": "63"
+  },
+  "639": {
+    "title": "Kosten der notwendigen Schülerbeförderung durch andere Verkehrsträger",
+    "level": 3,
+    "parent": "63"
+  },
+  "64": {
+    "title": "Steuern, Versicherungen, Schadensfälle",
+    "level": 2,
+    "parent": "6"
+  },
+  "65": {
+    "title": "Geschäftsausgaben",
+    "level": 2,
+    "parent": "6"
+  },
+  "66": {
+    "title": "Weitere allgemeine sächliche Ausgaben",
+    "level": 2,
+    "parent": "6"
+  },
+  "660": {
+    "title": "Verfügungsmittel",
+    "level": 3,
+    "parent": "66"
+  },
+  "661": {
+    "title": "Mitgliedsbeiträge",
+    "level": 3,
+    "parent": "66"
+  },
+  "662": {
+    "title": "Vermischte Ausgaben",
+    "level": 3,
+    "parent": "66"
+  },
+  "67": {
+    "title": "Erstattungen von Ausgaben des Verwaltungshaushalts",
+    "level": 2,
+    "parent": "6"
+  },
+  "670": {
+    "title": "an Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "67"
+  },
+  "671": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "67"
+  },
+  "672": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "67"
+  },
+  "673": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "67"
+  },
+  "674": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "67"
+  },
+  "675": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "67"
+  },
+  "676": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "67"
+  },
+  "677": {
+    "title": "an private Unternehmen",
+    "level": 3,
+    "parent": "67"
+  },
+  "678": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "67"
+  },
+  "679": {
+    "title": "Innere Verrechnungen",
+    "level": 3,
+    "parent": "67"
+  },
+  "68": {
+    "title": "Kalkulatorische Kosten",
+    "level": 2,
+    "parent": "6"
+  },
+  "680": {
+    "title": "Abschreibungen auf Anschaffungs- und Herstellungskosten",
+    "level": 3,
+    "parent": "68"
+  },
+  "681": {
+    "title": "Abschreibungen auf zuwendungsfinanzierten Investitionsaufwand",
+    "level": 3,
+    "parent": "68"
+  },
+  "682": {
+    "title": "Abschreibungen auf Wiederbeschaffungszeitwerte",
+    "level": 3,
+    "parent": "68"
+  },
+  "685": {
+    "title": "Verzinsung des Anlagekapitals",
+    "level": 3,
+    "parent": "68"
+  },
+  "69": {
+    "title": "Aufgabenbezogene Leistungsbeteiligung",
+    "level": 2,
+    "parent": "6"
+  },
+  "690": {
+    "title": "Leistungsbeteiligung bei Leistungen für Unterkunft und Heizung (ohne Wohnungsbeschaffungs- und Umzugskosten) nach SGB II",
+    "level": 3,
+    "parent": "69"
+  },
+  "691": {
+    "title": "Leistungsbeteiligung bei Leistungen für Unterkunft und Heizung (für Wohnungsbeschaffungs- und Umzugskosten) nach SGB II",
+    "level": 3,
+    "parent": "69"
+  },
+  "692": {
+    "title": "Leistungsbeteiligung bei Leistungen zur Eingliederung von Arbeitsuchenden nach SGB II",
+    "level": 3,
+    "parent": "69"
+  },
+  "693": {
+    "title": "Leistungsbeteiligung bei einmaligen Leistungen an Arbeitsuchende nach SGB II",
+    "level": 3,
+    "parent": "69"
+  },
+  "694": {
+    "title": "Leistungsbeteiligung beim Arbeitslosengeld II nach SGB II (ohne Leistungen für Unterkunft und Heizung)",
+    "level": 3,
+    "parent": "69"
+  },
+  "695": {
+    "title": "Leistungsbeteiligung bei der Eingliederung Arbeitsuchender nach SGB II",
+    "level": 3,
+    "parent": "69"
+  },
+  "696": {
+    "title": "Leistungen für Bildung und Teilhabe nach SGB II im Rahmen einer gemeinsamen Einrichtung",
+    "level": 3,
+    "parent": "69"
+  },
+  "7": {
+    "title": "Zuweisungen und Zuschüsse (nicht für Investitionen)",
+    "level": 1,
+    "parent": null
+  },
+  "70": {
+    "title": "Zuschüsse für laufende Zwecke an soziale oder ähnliche Einrichtungen",
+    "level": 2,
+    "parent": "7"
+  },
+  "71": {
+    "title": "Zuweisungen und sonstige Zuschüsse für laufende Zwecke",
+    "level": 2,
+    "parent": "7"
+  },
+  "710": {
+    "title": "an Bund, ERP-Sondervermögen",
+    "level": 3,
+    "parent": "71"
+  },
+  "711": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "71"
+  },
+  "712": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "71"
+  },
+  "713": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "71"
+  },
+  "714": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "71"
+  },
+  "715": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "71"
+  },
+  "716": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "71"
+  },
+  "717": {
+    "title": "an private Unternehmen",
+    "level": 3,
+    "parent": "71"
+  },
+  "718": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "71"
+  },
+  "72": {
+    "title": "Schuldendiensthilfen",
+    "level": 2,
+    "parent": "7"
+  },
+  "722": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "72"
+  },
+  "723": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "72"
+  },
+  "724": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "72"
+  },
+  "725": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "72"
+  },
+  "726": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "72"
+  },
+  "727": {
+    "title": "an private Unternehmen",
+    "level": 3,
+    "parent": "72"
+  },
+  "728": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "72"
+  },
+  "73": {
+    "title": "Leistungen der Sozialhilfe einschl. Grundsicherung im Alter und bei Erwerbsminderung an natürliche Personen außerhalb von Einrichtungen",
+    "level": 2,
+    "parent": "7"
+  },
+  "730": {
+    "title": "überörtlicher Träger",
+    "level": 3,
+    "parent": "73"
+  },
+  "735": {
+    "title": "örtlicher Träger",
+    "level": 3,
+    "parent": "73"
+  },
+  "739": {
+    "title": "Leistungen für Bildung und Teilhabe an natürliche Personen außerhalb von Einrichtungen",
+    "level": 3,
+    "parent": "73"
+  },
+  "74": {
+    "title": "Leistungen der Sozialhilfe einschl. Grundsicherung im Alter an natürliche Personen in Einrichtungen",
+    "level": 2,
+    "parent": "7"
+  },
+  "740": {
+    "title": "überörtlicher Träger",
+    "level": 3,
+    "parent": "74"
+  },
+  "745": {
+    "title": "örtlicher Träger",
+    "level": 3,
+    "parent": "74"
+  },
+  "749": {
+    "title": "Leistungen für Bildung und Teilhabe an natürliche Personen in Einrichtungen",
+    "level": 3,
+    "parent": "74"
+  },
+  "75": {
+    "title": "Leistungen an Kriegsopfer und ähnliche Berechtigte",
+    "level": 2,
+    "parent": "7"
+  },
+  "76": {
+    "title": "Leistungen der Jugendhilfe an natürliche Personen außerhalb von Einrichtungen",
+    "level": 2,
+    "parent": "7"
+  },
+  "77": {
+    "title": "Leistungen der Jugendhilfe an natürliche Personen in Einrichtungen",
+    "level": 2,
+    "parent": "7"
+  },
+  "78": {
+    "title": "Sonstige soziale Leistungen",
+    "level": 2,
+    "parent": "7"
+  },
+  "781": {
+    "title": "Bildung und Teilhabe nach Bundeskindergeldgesetz",
+    "level": 3,
+    "parent": "78"
+  },
+  "782": {
+    "title": "Originäre Leistungen für Bildung und Teilhabe nach SGB II",
+    "level": 3,
+    "parent": "78"
+  },
+  "783": {
+    "title": "Leistungen für Unterkunft und Heizung an Arbeitsuchende nach SGB II",
+    "level": 3,
+    "parent": "78"
+  },
+  "784": {
+    "title": "Leistungen zur Eingliederung Arbeitsuchender nach SGB II",
+    "level": 3,
+    "parent": "78"
+  },
+  "785": {
+    "title": "Einmalige Leistung an Arbeitsuchende nach SGB II",
+    "level": 3,
+    "parent": "78"
+  },
+  "786": {
+    "title": "Leistungen zur Sicherung des Lebensunterhalts, Arbeitslosengeld II nach SGB II (ohne Leistungen für Unterkunft und Heizung)",
+    "level": 3,
+    "parent": "78"
+  },
+  "787": {
+    "title": "Leistungen zur Eingliederung von Arbeitsuchenden nach SGB II",
+    "level": 3,
+    "parent": "78"
+  },
+  "788": {
+    "title": "Weitere soziale Leistungen",
+    "level": 3,
+    "parent": "78"
+  },
+  "79": {
+    "title": "Leistungen nach dem Asylbewerberleistungsgesetz",
+    "level": 2,
+    "parent": "7"
+  },
+  "8": {
+    "title": "Sonstige Finanzausgaben",
+    "level": 1,
+    "parent": null
+  },
+  "80": {
+    "title": "Zinsausgaben",
+    "level": 2,
+    "parent": "8"
+  },
+  "800": {
+    "title": "an Bund",
+    "level": 3,
+    "parent": "80"
+  },
+  "801": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "80"
+  },
+  "802": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "80"
+  },
+  "803": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "80"
+  },
+  "804": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "80"
+  },
+  "805": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "80"
+  },
+  "806": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "80"
+  },
+  "807": {
+    "title": "an Kreditinstitute (einschl. Sparkassen)",
+    "level": 3,
+    "parent": "80"
+  },
+  "808": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "80"
+  },
+  "809": {
+    "title": "Innere Verrechnungen",
+    "level": 3,
+    "parent": "80"
+  },
+  "81": {
+    "title": "Steuerbeteiligungen",
+    "level": 2,
+    "parent": "8"
+  },
+  "810": {
+    "title": "Gewerbesteuerumlage",
+    "level": 3,
+    "parent": "81"
+  },
+  "82": {
+    "title": "Allgemeine Zuweisungen",
+    "level": 2,
+    "parent": "8"
+  },
+  "821": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "82"
+  },
+  "822": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "82"
+  },
+  "83": {
+    "title": "Allgemeine Umlagen",
+    "level": 2,
+    "parent": "8"
+  },
+  "831": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "83"
+  },
+  "832": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "83"
+  },
+  "833": {
+    "title": "an Verwaltungsgemeinschaften",
+    "level": 3,
+    "parent": "83"
+  },
+  "84": {
+    "title": "Weitere Finanzausgaben",
+    "level": 2,
+    "parent": "8"
+  },
+  "85": {
+    "title": "Deckungsreserve",
+    "level": 2,
+    "parent": "8"
+  },
+  "850": {
+    "title": "Deckungsreserve gemäß § 11 KommHV-Kameralistik",
+    "level": 3,
+    "parent": "85"
+  },
+  "851": {
+    "title": "Summarischer Ansatz gemäß § 34 Abs. 2 KommHV-Kameralistik",
+    "level": 3,
+    "parent": "85"
+  },
+  "86": {
+    "title": "Zuführung zum Vermögenshaushalt",
+    "level": 2,
+    "parent": "8"
+  },
+  "860": {
+    "title": "Zuführung zum Vermögenshaushalt (ohne Sonderrücklagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "861": {
+    "title": "Zuführungen zum Vermögenshaushalt (Sonderrücklagen für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "862": {
+    "title": "Zuführungen zum Vermögenshaushalt (Sonderrücklagen für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "863": {
+    "title": "Zuführungen zum Vermögenshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "864": {
+    "title": "Zuführung zum Vermögenshaushalt (Sonderrücklagen für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "86"
+  },
+  "865": {
+    "title": "Zuführung zum Vermögenshaushalt (sonstige Sonderrücklagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "866": {
+    "title": "Zuführung zum Vermögenshaushalt (sonstige Sonderrücklagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "867": {
+    "title": "Zuführung zum Vermögenshaushalt (sonstige Sonderrücklagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "868": {
+    "title": "Zuführung zum Vermögenshaushalt (sonstige Sonderrücklagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "869": {
+    "title": "Zuführung zum Vermögenshaushalt (sonstige Sonderrücklagen)",
+    "level": 3,
+    "parent": "86"
+  },
+  "89": {
+    "title": "Übertragungs- und Abschlussbuchungen",
+    "level": 2,
+    "parent": "8"
+  },
+  "895": {
+    "title": "Abschlusstechnische Vorgänge (Ist-Fehlbetrag des Verwaltungshaushalts)",
+    "level": 3,
+    "parent": "89"
+  },
+  "9": {
+    "title": "Ausgaben des Vermögenshaushalts",
+    "level": 1,
+    "parent": null
+  },
+  "90": {
+    "title": "Zuführung zum Verwaltungshaushalt",
+    "level": 2,
+    "parent": "9"
+  },
+  "900": {
+    "title": "Zuführung zum Verwaltungshaushalt (ohne Sonderrücklagen)",
+    "level": 3,
+    "parent": "90"
+  },
+  "901": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "902": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "903": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "904": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "905": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "906": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "907": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "908": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "909": {
+    "title": "Zuführung zum Verwaltungshaushalt (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen, für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten)",
+    "level": 3,
+    "parent": "90"
+  },
+  "91": {
+    "title": "Zuführungen an Rücklagen",
+    "level": 2,
+    "parent": "9"
+  },
+  "910": {
+    "title": "Zuführung an Rücklagen (ohne Sonderrücklagen)",
+    "level": 3,
+    "parent": "91"
+  },
+  "911": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "912": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "913": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "914": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "915": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "916": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "917": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "918": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "919": {
+    "title": "Zuführungen an Sonderrücklagen (Sonderrücklagen zum Ausgleich von Gebührenschwankungen, für Abschreibungserlöse aus zuwendungsfinanziertem Vermögen, für die Rekultivierung und Nachsorge von Abfallentsorgungsanlagen oder für Versorgungsrücklagen, für Abschreibungserlöse aus Wiederbeschaffungszeitwerten, für im Haushaltsjahr nicht verausgabte wiederkehrende Beiträge)",
+    "level": 3,
+    "parent": "91"
+  },
+  "92": {
+    "title": "Gewährung von Darlehen",
+    "level": 2,
+    "parent": "9"
+  },
+  "922": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "92"
+  },
+  "923": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "92"
+  },
+  "924": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "92"
+  },
+  "925": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "92"
+  },
+  "926": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "92"
+  },
+  "927": {
+    "title": "an private Unternehmen",
+    "level": 3,
+    "parent": "92"
+  },
+  "928": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "92"
+  },
+  "93": {
+    "title": "Ausgaben für den Erwerb von Sachen des Anlagevermögens (ohne Baumaßnahmen)",
+    "level": 2,
+    "parent": "9"
+  },
+  "931": {
+    "title": "Wertpapiere ohne Anteilsrechte",
+    "level": 3,
+    "parent": "93"
+  },
+  "932": {
+    "title": "Erwerb von Grundstücken, grundstücksgleichen Rechten und baulichen Anlagen",
+    "level": 3,
+    "parent": "93"
+  },
+  "935": {
+    "title": "Erwerb von beweglichen Sachen des Anlagevermögens",
+    "level": 3,
+    "parent": "93"
+  },
+  "936": {
+    "title": "Anteilsrechte",
+    "level": 3,
+    "parent": "93"
+  },
+  "937": {
+    "title": "Investmentzertifikate",
+    "level": 3,
+    "parent": "93"
+  },
+  "938": {
+    "title": "Kauf von Finanzderivaten",
+    "level": 3,
+    "parent": "93"
+  },
+  "939": {
+    "title": "Sonstige Ausgaben",
+    "level": 3,
+    "parent": "93"
+  },
+  "94": {
+    "title": "Baumaßnahmen",
+    "level": 2,
+    "parent": "9"
+  },
+  "95": {
+    "title": "Baumaßnahmen",
+    "level": 2,
+    "parent": "9"
+  },
+  "96": {
+    "title": "Baumaßnahmen",
+    "level": 2,
+    "parent": "9"
+  },
+  "97": {
+    "title": "Tilgung von Krediten, Rückzahlung von inneren Darlehen",
+    "level": 2,
+    "parent": "9"
+  },
+  "970": {
+    "title": "an Bund",
+    "level": 3,
+    "parent": "97"
+  },
+  "971": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "97"
+  },
+  "972": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "97"
+  },
+  "973": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "97"
+  },
+  "974": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "97"
+  },
+  "975": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "97"
+  },
+  "976": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "97"
+  },
+  "977": {
+    "title": "an Kreditinstitute (einschl. Sparkassen)",
+    "level": 3,
+    "parent": "97"
+  },
+  "978": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "97"
+  },
+  "979": {
+    "title": "Innere Verrechnungen",
+    "level": 3,
+    "parent": "97"
+  },
+  "98": {
+    "title": "Zuweisungen und Zuschüsse für Investitionen",
+    "level": 2,
+    "parent": "9"
+  },
+  "980": {
+    "title": "an Bund",
+    "level": 3,
+    "parent": "98"
+  },
+  "981": {
+    "title": "an Land",
+    "level": 3,
+    "parent": "98"
+  },
+  "982": {
+    "title": "an Gemeinden/Gv",
+    "level": 3,
+    "parent": "98"
+  },
+  "983": {
+    "title": "an Zweckverbände u. dgl.",
+    "level": 3,
+    "parent": "98"
+  },
+  "984": {
+    "title": "an Träger der gesetzlichen Sozialversicherung",
+    "level": 3,
+    "parent": "98"
+  },
+  "985": {
+    "title": "an kommunale Sonderrechnungen",
+    "level": 3,
+    "parent": "98"
+  },
+  "986": {
+    "title": "an sonstige öffentliche Sonderrechnungen",
+    "level": 3,
+    "parent": "98"
+  },
+  "987": {
+    "title": "an private Unternehmen",
+    "level": 3,
+    "parent": "98"
+  },
+  "988": {
+    "title": "an übrige Bereiche",
+    "level": 3,
+    "parent": "98"
+  },
+  "99": {
+    "title": "Sonstiges",
+    "level": 2,
+    "parent": "9"
+  },
+  "990": {
+    "title": "Kreditbeschaffungskosten, Disagio",
+    "level": 3,
+    "parent": "99"
+  },
+  "991": {
+    "title": "Ablösung von Dauerlasten",
+    "level": 3,
+    "parent": "99"
+  },
+  "992": {
+    "title": "Deckung von Fehlbeträgen (Soll-Fehlbeträgen)",
+    "level": 3,
+    "parent": "99"
+  },
+  "995": {
+    "title": "Abschlusstechnische Vorgänge (Ist-Fehlbetrag des Vermögenshaushalts)",
+    "level": 3,
+    "parent": "99"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["public/data/kommunen.json"],
+      "url": "./public/data/schema/kommunen-schema.json"
+    }
+  ]
+}
