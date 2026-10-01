@@ -1,0 +1,96 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Plattling",
+    "ags": "09271146",
+    "jahr": 2026,
+    "einwohner": 13296,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Faltblatt „Ein Streifzug durch den Haushaltsplan 2026 der Stadt Plattling“ (Stadtkämmerei Plattling)",
+    "hinweis": "Das Faltblatt fasst Positionen zusammen. Was sich keiner einzelnen Gruppierung zuordnen lässt, steht als „nicht aufgeschlüsselt“ bei der nächsthöheren Ebene."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 290,
+      "quelle": "Stadt Plattling, plattling.de „Steuern und Haushalt“ (Stand 2026)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 290,
+      "quelle": "Stadt Plattling, plattling.de „Steuern und Haushalt“ (Stand 2026)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 350,
+      "quelle": "Stadt Plattling, plattling.de „Steuern und Haushalt“ (Stand 2026)"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "00": 13324000,
+        "003": 11000000,
+        "010": 8400000,
+        "012": 2400000,
+        "022": 23000,
+        "041": 871300,
+        "061": 1572400,
+        "081": 63000,
+        "1": 8857100,
+        "10": 159400,
+        "11": 1169200,
+        "16": 2879050,
+        "17": 3016400,
+        "2": 2294100,
+        "22": 562000,
+        "27": 1266000
+      },
+      "ausgaben": {
+        "4": 9998900,
+        "5/6": 9745200,
+        "53": 50900,
+        "679": 2818200,
+        "68": 1266000,
+        "7": 3741900,
+        "8": 14318900,
+        "80": 27300,
+        "810": 1300000,
+        "832": 10123000,
+        "860": 2668600
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 2668600,
+        "310": 2628400,
+        "32": 8100,
+        "34": 1156000,
+        "35": 696000,
+        "36": 5432500
+      },
+      "ausgaben": {
+        "92": 15000,
+        "932": 1107000,
+        "935": 1603100,
+        "94": 6921000,
+        "95": 2489000,
+        "96": 82000,
+        "97": 227000,
+        "98": 145500
+      }
+    }
+  },
+  "nicht_aufgeschluesselt": {
+    "vwh": {
+      "einnahmen": {
+        "00": "Grundsteuer A und B (nicht getrennt ausgewiesen)",
+        "1": "Betriebseinnahmen, Mieten und Pachten (Gruppen 13–15)",
+        "2": "Sonstiges, z. B. Zinsen und Darlehensrückflüsse"
+      },
+      "ausgaben": {
+        "5/6": "Unterhalt und Bewirtschaftung, Geräte und Fahrzeuge, sonstiger Verwaltungs- und Betriebsaufwand",
+        "8": "Sonstiges, z. B. Deckungsreserve und steuerliche Nebenleistungen"
+      }
+    }
+  }
+}

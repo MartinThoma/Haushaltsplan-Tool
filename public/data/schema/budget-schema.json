@@ -33,14 +33,21 @@
           "maximum": 9007199254740991,
           "description": "Einwohnerzahl, Grundlage für die Pro-Kopf-Werte"
         },
+        "einwohner_stichtag": {
+          "description": "Stichtag der Einwohnerzahl (JJJJ-MM-TT), z. B. 31.12. des Vorjahres",
+          "type": "string",
+          "format": "date",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+        },
         "status": {
           "type": "string",
           "enum": [
+            "Entwurf",
             "Ansatz",
             "Nachtrag",
             "Ergebnis"
           ],
-          "description": "Ansatz = Haushaltsplan, Nachtrag = Nachtragshaushaltsplan, Ergebnis = Jahresrechnung"
+          "description": "Entwurf = Entwurf des Haushaltsplans, Ansatz = Haushaltsplan, Nachtrag = Nachtragshaushaltsplan, Ergebnis = Jahresrechnung"
         },
         "waehrung": {
           "type": "string",
@@ -76,23 +83,23 @@
               "type": "object",
               "propertyNames": {
                 "type": "string",
-                "pattern": "^[012][0-9]{0,2}$"
+                "pattern": "^(?:0|1|2|[012][0-9]{1,2})$"
               },
               "additionalProperties": {
                 "type": "number"
               },
-              "description": "Einnahmen des Verwaltungshaushalts: Gruppierungsziffer (Hauptgruppen 0–2, 1–3 Stellen) → Betrag in Euro"
+              "description": "Einnahmen des Verwaltungshaushalts: Gruppierungsziffer (Hauptgruppen 0–2, 1–3 Stellen, Hauptgruppe 5/6 als \"5/6\") → Betrag in Euro"
             },
             "ausgaben": {
               "type": "object",
               "propertyNames": {
                 "type": "string",
-                "pattern": "^[45678][0-9]{0,2}$"
+                "pattern": "^(?:4|7|8|5\\/6|[45678][0-9]{1,2})$"
               },
               "additionalProperties": {
                 "type": "number"
               },
-              "description": "Ausgaben des Verwaltungshaushalts: Gruppierungsziffer (Hauptgruppen 4–8, 1–3 Stellen) → Betrag in Euro"
+              "description": "Ausgaben des Verwaltungshaushalts: Gruppierungsziffer (Hauptgruppen 4–8, 1–3 Stellen, Hauptgruppe 5/6 als \"5/6\") → Betrag in Euro"
             }
           },
           "required": [
@@ -108,23 +115,23 @@
               "type": "object",
               "propertyNames": {
                 "type": "string",
-                "pattern": "^[3][0-9]{0,2}$"
+                "pattern": "^(?:3|[3][0-9]{1,2})$"
               },
               "additionalProperties": {
                 "type": "number"
               },
-              "description": "Einnahmen des Vermögenshaushalts: Gruppierungsziffer (Hauptgruppe 3, 1–3 Stellen) → Betrag in Euro"
+              "description": "Einnahmen des Vermögenshaushalts: Gruppierungsziffer (Hauptgruppe 3, 1–3 Stellen, Hauptgruppe 5/6 als \"5/6\") → Betrag in Euro"
             },
             "ausgaben": {
               "type": "object",
               "propertyNames": {
                 "type": "string",
-                "pattern": "^[9][0-9]{0,2}$"
+                "pattern": "^(?:9|[9][0-9]{1,2})$"
               },
               "additionalProperties": {
                 "type": "number"
               },
-              "description": "Ausgaben des Vermögenshaushalts: Gruppierungsziffer (Hauptgruppe 9, 1–3 Stellen) → Betrag in Euro"
+              "description": "Ausgaben des Vermögenshaushalts: Gruppierungsziffer (Hauptgruppe 9, 1–3 Stellen, Hauptgruppe 5/6 als \"5/6\") → Betrag in Euro"
             }
           },
           "required": [
@@ -138,6 +145,226 @@
         "vwh",
         "vmh"
       ],
+      "additionalProperties": false
+    },
+    "kennzahlen": {
+      "type": "object",
+      "properties": {
+        "hebesatz_grundsteuer_a": {
+          "description": "Hebesatz der Grundsteuer A (land- und forstwirtschaftliche Betriebe) in Prozent",
+          "type": "object",
+          "properties": {
+            "wert": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stichtag": {
+              "description": "Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen",
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "quelle": {
+              "description": "Herkunft des Werts",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "wert"
+          ],
+          "additionalProperties": false
+        },
+        "hebesatz_grundsteuer_b": {
+          "description": "Hebesatz der Grundsteuer B (Grundstücke) in Prozent",
+          "type": "object",
+          "properties": {
+            "wert": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stichtag": {
+              "description": "Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen",
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "quelle": {
+              "description": "Herkunft des Werts",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "wert"
+          ],
+          "additionalProperties": false
+        },
+        "hebesatz_gewerbesteuer": {
+          "description": "Hebesatz der Gewerbesteuer in Prozent",
+          "type": "object",
+          "properties": {
+            "wert": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stichtag": {
+              "description": "Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen",
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "quelle": {
+              "description": "Herkunft des Werts",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "wert"
+          ],
+          "additionalProperties": false
+        },
+        "schulden": {
+          "description": "Schulden des Haushalts zu Beginn des Haushaltsjahres in Euro (Stichtag angeben)",
+          "type": "object",
+          "properties": {
+            "wert": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stichtag": {
+              "description": "Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen",
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "quelle": {
+              "description": "Herkunft des Werts",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "wert"
+          ],
+          "additionalProperties": false
+        },
+        "ruecklagen": {
+          "description": "Stand der allgemeinen Rücklage zu Beginn des Haushaltsjahres in Euro (Stichtag angeben)",
+          "type": "object",
+          "properties": {
+            "wert": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stichtag": {
+              "description": "Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen",
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "quelle": {
+              "description": "Herkunft des Werts",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "wert"
+          ],
+          "additionalProperties": false
+        },
+        "kassenkredite_hoechstbetrag": {
+          "description": "Höchstbetrag der Kassenkredite laut Haushaltssatzung in Euro",
+          "type": "object",
+          "properties": {
+            "wert": {
+              "type": "number",
+              "minimum": 0
+            },
+            "stichtag": {
+              "description": "Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen",
+              "type": "string",
+              "format": "date",
+              "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$"
+            },
+            "quelle": {
+              "description": "Herkunft des Werts",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "wert"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false,
+      "description": "Kernzahlen des Haushaltsjahres, z. B. Hebesätze und Schuldenstand"
+    },
+    "nicht_aufgeschluesselt": {
+      "description": "Erläuterung, was in der Differenz zwischen einer angegebenen Summe und ihrer Untergliederung steckt, z. B. { \"vwh\": { \"einnahmen\": { \"00\": \"Grundsteuer A und B\" } } }",
+      "type": "object",
+      "properties": {
+        "vwh": {
+          "type": "object",
+          "properties": {
+            "einnahmen": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^(?:0|1|2|[012][0-9]{1,2})$"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "ausgaben": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^(?:4|7|8|5\\/6|[45678][0-9]{1,2})$"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "vmh": {
+          "type": "object",
+          "properties": {
+            "einnahmen": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^(?:3|[3][0-9]{1,2})$"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "ausgaben": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^(?:9|[9][0-9]{1,2})$"
+              },
+              "additionalProperties": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
       "additionalProperties": false
     }
   },

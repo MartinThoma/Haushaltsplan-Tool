@@ -1,4 +1,3 @@
-import { TriangleAlert } from 'lucide-react';
 import { useMemo } from 'react';
 import type { Unit } from '../lib/compare.ts';
 import { formatEuro } from '../lib/format.ts';
@@ -57,9 +56,13 @@ export function csvPrefix(node: TreeNode): string[] {
   return [
     SECTION_LABEL[node.section],
     SIDE_LABEL[node.side],
-    node.code ?? '',
+    node.kind === 'rest' ? `${node.code} Rest` : (node.code ?? ''),
     String(node.depth),
-    node.code === null ? `Summe ${SIDE_LABEL[node.side]}` : standaloneTitle(node.code),
+    node.kind === 'side'
+      ? `Summe ${SIDE_LABEL[node.side]}`
+      : node.kind === 'rest'
+        ? node.title
+        : standaloneTitle(node.code!),
   ];
 }
 
@@ -67,20 +70,6 @@ export function unitSuffix(unit: Unit): string {
   return unit === 'perCapita' ? '€/EW' : '€';
 }
 
-export function Amount({ value, mismatch }: { value: number | null; mismatch?: boolean }) {
-  return (
-    <span className="num inline-flex items-center gap-1">
-      {mismatch && (
-        <TriangleAlert
-          aria-label="Angegebene Summe weicht von der Summe der Untergliederung ab"
-          className="size-3.5 text-serious"
-        >
-          <title>
-            Angegebene Summe weicht von der Summe der Untergliederung ab; angezeigt wird der angegebene Wert
-          </title>
-        </TriangleAlert>
-      )}
-      <span className={value === null ? 'text-ink-3' : ''}>{formatEuro(value)}</span>
-    </span>
-  );
+export function Amount({ value }: { value: number | null }) {
+  return <span className={`num ${value === null ? 'text-ink-3' : ''}`}>{formatEuro(value)}</span>;
 }

@@ -1,0 +1,143 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Polling",
+    "ags": "09190142",
+    "jahr": 2024,
+    "einwohner": 3605,
+    "einwohner_stichtag": "2023-12-31",
+    "status": "Ergebnis",
+    "waehrung": "EUR",
+    "quelle": "Entwurf Haushaltsplan 2026 der Gemeinde Polling, Einzelpläne Verwaltungs- und Vermögenshaushalt, Spalte „Rechnungsergebnis 2024“",
+    "hinweis": "Aus den Einzelplänen nach Gruppierung summiert; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 325,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 325,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 345,
+      "quelle": "Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)"
+    },
+    "schulden": {
+      "wert": 880000,
+      "stichtag": "2023-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2024, Tab. 3.5 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 49378.87,
+        "001": 408897.27,
+        "003": 1842849.28,
+        "010": 2927879.0,
+        "012": 123058.0,
+        "022": 18681.0,
+        "041": 238424.0,
+        "061": 351866.19,
+        "10": 58042.07,
+        "11": 708634.43,
+        "13": 15860.09,
+        "14": 68682.91,
+        "15": 44893.57,
+        "160": 1519.6,
+        "161": 13876.91,
+        "167": 12.5,
+        "168": 5273.1,
+        "169": 165813.42,
+        "171": 1039991.22,
+        "176": 7346.7,
+        "178": 739.39,
+        "207": 268.12,
+        "208": 331.6,
+        "21": 454.97,
+        "22": 88441.45,
+        "26": 2863.75,
+        "270": 683453.59,
+        "275": 679229.0,
+        "280": 491305.4,
+        "283": 27064.56
+      },
+      "ausgaben": {
+        "40": 44258.18,
+        "410": 212061.28,
+        "414": 1569265.99,
+        "416": 74089.92,
+        "430": 60778.32,
+        "434": 123475.92,
+        "444": 349850.65,
+        "45": 12023.76,
+        "46": 7666.63,
+        "50": 83918.92,
+        "51": 263496.31,
+        "52": 33944.0,
+        "53": 10806.57,
+        "54": 286895.65,
+        "55": 57973.7,
+        "56": 34338.27,
+        "57": 11591.92,
+        "60": 9547.29,
+        "63": 307728.96,
+        "638": 6793.38,
+        "639": 51106.47,
+        "64": 104758.59,
+        "65": 119860.22,
+        "660": 2197.02,
+        "661": 14505.09,
+        "662": 51061.36,
+        "670": 24497.75,
+        "676": 180863.95,
+        "679": 165813.42,
+        "680": 683453.59,
+        "685": 679229.0,
+        "70": 883272.38,
+        "711": 4274.0,
+        "713": 82917.26,
+        "718": 185402.16,
+        "788": 537.67,
+        "806": 37633.88,
+        "807": 14488.33,
+        "810": 162224.0,
+        "832": 3049091.65,
+        "84": 16.25,
+        "863": 65322.15
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "303": 65322.15,
+        "313": 27064.56,
+        "340": 1641078.0,
+        "345": 5010.0,
+        "35": 49743.34,
+        "361": 316311.0,
+        "367": 12058.36
+      },
+      "ausgaben": {
+        "900": 491305.4,
+        "903": 27064.56,
+        "910": 14689.08,
+        "913": 65322.15,
+        "932": 120221.22,
+        "935": 273823.36,
+        "94": 450935.33,
+        "95": 523416.7,
+        "977": 95369.61,
+        "988": 54440.0
+      }
+    }
+  },
+  "nicht_aufgeschluesselt": {
+    "vwh": {
+      "ausgaben": {
+        "63": "weitere Untergruppen der Kommune (630, 632, 634, 635, 636)"
+      }
+    }
+  }
+}

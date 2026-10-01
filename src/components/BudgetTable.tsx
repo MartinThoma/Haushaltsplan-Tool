@@ -96,8 +96,9 @@ function NodeRow({
   leading?: (node: TreeNode) => ReactNode;
 }) {
   const { node, expanded, expandable, match } = row;
-  const isTotal = node.depth === 0;
-  const weight = isTotal ? 'font-semibold' : node.depth === 1 ? 'font-medium' : 'font-normal';
+  const isTotal = node.kind === 'side';
+  const isRest = node.kind === 'rest';
+  const weight = isTotal ? 'font-semibold' : node.depth === 1 && !isRest ? 'font-medium' : 'font-normal';
   // Sticky cells need opaque backgrounds, so hover is applied per cell.
   const tone = isTotal ? 'bg-surface-2 group-hover:bg-surface-3' : 'bg-surface group-hover:bg-surface-2';
   const cellBase = `${weight} border-b border-line ${tone}`;
@@ -124,12 +125,20 @@ function NodeRow({
             ) : (
               <span aria-hidden className="w-5 shrink-0" />
             )}
-            {node.code !== null && (
-              <span className="w-8 shrink-0 pt-px font-mono text-xs font-normal text-ink-3">{node.code}</span>
+            {node.kind !== 'side' && (
+              <span className="w-8 shrink-0 pt-px font-mono text-xs font-normal text-ink-3">
+                {node.kind === 'code' ? node.code : ''}
+              </span>
             )}
             <span
-              className={`${node.known ? '' : 'text-ink-2 italic'} ${match ? 'rounded-sm bg-warning/25 px-0.5' : ''}`}
-              title={node.known ? undefined : 'Nicht im Gruppierungsplan aufgeführt'}
+              className={`${node.known && !isRest ? '' : 'text-ink-2 italic'} ${match ? 'rounded-sm bg-warning/25 px-0.5' : ''}`}
+              title={
+                isRest
+                  ? 'Teil der Summe darüber, den die Quelle nicht weiter aufschlüsselt'
+                  : node.known
+                    ? undefined
+                    : 'Nicht im Gruppierungsplan aufgeführt'
+              }
             >
               {node.title}
             </span>

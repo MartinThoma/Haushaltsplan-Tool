@@ -1,0 +1,148 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Polling",
+    "ags": "09190142",
+    "jahr": 2026,
+    "einwohner": 3635,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Entwurf",
+    "waehrung": "EUR",
+    "quelle": "Entwurf Haushaltsplan 2026 der Gemeinde Polling, Einzelpläne Verwaltungs- und Vermögenshaushalt, Spalte „Ansatz 2026“",
+    "hinweis": "Aus den Einzelplänen nach Gruppierung summiert; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet. Die am 31.03.2026 beschlossene Haushaltssatzung setzt den Vermögenshaushalt auf 3.931.629 € fest (Entwurf: 3.910.424 €), den Verwaltungshaushalt unverändert auf 10.680.976 €; laut „Haushalt 2026 kurz in Zahlen“ beträgt die Zuführung zum Vermögenshaushalt 33.843 € (Entwurf: 12.638 €)."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 325,
+      "quelle": "Gemeinde Polling, Haushaltssatzung 2026 vom 31.03.2026, § 3"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 325,
+      "quelle": "Gemeinde Polling, Haushaltssatzung 2026 vom 31.03.2026, § 3"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 345,
+      "quelle": "Gemeinde Polling, Haushaltssatzung 2026 vom 31.03.2026, § 3"
+    },
+    "schulden": {
+      "wert": 689327,
+      "stichtag": "2026-01-01",
+      "quelle": "Gemeinde Polling, „Haushalt 2026 kurz in Zahlen“"
+    },
+    "ruecklagen": {
+      "wert": 425727,
+      "stichtag": "2026-01-01",
+      "quelle": "Gemeinde Polling, „Haushalt 2026 kurz in Zahlen“"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 1100000,
+      "quelle": "Gemeinde Polling, Haushaltssatzung 2026 vom 31.03.2026, § 4"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 51000.0,
+        "001": 518000.0,
+        "003": 1758825.0,
+        "010": 3162658.0,
+        "012": 155960.0,
+        "022": 18500.0,
+        "041": 650604.0,
+        "061": 392818.0,
+        "10": 61050.0,
+        "11": 779113.0,
+        "13": 17100.0,
+        "14": 41350.0,
+        "15": 82105.0,
+        "160": 3040.0,
+        "161": 9400.0,
+        "168": 2000.0,
+        "169": 275037.0,
+        "171": 1157257.0,
+        "176": 605.0,
+        "177": 2756.0,
+        "207": 1000.0,
+        "208": 900.0,
+        "21": 530.0,
+        "22": 92150.0,
+        "26": 7000.0,
+        "270": 670876.0,
+        "275": 666036.0,
+        "283": 103306.0
+      },
+      "ausgaben": {
+        "40": 48550.0,
+        "410": 185500.0,
+        "414": 1975050.0,
+        "416": 69050.0,
+        "430": 61100.0,
+        "434": 155950.0,
+        "444": 432700.0,
+        "45": 13500.0,
+        "46": 6000.0,
+        "470": 18000.0,
+        "50": 110400.0,
+        "51": 305644.0,
+        "52": 41820.0,
+        "53": 29100.0,
+        "54": 319905.0,
+        "55": 55500.0,
+        "56": 55600.0,
+        "57": 12500.0,
+        "60": 12900.0,
+        "63": 284193.0,
+        "638": 6500.0,
+        "639": 48000.0,
+        "64": 157542.0,
+        "65": 161544.0,
+        "660": 2000.0,
+        "661": 15000.0,
+        "662": 35500.0,
+        "670": 23000.0,
+        "676": 210000.0,
+        "679": 275038.0,
+        "680": 670876.0,
+        "685": 666036.0,
+        "70": 934433.0,
+        "711": 4350.0,
+        "713": 78000.0,
+        "718": 135500.0,
+        "788": 800.0,
+        "806": 12883.0,
+        "807": 16810.0,
+        "810": 166211.0,
+        "832": 2909653.0,
+        "84": 200.0,
+        "860": 12638.0
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 12638.0,
+        "313": 103306.0,
+        "340": 1955500.0,
+        "35": 365500.0,
+        "361": 1036200.0,
+        "367": 437280.0
+      },
+      "ausgaben": {
+        "903": 103306.0,
+        "910": 541035.0,
+        "932": 13200.0,
+        "935": 414500.0,
+        "94": 1763300.0,
+        "95": 925000.0,
+        "977": 95643.0,
+        "988": 54440.0
+      }
+    }
+  },
+  "nicht_aufgeschluesselt": {
+    "vwh": {
+      "ausgaben": {
+        "63": "weitere Untergruppen der Kommune (630, 632, 634, 635, 636)"
+      }
+    }
+  }
+}

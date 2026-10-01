@@ -23,6 +23,14 @@ describe('aggregate', () => {
     expect(sideTotal(agg)).toBe(13);
   });
 
+  it('groups the Gruppen 50–69 under Hauptgruppe 5/6', () => {
+    const agg = aggregate({ '50': 1, '638': 3, '4': 10 });
+    expect(agg.values.get('63')).toBe(3);
+    expect(agg.values.get('5/6')).toBe(4);
+    expect(agg.values.has('5')).toBe(false);
+    expect(sideTotal(agg)).toBe(14);
+  });
+
   it('returns null as side total for an empty side', () => {
     expect(sideTotal(aggregate({}))).toBeNull();
   });

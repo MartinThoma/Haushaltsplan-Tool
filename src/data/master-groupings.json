@@ -1069,85 +1069,80 @@
     "level": 3,
     "parent": "47"
   },
-  "5": {
-    "title": "Sächlicher Verwaltungs- und Betriebsaufwand (Gruppen 50–59)",
+  "5/6": {
+    "title": "Sächlicher Verwaltungs- und Betriebsaufwand",
     "level": 1,
     "parent": null
   },
   "50": {
     "title": "Unterhalt der Grundstücke und baulichen Anlagen",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "51": {
     "title": "Unterhalt des sonstigen unbeweglichen Vermögens",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "52": {
     "title": "Geräte, Ausstattungs- und Ausrüstungsgegenstände, sonstige Gebrauchsgegenstände",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "53": {
     "title": "Mieten und Pachten",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "54": {
     "title": "Bewirtschaftung der Grundstücke, baulichen Anlagen usw.",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "55": {
     "title": "Haltung von Fahrzeugen",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "56": {
     "title": "Besondere Aufwendungen für Bedienstete",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "57": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "58": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "5"
+    "parent": "5/6"
   },
   "59": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "5"
-  },
-  "6": {
-    "title": "Sächlicher Verwaltungs- und Betriebsaufwand (Gruppen 60–69)",
-    "level": 1,
-    "parent": null
+    "parent": "5/6"
   },
   "60": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "61": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "62": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "63": {
     "title": "Weitere Verwaltungs- und Betriebsausgaben",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "638": {
     "title": "statistische Zusammenfassung der Gruppen 57 bis 63 ohne die Untergruppe 639",
@@ -1162,17 +1157,17 @@
   "64": {
     "title": "Steuern, Versicherungen, Schadensfälle",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "65": {
     "title": "Geschäftsausgaben",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "66": {
     "title": "Weitere allgemeine sächliche Ausgaben",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "660": {
     "title": "Verfügungsmittel",
@@ -1192,7 +1187,7 @@
   "67": {
     "title": "Erstattungen von Ausgaben des Verwaltungshaushalts",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "670": {
     "title": "an Bund, ERP-Sondervermögen",
@@ -1247,7 +1242,7 @@
   "68": {
     "title": "Kalkulatorische Kosten",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "680": {
     "title": "Abschreibungen auf Anschaffungs- und Herstellungskosten",
@@ -1272,7 +1267,7 @@
   "69": {
     "title": "Aufgabenbezogene Leistungsbeteiligung",
     "level": 2,
-    "parent": "6"
+    "parent": "5/6"
   },
   "690": {
     "title": "Leistungsbeteiligung bei Leistungen für Unterkunft und Heizung (ohne Wohnungsbeschaffungs- und Umzugskosten) nach SGB II",
@@ -1900,17 +1895,17 @@
     "parent": "93"
   },
   "94": {
-    "title": "Baumaßnahmen",
+    "title": "Baumaßnahmen (Hochbau)",
     "level": 2,
     "parent": "9"
   },
   "95": {
-    "title": "Baumaßnahmen",
+    "title": "Baumaßnahmen (Tiefbau)",
     "level": 2,
     "parent": "9"
   },
   "96": {
-    "title": "Baumaßnahmen",
+    "title": "Baumaßnahmen (sonstige, z. B. betriebstechnische Anlagen)",
     "level": 2,
     "parent": "9"
   },

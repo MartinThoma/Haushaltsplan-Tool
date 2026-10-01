@@ -1,0 +1,100 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Plattling",
+    "ags": "09271146",
+    "jahr": 2025,
+    "einwohner": 13160,
+    "einwohner_stichtag": "2024-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Faltblatt „Ein Streifzug durch den Haushaltsplan 2025 der Stadt Plattling“ (Stadtkämmerei Plattling)",
+    "hinweis": "Das Faltblatt fasst Positionen zusammen. Was sich keiner einzelnen Gruppierung zuordnen lässt, steht als „nicht aufgeschlüsselt“ bei der nächsthöheren Ebene."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 290,
+      "quelle": "Stadt Plattling, Satzung über die Festsetzung der Grundsteuerhebesätze vom 14.10.2024; plattling.de „Steuern und Haushalt“ (Stand 2025)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 290,
+      "quelle": "Stadt Plattling, Satzung über die Festsetzung der Grundsteuerhebesätze vom 14.10.2024; plattling.de „Steuern und Haushalt“ (Stand 2025)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 350,
+      "quelle": "Stadt Plattling, Satzung über die Festsetzung der Grundsteuerhebesätze vom 14.10.2024; plattling.de „Steuern und Haushalt“ (Stand 2025)"
+    },
+    "schulden": {
+      "wert": 3745000,
+      "stichtag": "2024-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2024, Tab. 3.5 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "00": 12250000,
+        "003": 10000000,
+        "010": 8120000,
+        "012": 2000000,
+        "022": 23000,
+        "041": 590000,
+        "061": 1534400,
+        "081": 63000,
+        "1": 7526050,
+        "10": 149000,
+        "11": 870700,
+        "16": 2751050,
+        "17": 2626800,
+        "2": 2296350,
+        "22": 551000,
+        "27": 1073000
+      },
+      "ausgaben": {
+        "4": 9539850,
+        "5/6": 8691900,
+        "53": 48800,
+        "679": 2607400,
+        "68": 1073000,
+        "7": 3669750,
+        "8": 12501300,
+        "80": 52400,
+        "810": 1056000,
+        "832": 9355600,
+        "860": 1852300
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 1852300,
+        "310": 3421100,
+        "32": 7700,
+        "34": 1456000,
+        "35": 403500,
+        "36": 7657700
+      },
+      "ausgaben": {
+        "932": 450000,
+        "935": 1057700,
+        "94": 8896800,
+        "95": 2468900,
+        "96": 1638200,
+        "97": 227000,
+        "98": 59700
+      }
+    }
+  },
+  "nicht_aufgeschluesselt": {
+    "vwh": {
+      "einnahmen": {
+        "00": "Grundsteuer A und B (nicht getrennt ausgewiesen)",
+        "1": "Betriebseinnahmen, Mieten und Pachten (Gruppen 13–15)",
+        "2": "Sonstiges, z. B. Zinsen und Darlehensrückflüsse"
+      },
+      "ausgaben": {
+        "5/6": "Unterhalt und Bewirtschaftung, Geräte und Fahrzeuge, sonstiger Verwaltungs- und Betriebsaufwand",
+        "8": "Sonstiges, z. B. Deckungsreserve und steuerliche Nebenleistungen"
+      }
+    }
+  }
+}

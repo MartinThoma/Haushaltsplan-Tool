@@ -69,6 +69,7 @@ describe('validateDataset', () => {
       expect(result.warnings).toHaveLength(2);
       expect(result.warnings.join('\n')).toContain('Gruppe 18');
       expect(result.warnings.join('\n')).toContain('Realsteuern');
+      expect(result.warnings.join('\n')).toContain('kleiner als die Summe der Untergliederung');
     }
   });
 
@@ -80,6 +81,40 @@ describe('validateDataset', () => {
     expect(result.ok && result.warnings).toEqual([
       'Gruppierungsziffer 002 (Verwaltungshaushalt, Einnahmen): Untergruppe 002 ist im Gruppierungsplan nicht vorgesehen; Gruppe 00 (Realsteuern) kennt 000, 001, 003',
     ]);
+  });
+
+  it('accepts Hauptgruppe 5/6 only in its combined form', () => {
+    const data = valid() as Record<string, any>;
+    data.betraege.vwh.ausgaben['5/6'] = 10;
+    expect(validateDataset(data).ok).toBe(true);
+    data.betraege.vwh.ausgaben['6'] = 10;
+    const result = validateDataset(data);
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.errors[0]).toContain('zusammen als „5/6“');
+  });
+
+  it('accepts partial breakdowns silently and requires amounts for remainder labels', () => {
+    const data = valid() as Record<string, any>;
+    data.metadata.status = 'Entwurf';
+    data.metadata.einwohner_stichtag = '2025-12-31';
+    data.betraege.vwh.einnahmen['00'] = 13_000_000;
+    data.nicht_aufgeschluesselt = { vwh: { einnahmen: { '00': 'Rest' } } };
+    expect(validateDataset(data)).toMatchObject({ ok: true, warnings: [] });
+    data.nicht_aufgeschluesselt.vwh.ausgaben = { '4': 'Personal' };
+    const result = validateDataset(data);
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.errors[0]).toContain('keinen Betrag für 4');
+  });
+
+  it('accepts key figures with reference date and source, and rejects unknown ones', () => {
+    const data = valid() as Record<string, any>;
+    data.kennzahlen = {
+      hebesatz_grundsteuer_b: { wert: 290, quelle: 'Haushaltssatzung' },
+      schulden: { wert: 3_745_000, stichtag: '2024-12-31' },
+    };
+    expect(validateDataset(data).ok).toBe(true);
+    data.kennzahlen.hebesatz_hundesteuer = { wert: 1 };
+    expect(validateDataset(data).ok).toBe(false);
   });
 
   it('reports invalid JSON', () => {
