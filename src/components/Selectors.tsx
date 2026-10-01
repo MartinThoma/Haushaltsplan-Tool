@@ -1,6 +1,6 @@
 import { ArrowLeftRight, ChevronDown } from 'lucide-react';
 import type { ReactNode, SelectHTMLAttributes } from 'react';
-import { aggregate, sideTotal } from '../lib/aggregate.ts';
+import { sideAmount } from '../lib/tree.ts';
 import { entryLabel, type CatalogEntry, type LoadedDataset, type Municipality } from '../lib/catalog.ts';
 import { formatCompactEuro, formatInteger } from '../lib/format.ts';
 import { MunicipalitySearch } from './MunicipalitySearch.tsx';
@@ -29,8 +29,8 @@ export function closestEntry(municipality: Municipality, year: number | undefine
 
 function DatasetFacts({ dataset }: { dataset: LoadedDataset | undefined }) {
   if (!dataset) return <p className="h-4 text-xs text-ink-3">Lädt …</p>;
-  const { metadata, betraege } = dataset.data;
-  const volume = (section: 'vwh' | 'vmh') => sideTotal(aggregate(betraege[section].ausgaben));
+  const { metadata } = dataset.data;
+  const volume = (section: 'vwh' | 'vmh') => sideAmount(dataset.data, section, 'ausgaben');
   return (
     <div className="flex flex-col gap-0.5 text-xs">
       <p className="flex flex-wrap gap-x-3 text-ink-2 [&>span]:num">

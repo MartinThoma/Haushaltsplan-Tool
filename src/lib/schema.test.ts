@@ -117,6 +117,13 @@ describe('validateDataset', () => {
     expect(validateDataset(data).ok).toBe(false);
   });
 
+  it('warns when the stated Gesamtbetrag is below the sum of the Gruppierungen', () => {
+    const data = valid() as Record<string, any>;
+    data.betraege.vmh.gesamt = 100;
+    const result = validateDataset(data);
+    expect(result.ok && result.warnings.join('\n')).toContain('Gesamtbetrag');
+  });
+
   it('reports invalid JSON', () => {
     const result = validateDatasetText('{ "metadata": ');
     expect(result.ok).toBe(false);

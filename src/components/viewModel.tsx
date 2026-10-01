@@ -56,7 +56,7 @@ export function csvPrefix(node: TreeNode): string[] {
   return [
     SECTION_LABEL[node.section],
     SIDE_LABEL[node.side],
-    node.kind === 'rest' ? `${node.code} Rest` : (node.code ?? ''),
+    node.kind === 'rest' ? `${node.code ?? 'Summe'} Rest` : (node.code ?? ''),
     String(node.depth),
     node.kind === 'side'
       ? `Summe ${SIDE_LABEL[node.side]}`

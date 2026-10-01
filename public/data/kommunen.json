@@ -1,5 +1,23 @@
 [
   {
+    "ags": "09271141",
+    "name": "Osterhofen",
+    "plz": ["94486"],
+    "bundesland": "BY",
+    "jahre": [
+      {
+        "jahr": 2025,
+        "einwohner": 12280,
+        "file": "09271141_2025.json"
+      },
+      {
+        "jahr": 2026,
+        "einwohner": 12073,
+        "file": "09271141_2026.json"
+      }
+    ]
+  },
+  {
     "ags": "09271146",
     "name": "Plattling",
     "plz": ["94447"],

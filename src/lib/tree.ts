@@ -11,7 +11,7 @@ export interface TreeNode {
   kind: 'side' | 'code' | 'rest';
   section: Section;
   side: Side;
-  /** Gruppierungsziffer of a code row, or of the parent of a rest row; null for the side total. */
+  /** Gruppierungsziffer of a code row, or of the parent of a rest row; null for side totals and their rest. */
   code: string | null;
   /** 0 for the side total, 1–3 for Hauptgruppe/Gruppe/Untergruppe, rest rows one below their parent. */
   depth: number;
@@ -47,7 +47,7 @@ function buildSide(datasets: readonly BudgetDataset[], section: Section, side: S
     depth: 0,
     title: SIDE_LABEL[side],
     known: true,
-    values: aggregations.map(sideTotal),
+    values: datasets.map((d, i) => d.betraege[section].gesamt ?? sideTotal(aggregations[i]!)),
     children: [],
   };
 
@@ -94,7 +94,34 @@ function buildSide(datasets: readonly BudgetDataset[], section: Section, side: S
       children: [],
     });
   }
+
+  // A stated Gesamtbetrag (Haushaltssatzung) that the Gruppierungen do not fully cover.
+  const sideRests = datasets.map((d, i) => {
+    const gesamt = d.betraege[section].gesamt;
+    if (gesamt === undefined) return null;
+    const rest = Math.round((gesamt - (sideTotal(aggregations[i]!) ?? 0)) * 100) / 100;
+    return Math.abs(rest) >= 0.005 ? rest : null;
+  });
+  if (sideRests.some((r) => r !== null)) {
+    root.children.push({
+      id: `${root.id}.rest`,
+      kind: 'rest',
+      section,
+      side,
+      code: null,
+      depth: 1,
+      title: REST_TITLE,
+      known: true,
+      values: sideRests,
+      children: [],
+    });
+  }
   return root;
+}
+
+/** Total of one budget side: the stated Gesamtbetrag if given, else the sum of its Hauptgruppen. */
+export function sideAmount(data: BudgetDataset, section: Section, side: Side): number | null {
+  return data.betraege[section].gesamt ?? sideTotal(aggregate(data.betraege[section][side]));
 }
 
 export function* walkTree(trees: readonly SectionTree[]): Generator<TreeNode> {

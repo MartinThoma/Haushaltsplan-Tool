@@ -293,9 +293,11 @@ function PairMode({
   threshold,
   onThreshold,
 }: ModeProps & { threshold: number; onThreshold: (t: number) => void }) {
-  const a = findEntry(withData, params.a) ?? withData[0]!.entries.at(-1)!;
-  const other = withData.find((m) => m.ags !== a.ags);
-  const b = findEntry(withData, params.b) ?? (other ? closestEntry(other, a.jahr) : (withData[0]!.entries.at(-2) ?? a));
+  // By default, compare the municipalities with the longest data series.
+  const byYears = [...withData].sort((x, y) => y.entries.length - x.entries.length);
+  const a = findEntry(withData, params.a) ?? byYears[0]!.entries.at(-1)!;
+  const other = byYears.find((m) => m.ags !== a.ags);
+  const b = findEntry(withData, params.b) ?? (other ? closestEntry(other, a.jahr) : (byYears[0]!.entries.at(-2) ?? a));
   const entries: [CatalogEntry, CatalogEntry] = [a, b];
   const { items, errors, datasets, stale } = useLoaded(entries);
 

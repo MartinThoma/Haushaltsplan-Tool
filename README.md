@@ -70,6 +70,10 @@ eine Datei, dazu das zentrale Verzeichnis `kommunen.json`.
   direkt angegeben werden. Ist eine angegebene Summe größer als ihre Untergliederung (die Quelle
   schlüsselt nur teilweise auf), erscheint die Differenz als Zeile „Nicht aufgeschlüsselt“. Ist sie
   kleiner, gibt es einen Hinweis.
+- `gesamt` (optional, je Haushalt): Gesamtbetrag laut Haushaltssatzung, z. B.
+  `"vwh": { "einnahmen": {}, "ausgaben": {}, "gesamt": 32737300 }`. Damit lassen sich Kommunen
+  aufnehmen, deren Haushaltsplan nicht veröffentlicht ist; was die Gruppierungen nicht abdecken,
+  erscheint als „Nicht aufgeschlüsselt“.
 - `nicht_aufgeschluesselt` (optional) beschreibt, was in so einer Differenz steckt, z. B.
   `{ "vwh": { "einnahmen": { "00": "Grundsteuer A und B" } } }`.
 - `status`: `Entwurf` (Entwurf des Haushaltsplans), `Ansatz` (Haushaltsplan), `Nachtrag`
@@ -144,10 +148,11 @@ eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine ander
 
 ## Mitgelieferte Daten
 
-| Kommune   | Jahre                                          | Quelle                                                                                  |
-| --------- | ---------------------------------------------- | --------------------------------------------------------------------------------------- |
-| Plattling | 2024–2026 (Ansatz)                             | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen |
-| Polling   | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf) | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt              |
+| Kommune    | Jahre                                          | Quelle                                                                                          |
+| ---------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Plattling  | 2024–2026 (Ansatz)                             | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen         |
+| Polling    | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf) | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                      |
+| Osterhofen | 2025–2026 (Ansatz)                             | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht |
 
 Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
 hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,
