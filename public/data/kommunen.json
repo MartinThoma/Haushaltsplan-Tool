@@ -1,5 +1,33 @@
 [
   {
+    "ags": "09184123",
+    "name": "Haar",
+    "plz": ["85540"],
+    "bundesland": "BY",
+    "jahre": [
+      {
+        "jahr": 2023,
+        "einwohner": 21979,
+        "file": "09184123_2023.json"
+      },
+      {
+        "jahr": 2024,
+        "einwohner": 22483,
+        "file": "09184123_2024.json"
+      },
+      {
+        "jahr": 2025,
+        "einwohner": 22878,
+        "file": "09184123_2025.json"
+      },
+      {
+        "jahr": 2026,
+        "einwohner": 22934,
+        "file": "09184123_2026.json"
+      }
+    ]
+  },
+  {
     "ags": "09184131",
     "name": "Kirchheim b. München",
     "plz": ["85551"],

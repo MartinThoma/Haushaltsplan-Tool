@@ -21,7 +21,7 @@ COLUMN_LABEL = {
     'ergebnis_vorjahr': 'Rechnungsergebnis',
     'ergebnis_vorvorjahr': 'Rechnungsergebnis',
 }
-COLUMN_STATUS = {'ansatz_vorjahr': 'Ansatz', 'ergebnis_vorjahr': 'Ergebnis', 'ergebnis_vorvorjahr': 'Ergebnis'}
+COLUMN_STATUS = {'ergebnis_vorjahr': 'Ergebnis', 'ergebnis_vorvorjahr': 'Ergebnis'}
 SECTIONS = (('vwh', '012', '45678'), ('vmh', '3', '9'))
 LANDS = ['SH', 'HH', 'NI', 'HB', 'NW', 'HE', 'RP', 'BW', 'BY', 'SL', 'BE', 'BB', 'MV', 'SN', 'ST', 'TH']
 
@@ -50,6 +50,8 @@ def add_common_arguments(parser, spalten):
     parser.add_argument('--einwohner', nargs='+', required=True, metavar='JAHR=ANZAHL')
     parser.add_argument('--einwohner-stichtag', choices=['vorjahr'], help='"vorjahr": 31.12. des Vorjahres')
     parser.add_argument('--status-plan', default='Ansatz', choices=['Entwurf', 'Ansatz', 'Nachtrag'])
+    parser.add_argument('--status-vorjahr', default='Ansatz', choices=['Ansatz', 'Nachtrag'],
+                        help='Status der Spalte "Ansatz Vorjahr", z. B. Nachtrag, wenn sie den Nachtragshaushalt zeigt')
     parser.add_argument('--spalten', nargs='+', default=['ansatz', 'ansatz_vorjahr', 'ergebnis_vorvorjahr'],
                         choices=spalten, help='zu importierende Spalten')
     parser.add_argument('--quelle', required=True)
@@ -119,7 +121,7 @@ def write_datasets(args, year, entries_by_column, hinweis):
             if labels_e or labels_a:
                 labels[section] = {k: v for k, v in (('einnahmen', labels_e), ('ausgaben', labels_a)) if v}
 
-        status = args.status_plan if column == 'ansatz' else COLUMN_STATUS[column]
+        status = {'ansatz': args.status_plan, 'ansatz_vorjahr': args.status_vorjahr, **COLUMN_STATUS}[column]
         metadata = {
             'kommune': args.kommune,
             'ags': args.ags,

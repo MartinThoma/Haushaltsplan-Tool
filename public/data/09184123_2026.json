@@ -1,0 +1,176 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Haar",
+    "ags": "09184123",
+    "jahr": 2026,
+    "einwohner": 22934,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Haushaltsplan 2026 der Stadt Haar, Einzelpläne (Ratsinformationssystem, Stadtratssitzung vom 25.11.2025), Spalte „Ansatz 2026“",
+    "hinweis": "Aus den Einzelplänen nach Gruppierung summiert; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 430,
+      "quelle": "Stadt Haar, Haushaltssatzung 2026, § 4"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 430,
+      "quelle": "Stadt Haar, Haushaltssatzung 2026, § 4"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 350,
+      "quelle": "Stadt Haar, Haushaltssatzung 2026, § 4"
+    },
+    "schulden": {
+      "wert": 16341000,
+      "stichtag": "2025-12-31",
+      "quelle": "Haushaltsplan 2026 der Stadt Haar, Anlage „Übersicht über den voraussichtlichen Stand der Schulden“ (voraussichtlich, in 1.000 €)"
+    },
+    "ruecklagen": {
+      "wert": 45568000,
+      "stichtag": "2026-01-01",
+      "quelle": "Haushaltsplan 2026 der Stadt Haar, Übersicht über den voraussichtlichen Stand der Rücklagen (voraussichtlich, in 1.000 €)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 15000000,
+      "quelle": "Stadt Haar, Haushaltssatzung 2026, § 5"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 15000.0,
+        "001": 2500000.0,
+        "003": 16000000.0,
+        "010": 20177300.0,
+        "012": 3742543.0,
+        "022": 67000.0,
+        "041": 2381000.0,
+        "061": 3175526.0,
+        "08": 117000.0,
+        "081": 80000.0,
+        "10": 328200.0,
+        "11": 6126867.0,
+        "13": 229000.0,
+        "14": 5538981.0,
+        "15": 1132770.0,
+        "161": 30000.0,
+        "162": 210750.0,
+        "163": 317400.0,
+        "165": 46946.0,
+        "166": 50000.0,
+        "167": 190500.0,
+        "168": 70375.0,
+        "169": 4537508.0,
+        "170": 9000.0,
+        "171": 7573175.0,
+        "175": 49500.0,
+        "176": 26600.0,
+        "177": 2000.0,
+        "178": 43000.0,
+        "205": 23810.0,
+        "206": 7750.0,
+        "207": 1000000.0,
+        "21": 1387500.0,
+        "22": 663000.0,
+        "26": 157050.0,
+        "270": 1751800.0,
+        "271": 83000.0,
+        "275": 2193700.0,
+        "280": 10299730.0,
+        "283": 198522.0
+      },
+      "ausgaben": {
+        "40": 186600.0,
+        "410": 973400.0,
+        "414": 18118800.0,
+        "430": 720700.0,
+        "434": 1413920.0,
+        "444": 3923300.0,
+        "448": 3000.0,
+        "45": 187600.0,
+        "46": 172100.0,
+        "50": 3486880.0,
+        "51": 944950.0,
+        "52": 530685.0,
+        "53": 733400.0,
+        "54": 3915050.0,
+        "55": 404700.0,
+        "56": 559350.0,
+        "57": 1719700.0,
+        "59": 16500.0,
+        "60": 348160.0,
+        "61": 32000.0,
+        "62": 115420.0,
+        "63": 3344742.0,
+        "638": 485000.0,
+        "639": 70900.0,
+        "64": 1108815.0,
+        "65": 1177210.0,
+        "660": 4000.0,
+        "661": 86050.0,
+        "670": 12000.0,
+        "671": 65044.0,
+        "672": 460230.0,
+        "676": 619710.0,
+        "677": 900.0,
+        "679": 4537508.0,
+        "680": 1751800.0,
+        "681": 41500.0,
+        "685": 2193700.0,
+        "70": 12029149.0,
+        "711": 30000.0,
+        "718": 606400.0,
+        "723": 1500.0,
+        "788": 45000.0,
+        "806": 355740.0,
+        "808": 4370.0,
+        "810": 1600000.0,
+        "832": 22990000.0,
+        "84": 15000.0,
+        "860": 867220.0
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 867220.0,
+        "310": 16471742.0,
+        "313": 198522.0,
+        "325": 600300.0,
+        "326": 69300.0,
+        "345": 35000.0,
+        "35": 35000.0,
+        "361": 5426663.0
+      },
+      "ausgaben": {
+        "900": 10299730.0,
+        "903": 198522.0,
+        "93": 1327775.0,
+        "935": 1172775.0,
+        "94": 5884500.0,
+        "95": 5011000.0,
+        "96": 115000.0,
+        "976": 855460.0,
+        "978": 11760.0
+      }
+    }
+  },
+  "nicht_aufgeschluesselt": {
+    "vwh": {
+      "einnahmen": {
+        "08": "weitere Untergruppen der Kommune (082)"
+      },
+      "ausgaben": {
+        "63": "weitere Untergruppen der Kommune (630, 632, 634, 635, 636, 637)"
+      }
+    },
+    "vmh": {
+      "ausgaben": {
+        "93": "weitere Untergruppen der Kommune (934)"
+      }
+    }
+  }
+}
