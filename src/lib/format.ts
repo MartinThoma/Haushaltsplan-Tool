@@ -24,6 +24,8 @@ const percent = new Intl.NumberFormat('de-DE', {
   signDisplay: 'exceptZero',
 });
 const integer = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
+const share = new Intl.NumberFormat('de-DE', { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1 });
+const points = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 1, signDisplay: 'exceptZero' });
 
 export const DASH = '–';
 
@@ -48,6 +50,21 @@ export function formatPercent(ratio: number | null | undefined): string {
 
 export function formatInteger(value: number): string {
   return integer.format(value);
+}
+
+/** 0.271 → "27,1 %" */
+export function formatShare(ratio: number | null | undefined): string {
+  return ratio == null ? DASH : share.format(ratio);
+}
+
+/** Difference of two percentages: 35 → "+35 Pkt." */
+export function formatPoints(value: number | null | undefined): string {
+  return value == null ? DASH : `${points.format(value)} Pkt.`;
+}
+
+export function formatDate(iso: string): string {
+  const [year, month, day] = iso.split('-');
+  return `${day}.${month}.${year}`;
 }
 
 /** Plain German decimal for CSV cells: 1250000.5 → "1250000,50" */

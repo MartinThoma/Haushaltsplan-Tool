@@ -1,23 +1,28 @@
 import { aggregate, sideTotal } from './aggregate.ts';
-import { SIDES, SIDE_LABEL, codeTitle, isKnownCode, parentCode, type Section, type Side } from './master.ts';
+import { SIDES, SIDE_LABEL, codeLevel, codeTitle, isKnownCode, parentCode, type Section, type Side } from './master.ts';
 import type { BudgetDataset } from './schema.ts';
 
 export interface TreeNode {
   id: string;
+  /**
+   * side: total of "Einnahmen"/"Ausgaben"; code: a Gruppierungsziffer; rest: the part of a stated
+   * total that its children do not cover ("nicht aufgeschlüsselt").
+   */
+  kind: 'side' | 'code' | 'rest';
   section: Section;
   side: Side;
-  /** Gruppierungsziffer; null for the side total ("Einnahmen" / "Ausgaben"). */
+  /** Gruppierungsziffer of a code row, or of the parent of a rest row; null for the side total. */
   code: string | null;
-  /** 0 for the side total, otherwise the number of digits of the code. */
+  /** 0 for the side total, 1–3 for Hauptgruppe/Gruppe/Untergruppe, rest rows one below their parent. */
   depth: number;
   title: string;
   known: boolean;
   /** Amount in € per dataset, in the order the datasets were passed; null = no entry. */
   values: (number | null)[];
-  /** Per dataset: the stated total disagrees with the sum of its parts. */
-  mismatch: boolean[];
   children: TreeNode[];
 }
+
+export const REST_TITLE = 'Nicht aufgeschlüsselt';
 
 export interface SectionTree {
   section: Section;
@@ -35,6 +40,7 @@ function buildSide(datasets: readonly BudgetDataset[], section: Section, side: S
   const aggregations = datasets.map((d) => aggregate(d.betraege[section][side]));
   const root: TreeNode = {
     id: `${section}.${side}`,
+    kind: 'side',
     section,
     side,
     code: null,
@@ -42,29 +48,51 @@ function buildSide(datasets: readonly BudgetDataset[], section: Section, side: S
     title: SIDE_LABEL[side],
     known: true,
     values: aggregations.map(sideTotal),
-    mismatch: aggregations.map(() => false),
     children: [],
   };
 
   const codes = new Set(aggregations.flatMap((a) => [...a.values.keys()]));
   const nodes = new Map<string, TreeNode>();
-  // Lexicographic order puts every parent before its children ("0" < "00" < "000" < "01").
+  // Lexicographic order puts every parent before its children ("0" < "00" < "000" < "01" and "5/6" < "50").
   for (const code of [...codes].sort()) {
     const node: TreeNode = {
       id: `${section}.${side}.${code}`,
+      kind: 'code',
       section,
       side,
       code,
-      depth: code.length,
+      depth: codeLevel(code),
       title: codeTitle(code),
       known: isKnownCode(code),
       values: aggregations.map((a) => a.values.get(code) ?? null),
-      mismatch: aggregations.map((a) => a.mismatches.has(code)),
       children: [],
     };
     nodes.set(code, node);
     const parent = parentCode(code);
     (parent ? nodes.get(parent)! : root).children.push(node);
+  }
+
+  for (const [code, node] of nodes) {
+    const rests = aggregations.map((a) => {
+      const mismatch = a.mismatches.get(code);
+      return mismatch ? Math.round((mismatch.stated - mismatch.computed) * 100) / 100 : null;
+    });
+    if (rests.every((r) => r === null)) continue;
+    const labels = [
+      ...new Set(datasets.map((d) => d.nicht_aufgeschluesselt?.[section]?.[side]?.[code]).filter(Boolean)),
+    ];
+    node.children.push({
+      id: `${node.id}.rest`,
+      kind: 'rest',
+      section,
+      side,
+      code,
+      depth: node.depth + 1,
+      title: labels.length ? `${REST_TITLE}: ${labels.join(' / ')}` : REST_TITLE,
+      known: true,
+      values: rests,
+      children: [],
+    });
   }
   return root;
 }
@@ -105,8 +133,8 @@ const normalize = (s: string) =>
 export function makeMatcher(query: string): ((node: TreeNode) => boolean) | null {
   const q = normalize(query.trim());
   if (!q) return null;
-  if (/^\d+$/.test(q)) return (node) => node.code?.startsWith(q) ?? false;
-  return (node) => node.code !== null && normalize(node.title).includes(q);
+  if (/^\d+$/.test(q)) return (node) => (node.kind === 'code' && node.code?.startsWith(q)) || false;
+  return (node) => node.kind !== 'side' && normalize(node.title).includes(q);
 }
 
 /**

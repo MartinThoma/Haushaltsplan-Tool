@@ -1,4 +1,4 @@
-import { parentCode } from './master.ts';
+import { codeLevel, parentCode } from './master.ts';
 
 export interface Aggregation {
   /** Value per code (1–3 digits), either stated in the dataset or summed from its children. */
@@ -24,7 +24,7 @@ export function aggregate(amounts: Record<string, number>): Aggregation {
   const childSums = new Map<string, number>();
 
   // Deepest codes first, so every child is final before its parent is visited.
-  for (const code of [...codes].sort((a, b) => b.length - a.length)) {
+  for (const code of [...codes].sort((a, b) => codeLevel(b) - codeLevel(a))) {
     const stated = amounts[code];
     const computed = childSums.has(code) ? roundCents(childSums.get(code)!) : undefined;
     if (stated !== undefined && computed !== undefined && Math.abs(stated - computed) >= 0.005) {
@@ -43,7 +43,7 @@ export function aggregate(amounts: Record<string, number>): Aggregation {
 export function sideTotal(aggregation: Aggregation): number | null {
   let total: number | null = null;
   for (const [code, value] of aggregation.values) {
-    if (code.length === 1) total = (total ?? 0) + value;
+    if (parentCode(code) === null) total = (total ?? 0) + value;
   }
   return total === null ? null : roundCents(total);
 }

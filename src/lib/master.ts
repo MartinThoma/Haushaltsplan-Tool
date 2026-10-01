@@ -38,8 +38,30 @@ export function describeAllowed(section: Section, side: Side): string {
   return digits.length === 1 ? `Hauptgruppe ${digits}` : `Hauptgruppen ${digits[0]}–${digits.at(-1)}`;
 }
 
+/** The plan treats the expense Hauptgruppen 5 and 6 as one ("5/6 Sächlicher Verwaltungs- und Betriebsaufwand"). */
+export const HAUPTGRUPPE_5_6 = '5/6';
+
+export function hauptgruppeOf(code: string): string {
+  return code[0] === '5' || code[0] === '6' ? HAUPTGRUPPE_5_6 : code[0]!;
+}
+
+/** 1 = Hauptgruppe, 2 = Gruppe, 3 = Untergruppe. */
+export function codeLevel(code: string): number {
+  return code === HAUPTGRUPPE_5_6 ? 1 : code.length;
+}
+
 export function parentCode(code: string): string | null {
-  return code.length > 1 ? code.slice(0, -1) : null;
+  const level = codeLevel(code);
+  if (level === 1) return null;
+  return level === 2 ? hauptgruppeOf(code) : code.slice(0, -1);
+}
+
+/** Valid keys for one budget side: Hauptgruppen ("4", "5/6", …), Gruppen and Untergruppen. */
+export function codePattern(section: Section, side: Side): string {
+  const digits = ALLOWED_HAUPTGRUPPEN[section][side];
+  const hauptgruppen = [...digits].filter((d) => d !== '5' && d !== '6');
+  if (digits.includes('5')) hauptgruppen.push(HAUPTGRUPPE_5_6);
+  return `^(?:${hauptgruppen.join('|')}|[${digits}][0-9]{1,2})$`;
 }
 
 export function isKnownCode(code: string): boolean {
@@ -59,7 +81,7 @@ export function listedChildren(code: string): readonly string[] {
 const LEVEL_NAME = ['', 'Hauptgruppe', 'Gruppe', 'Untergruppe'];
 
 export function codeTitle(code: string): string {
-  return MASTER[code]?.title ?? `${LEVEL_NAME[code.length]} ${code}`;
+  return MASTER[code]?.title ?? `${LEVEL_NAME[codeLevel(code)]} ${code}`;
 }
 
 // Untergruppen like "vom Land" or "Beamte" only make sense below their group heading.
@@ -70,7 +92,7 @@ const NEEDS_CONTEXT =
 export function standaloneTitle(code: string): string {
   const title = codeTitle(code);
   const parent = parentCode(code);
-  if (code.length === 3 && parent && (NEEDS_CONTEXT.test(title) || !isKnownCode(code))) {
+  if (codeLevel(code) === 3 && parent && (NEEDS_CONTEXT.test(title) || !isKnownCode(code))) {
     return `${codeTitle(parent)}: ${title}`;
   }
   return title;

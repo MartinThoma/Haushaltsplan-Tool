@@ -11,6 +11,31 @@ function dataset(vwhEinnahmen: Record<string, number>): BudgetDataset {
 
 const ids = (rows: RowItem[]) => rows.map((r) => (r.type === 'section' ? `#${r.section}` : r.node.id));
 
+describe('remainder rows', () => {
+  it('shows the part of a stated total that is not broken down, with its label', () => {
+    const a = dataset({ '00': 1000, '003': 600, '010': 5 });
+    a.nicht_aufgeschluesselt = { vwh: { einnahmen: { '00': 'Grundsteuer A und B' } } };
+    const b = dataset({ '000': 10, '003': 20 });
+    const g00 = buildTree([a, b], ['vwh'])[0]!.sides[0]!.children[0]!.children[0]!;
+    expect(g00.values).toEqual([1000, 30]);
+    const rest = g00.children.at(-1)!;
+    expect(rest).toMatchObject({
+      kind: 'rest',
+      code: '00',
+      depth: 3,
+      title: 'Nicht aufgeschlüsselt: Grundsteuer A und B',
+    });
+    expect(rest.values).toEqual([400, null]);
+  });
+
+  it('is found by searching for its label', () => {
+    const a = dataset({ '00': 1000, '003': 600 });
+    a.nicht_aufgeschluesselt = { vwh: { einnahmen: { '00': 'Grundsteuer A und B' } } };
+    const rows = visibleRows(buildTree([a], ['vwh']), new Set(), 'grundsteuer');
+    expect(ids(rows).at(-1)).toBe('vwh.einnahmen.00.rest');
+  });
+});
+
 describe('buildTree', () => {
   const a = dataset({ '000': 1, '003': 2, '010': 5 });
   const b = dataset({ '003': 4, '022': 1 });

@@ -40,10 +40,15 @@ eine Datei, dazu das zentrale Verzeichnis `kommunen.json`.
     "kommune": "Plattling",
     "ags": "09271146",
     "jahr": 2026,
-    "einwohner": 13100,
+    "einwohner": 13296,
+    "einwohner_stichtag": "2025-12-31",
     "status": "Ansatz",
     "waehrung": "EUR",
     "quelle": "https://… (optional)"
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_b": { "wert": 290, "quelle": "Haushaltssatzung 2026, § 3" },
+    "schulden": { "wert": 3745000, "stichtag": "2024-12-31", "quelle": "…" }
   },
   "betraege": {
     "vwh": {
@@ -58,12 +63,48 @@ eine Datei, dazu das zentrale Verzeichnis `kommunen.json`.
 }
 ```
 
-- Schlüssel sind Gruppierungsziffern mit 1–3 Stellen, Werte Beträge in Euro.
+- Schlüssel sind Gruppierungsziffern mit 1–3 Stellen, Werte Beträge in Euro. Die Hauptgruppe
+  „Sächlicher Verwaltungs- und Betriebsaufwand“ heißt wie im Gruppierungsplan `"5/6"`.
 - Erlaubte Hauptgruppen: VwH-Einnahmen 0–2, VwH-Ausgaben 4–8, VmH-Einnahmen 3, VmH-Ausgaben 9.
 - Summen für Hauptgruppen und Gruppen werden aus den Untergruppen berechnet. Sie dürfen auch
-  direkt angegeben werden; weichen sie von der Summe der Untergliederung ab, gibt es einen Hinweis.
-- `status`: `Ansatz` (Haushaltsplan), `Nachtrag` (Nachtragshaushalt) oder `Ergebnis` (Jahresrechnung).
+  direkt angegeben werden. Ist eine angegebene Summe größer als ihre Untergliederung (die Quelle
+  schlüsselt nur teilweise auf), erscheint die Differenz als Zeile „Nicht aufgeschlüsselt“. Ist sie
+  kleiner, gibt es einen Hinweis.
+- `nicht_aufgeschluesselt` (optional) beschreibt, was in so einer Differenz steckt, z. B.
+  `{ "vwh": { "einnahmen": { "00": "Grundsteuer A und B" } } }`.
+- `status`: `Entwurf` (Entwurf des Haushaltsplans), `Ansatz` (Haushaltsplan), `Nachtrag`
+  (Nachtragshaushalt) oder `Ergebnis` (Jahresrechnung).
+- `einwohner_stichtag` (optional): Stichtag der Einwohnerzahl. Die mitgelieferten Daten verwenden
+  den 31.12. des Vorjahres (amtliche Fortschreibung des Bayerischen Landesamts für Statistik).
+- `kennzahlen` (optional): Kernzahlen des Jahres, jeweils mit `wert` und optional `stichtag` und
+  `quelle`. Vorgesehen sind `hebesatz_grundsteuer_a`, `hebesatz_grundsteuer_b`,
+  `hebesatz_gewerbesteuer` (in Prozent), `schulden` und `ruecklagen` (Stand zu Jahresbeginn, in Euro)
+  sowie `kassenkredite_hoechstbetrag` (laut Haushaltssatzung). Weitere Kernzahlen wie Zuführung zum
+  Vermögenshaushalt, Personalausgabenquote, Sachinvestitionen, Kreditaufnahmen und Tilgung berechnet
+  die App aus den Beträgen.
 - Mit dem `$schema`-Verweis bieten Editoren wie VS Code Autovervollständigung und Prüfung.
+
+### Import aus Einzelplänen (PDF)
+
+Viele bayerische Kommunen veröffentlichen ihren Haushalt als „Einzelpläne“ mit allen
+Haushaltsstellen (`.4100 Beamtenbezüge …`). Dieses Format liest
+[`scripts/import_einzelplan.py`](scripts/import_einzelplan.py) (Python 3 und `pdftotext` aus
+poppler-utils): Es prüft jede Haushaltsstelle gegen die gedruckten Zwischensummen, summiert nach
+Gruppierung und schreibt Datensätze für Plan-, Vorjahres- und Ergebnisspalte samt Eintrag in
+`kommunen.json`:
+
+```sh
+python3 scripts/import_einzelplan.py \
+  --vwh import/Polling/EntwurfVerwaltungshaushalt2026.pdf \
+  --vmh import/Polling/EntwurfVermögenshaushalt2026.pdf \
+  --kommune Polling --ags 09190142 --plz 82398 82380 \
+  --einwohner 2026=3635 2025=3633 2024=3605 --einwohner-stichtag vorjahr \
+  --status-plan Entwurf --quelle "Entwurf Haushaltsplan 2026 der Gemeinde Polling"
+```
+
+Untergruppen, die der Gruppierungsplan nicht kennt (z. B. die frei gebildeten 100, 101 in
+Gruppe 10), werden ihrer Gruppe zugerechnet, damit Kommunen vergleichbar bleiben. Beim erneuten
+Import (`--force`) bleiben vorhandene `kennzahlen` erhalten.
 
 ### 2. Eintrag in `kommunen.json`
 
@@ -91,20 +132,36 @@ laufend in der Konsole.
 
 ## Gruppierungsplan
 
-Die Bezeichnungen der 409 Gruppierungsziffern in
+Die Bezeichnungen der 408 Gruppierungsziffern in
 [`src/data/master-groupings.json`](src/data/master-groupings.json) stammen aus dem
 [Gruppierungsplan (Anlage 2 VVKommHSyst-Kameralistik, Bayern)](https://www.verkuendung-bayern.de/files/allmbl/2016/11/anhang/2023-I-2281-A002_PDFA.pdf).
-Der Plan fasst die Hauptgruppen 5 und 6 zusammen („5/6 Sächlicher Verwaltungs- und
-Betriebsaufwand“); im Baum erscheinen sie als zwei Hauptgruppen, damit jede Ebene genau einer
-Ziffer entspricht.
+Wie dort ist „5/6 Sächlicher Verwaltungs- und Betriebsaufwand“ eine Hauptgruppe. Die Gruppen 94, 95
+und 96 fasst der Plan als „Baumaßnahmen“ zusammen; die Bezeichnungen Hochbau, Tiefbau und sonstige
+folgen der üblichen Buchungspraxis.
 
 Untergruppen, die der Plan nicht nennt, werden angezeigt, aber markiert. Steht unter einer Gruppe
 eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine andere Ziffer einen Hinweis.
 
-## Beispieldaten
+## Mitgelieferte Daten
 
-Die mitgelieferten Kommunen Musterstadt, Beispielmarkt und Neudorf am See sind **erfunden**
-(AGS `09999xxx`, PLZ `001xx`). Sie zeigen die Funktionen und sollten durch echte Daten ersetzt werden.
+| Kommune   | Jahre                                          | Quelle                                                                                  |
+| --------- | ---------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Plattling | 2024–2026 (Ansatz)                             | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen |
+| Polling   | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf) | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt              |
+
+Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
+hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,
+[Einwohnerzahlen der Gemeinden](https://www.statistik.bayern.de/statistik/gebiet_bevoelkerung/bevoelkerungsstand/),
+Stand jeweils 31.12. des Vorjahres.
+
+Quellen der Kernzahlen (in jeder Datei pro Wert vermerkt):
+
+- Hebesätze 2024: Statistische Ämter des Bundes und der Länder, Hebesätze der Realsteuern 2024;
+  ab 2025: Hebesatzsatzungen bzw. Haushaltssatzung der Gemeinde Polling und die Seite
+  „Steuern und Haushalt“ der Stadt Plattling.
+- Schuldenstand bis 31.12.2024: Bayerisches Landesamt für Statistik, „Staats- und Kommunalschulden
+  in Bayern“ (Schulden insgesamt ohne Eigenbetriebe). Polling 2026, Rücklage und Kassenkredite:
+  Haushaltssatzung 2026 und „Haushalt 2026 kurz in Zahlen“ der Gemeinde Polling.
 
 ## Datenschutz
 
@@ -119,6 +176,8 @@ src/data/             Gruppierungsplan (Stammdaten)
 src/lib/              Schema (Zod), Aggregation, Baum, Vergleich, CSV – ohne UI, mit Tests
 src/components/       React-Komponenten
 vite-plugins/         Datenprüfung beim Build, Erzeugung der JSON-Schemas
+scripts/              Import aus Einzelplan-PDFs
+import/               Original-PDFs (lokal, nicht im Repository)
 ```
 
 Technik: Vite, React, TypeScript, Tailwind CSS, Zod, Chart.js, Lucide Icons.

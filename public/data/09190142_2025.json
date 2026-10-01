@@ -1,0 +1,137 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Polling",
+    "ags": "09190142",
+    "jahr": 2025,
+    "einwohner": 3633,
+    "einwohner_stichtag": "2024-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Entwurf Haushaltsplan 2026 der Gemeinde Polling, Einzelpläne Verwaltungs- und Vermögenshaushalt, Spalte „Ansatz 2025“",
+    "hinweis": "Aus den Einzelplänen nach Gruppierung summiert; Untergruppen, die der Gruppierungsplan nicht kennt, sind ihrer Gruppe zugerechnet."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 325,
+      "quelle": "Gemeinde Polling, Hebesatzsatzung vom 22.11.2024 (gültig ab 01.01.2025)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 325,
+      "quelle": "Gemeinde Polling, Hebesatzsatzung vom 22.11.2024 (gültig ab 01.01.2025)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 345,
+      "quelle": "Gemeinde Polling, Hebesatzsatzung vom 22.11.2024 (gültig ab 01.01.2025)"
+    },
+    "schulden": {
+      "wert": 785000,
+      "stichtag": "2024-12-31",
+      "quelle": "Bayerisches Landesamt für Statistik, Staats- und Kommunalschulden in Bayern am 31. Dezember 2024, Tab. 3.5 (Schulden insgesamt ohne Eigenbetriebe, auf 1.000 € gerundet)"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "000": 46100.0,
+        "001": 448900.0,
+        "003": 1533963.0,
+        "010": 3067063.0,
+        "012": 125364.0,
+        "022": 19120.0,
+        "041": 809536.0,
+        "061": 380698.0,
+        "10": 60050.0,
+        "11": 766135.0,
+        "13": 18700.0,
+        "14": 74027.0,
+        "15": 40550.0,
+        "160": 1550.0,
+        "161": 9800.0,
+        "168": 2000.0,
+        "169": 217452.0,
+        "171": 1065327.0,
+        "178": 500.0,
+        "21": 460.0,
+        "22": 90850.0,
+        "26": 9000.0,
+        "270": 686945.0,
+        "275": 688407.0,
+        "283": 118085.0
+      },
+      "ausgaben": {
+        "40": 46730.0,
+        "410": 189300.0,
+        "414": 1813400.0,
+        "416": 78360.0,
+        "430": 80780.0,
+        "434": 140045.0,
+        "444": 389900.0,
+        "45": 13000.0,
+        "46": 11000.0,
+        "470": 18000.0,
+        "50": 98250.0,
+        "51": 327459.0,
+        "52": 41700.0,
+        "53": 31600.0,
+        "54": 298079.0,
+        "55": 62200.0,
+        "56": 49050.0,
+        "57": 13300.0,
+        "60": 12600.0,
+        "63": 299386.0,
+        "638": 4950.0,
+        "639": 53000.0,
+        "64": 140429.0,
+        "65": 153874.0,
+        "660": 2000.0,
+        "661": 15080.0,
+        "662": 39000.0,
+        "670": 21200.0,
+        "676": 266000.0,
+        "679": 217453.0,
+        "680": 686945.0,
+        "685": 688407.0,
+        "70": 842005.0,
+        "711": 4000.0,
+        "713": 75000.0,
+        "718": 140675.0,
+        "788": 1200.0,
+        "806": 12000.0,
+        "807": 18254.0,
+        "810": 183000.0,
+        "832": 2427722.0,
+        "84": 600.0,
+        "860": 331539.0
+      }
+    },
+    "vmh": {
+      "einnahmen": {
+        "300": 331539.0,
+        "313": 118085.0,
+        "340": 1485000.0,
+        "345": 8000.0,
+        "35": 229500.0,
+        "361": 220130.0,
+        "367": 19000.0
+      },
+      "ausgaben": {
+        "903": 118085.0,
+        "910": 160282.0,
+        "932": 22951.0,
+        "935": 748990.0,
+        "94": 322000.0,
+        "95": 889000.0,
+        "977": 95506.0,
+        "988": 54440.0
+      }
+    }
+  },
+  "nicht_aufgeschluesselt": {
+    "vwh": {
+      "ausgaben": {
+        "63": "weitere Untergruppen der Kommune (630, 632, 634, 635, 636)"
+      }
+    }
+  }
+}

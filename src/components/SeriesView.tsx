@@ -7,6 +7,7 @@ import { downloadFile, slug, toCsv } from '../lib/csv.ts';
 import { SECTIONS, SECTION_LABEL, SIDE_LABEL, standaloneTitle } from '../lib/master.ts';
 import { buildTree, findNode, type TreeNode } from '../lib/tree.ts';
 import { BudgetTable, type Column } from './BudgetTable.tsx';
+import { KennzahlenPanel } from './KennzahlenPanel.tsx';
 import { Toolbar } from './Toolbar.tsx';
 import type { TrendSeries } from './TrendChart.tsx';
 import {
@@ -44,13 +45,14 @@ interface Props {
 }
 
 function seriesLabel(node: TreeNode): string {
-  return node.code === null
-    ? `${SIDE_LABEL[node.side]} ${SECTION_LABEL[node.section]}`
-    : `${node.code} ${standaloneTitle(node.code)}`;
+  if (node.kind === 'side') return `${SIDE_LABEL[node.side]} ${SECTION_LABEL[node.section]}`;
+  if (node.kind === 'rest') return `${node.code} ${node.title}`;
+  return `${node.code} ${standaloneTitle(node.code!)}`;
 }
 
 function shortLabel(node: TreeNode): string {
-  return node.code ?? `${SIDE_LABEL[node.side].slice(0, 4)}. ${node.section === 'vwh' ? 'VwH' : 'VmH'}`;
+  if (node.kind === 'side') return `${SIDE_LABEL[node.side].slice(0, 4)}. ${node.section === 'vwh' ? 'VwH' : 'VmH'}`;
+  return node.kind === 'rest' ? `${node.code} Rest` : node.code!;
 }
 
 export function SeriesView({ datasets, stale, controls, chart, onChart }: Props) {
@@ -105,7 +107,7 @@ export function SeriesView({ datasets, stale, controls, chart, onChart }: Props)
           </span>
         </span>
       ),
-      cell: (node: TreeNode) => <Amount value={value(node, i)} mismatch={node.mismatch[i]} />,
+      cell: (node: TreeNode) => <Amount value={value(node, i)} />,
     })),
     ...(metas.length > 1
       ? [
@@ -187,6 +189,17 @@ export function SeriesView({ datasets, stale, controls, chart, onChart }: Props)
 
   return (
     <div className="flex flex-col gap-3">
+      <KennzahlenPanel
+        datasets={datasets}
+        headers={metas.map((m) => (
+          <span key={m.jahr} className="inline-flex flex-col items-end">
+            {m.jahr}
+            <span className="font-normal text-ink-3">{m.status}</span>
+          </span>
+        ))}
+        unit={settings.unit}
+        stale={stale}
+      />
       <section
         aria-label="Diagramm"
         className={`rounded-xl border border-line bg-surface p-4 transition-opacity ${stale ? 'opacity-60' : ''}`}

@@ -7,6 +7,7 @@ import { downloadFile, slug, toCsv } from '../lib/csv.ts';
 import { buildTree, type TreeNode } from '../lib/tree.ts';
 import { BudgetTable, type Column } from './BudgetTable.tsx';
 import { DeviationBadge } from './DeviationBadge.tsx';
+import { KennzahlenPanel } from './KennzahlenPanel.tsx';
 import { Toolbar, ToolbarGroup } from './Toolbar.tsx';
 import {
   Amount,
@@ -58,7 +59,7 @@ export function PairView({ datasets, stale, controls, threshold, onThreshold }: 
           <span className="font-normal text-ink-3">{unit}</span>
         </span>
       ),
-      cell: (node: TreeNode) => <Amount value={value(node, i)} mismatch={node.mismatch[i]} />,
+      cell: (node: TreeNode) => <Amount value={value(node, i)} />,
     })),
     {
       key: 'diff',
@@ -109,6 +110,18 @@ export function PairView({ datasets, stale, controls, threshold, onThreshold }: 
 
   return (
     <div className="flex flex-col gap-3">
+      <KennzahlenPanel
+        datasets={datasets}
+        headers={([0, 1] as const).map((i) => (
+          <span key={i} className="inline-flex items-center gap-1.5">
+            <span aria-hidden className={`size-2 rounded-full ${i === 0 ? 'bg-series-a' : 'bg-series-b'}`} />
+            {i === 0 ? 'A' : 'B'} · {names[i]}
+          </span>
+        ))}
+        unit={settings.unit}
+        showDelta
+        stale={stale}
+      />
       <Toolbar
         settings={settings}
         onSection={controls.onSection}

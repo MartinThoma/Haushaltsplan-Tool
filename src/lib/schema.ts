@@ -2,14 +2,17 @@ import { z } from 'zod';
 import { de } from 'zod/locales';
 import { aggregate } from './aggregate.ts';
 import {
-  ALLOWED_HAUPTGRUPPEN,
   MASTER,
   SECTIONS,
   SECTION_LABEL,
   SIDES,
   SIDE_LABEL,
+  codeLevel,
+  codePattern,
   codeTitle,
   describeAllowed,
+  hauptgruppeOf,
+  HAUPTGRUPPE_5_6,
   isKnownCode,
   listedChildren,
   parentCode,
@@ -17,10 +20,11 @@ import {
   type Side,
 } from './master.ts';
 import { formatEuro } from './format.ts';
+import { STORED_KENNZAHLEN, type StoredKennzahlKey } from './kennzahlen.ts';
 
 z.config(de());
 
-export const STATUS_VALUES = ['Ansatz', 'Nachtrag', 'Ergebnis'] as const;
+export const STATUS_VALUES = ['Entwurf', 'Ansatz', 'Nachtrag', 'Ergebnis'] as const;
 
 export const metadataSchema = z
   .strictObject({
@@ -34,8 +38,13 @@ export const metadataSchema = z
       .int()
       .positive({ error: 'Die Einwohnerzahl muss größer als 0 sein' })
       .meta({ description: 'Einwohnerzahl, Grundlage für die Pro-Kopf-Werte' }),
+    einwohner_stichtag: z.iso
+      .date()
+      .optional()
+      .meta({ description: 'Stichtag der Einwohnerzahl (JJJJ-MM-TT), z. B. 31.12. des Vorjahres' }),
     status: z.enum(STATUS_VALUES).meta({
-      description: 'Ansatz = Haushaltsplan, Nachtrag = Nachtragshaushaltsplan, Ergebnis = Jahresrechnung',
+      description:
+        'Entwurf = Entwurf des Haushaltsplans, Ansatz = Haushaltsplan, Nachtrag = Nachtragshaushaltsplan, Ergebnis = Jahresrechnung',
     }),
     waehrung: z.literal('EUR'),
     quelle: z
@@ -46,10 +55,11 @@ export const metadataSchema = z
   })
   .meta({ description: 'Stammdaten des Datensatzes' });
 
+const codeKey = (section: Section, side: Side) => z.string().regex(new RegExp(codePattern(section, side)));
+
 function amountsSchema(section: Section, side: Side) {
-  const digits = ALLOWED_HAUPTGRUPPEN[section][side];
-  return z.record(z.string().regex(new RegExp(`^[${digits}][0-9]{0,2}$`)), z.number()).meta({
-    description: `${SIDE_LABEL[side]} des ${SECTION_LABEL[section]}s: Gruppierungsziffer (${describeAllowed(section, side)}, 1–3 Stellen) → Betrag in Euro`,
+  return z.record(codeKey(section, side), z.number()).meta({
+    description: `${SIDE_LABEL[side]} des ${SECTION_LABEL[section]}s: Gruppierungsziffer (${describeAllowed(section, side)}, 1–3 Stellen, Hauptgruppe 5/6 als "5/6") → Betrag in Euro`,
   });
 }
 
@@ -60,11 +70,53 @@ function sectionSchema(section: Section) {
   });
 }
 
+function labelsSchema(section: Section) {
+  const labels = (side: Side) => z.record(codeKey(section, side), z.string().trim().min(1)).optional();
+  return z.strictObject({ einnahmen: labels('einnahmen'), ausgaben: labels('ausgaben') }).optional();
+}
+
+const kennzahlSchema = z.strictObject({
+  wert: z.number().nonnegative(),
+  stichtag: z.iso.date().optional().meta({ description: 'Stichtag des Werts (JJJJ-MM-TT), z. B. bei Schuldenständen' }),
+  quelle: z.string().trim().min(1).optional().meta({ description: 'Herkunft des Werts' }),
+});
+
+const kennzahlenSchema = z
+  .strictObject(
+    Object.fromEntries(
+      STORED_KENNZAHLEN.map((k) => [k.key, kennzahlSchema.optional().meta({ description: k.description })]),
+    ) as Record<StoredKennzahlKey, z.ZodOptional<typeof kennzahlSchema>>,
+  )
+  .meta({ description: 'Kernzahlen des Haushaltsjahres, z. B. Hebesätze und Schuldenstand' });
+
 export const datasetSchema = z
   .strictObject({
     $schema: z.string().optional(),
     metadata: metadataSchema,
     betraege: z.strictObject({ vwh: sectionSchema('vwh'), vmh: sectionSchema('vmh') }),
+    kennzahlen: kennzahlenSchema.optional(),
+    nicht_aufgeschluesselt: z
+      .strictObject({ vwh: labelsSchema('vwh'), vmh: labelsSchema('vmh') })
+      .optional()
+      .meta({
+        description:
+          'Erläuterung, was in der Differenz zwischen einer angegebenen Summe und ihrer Untergliederung steckt, z. B. { "vwh": { "einnahmen": { "00": "Grundsteuer A und B" } } }',
+      }),
+  })
+  .superRefine((data, ctx) => {
+    for (const section of SECTIONS) {
+      for (const side of SIDES) {
+        for (const code of Object.keys(data.nicht_aufgeschluesselt?.[section]?.[side] ?? {})) {
+          if (!(code in data.betraege[section][side])) {
+            ctx.addIssue({
+              code: 'custom',
+              path: ['nicht_aufgeschluesselt', section, side, code],
+              message: `Erläuterung zu ${code}, aber betraege.${section}.${side} enthält keinen Betrag für ${code}`,
+            });
+          }
+        }
+      }
+    }
   })
   .meta({
     title: 'Kameraler Haushaltsdatensatz',
@@ -84,10 +136,13 @@ function formatPath(path: PropertyKey[]): string {
 function invalidCodeMessage(path: PropertyKey[]): string {
   const [, section, side, code] = path.map(String) as [string, Section, Side, string];
   const where = `${SIDE_LABEL[side]} ${SECTION_LABEL[section]} (${formatPath(path.slice(0, -1))})`;
-  if (!/^\d{1,3}$/.test(code)) {
+  if (code === '5' || code === '6') {
+    return `Die Hauptgruppe ${code} wird zusammen als „${HAUPTGRUPPE_5_6}“ angegeben – ${where}`;
+  }
+  if (!/^\d{1,3}$/.test(code) && code !== HAUPTGRUPPE_5_6) {
     return `„${code}“ ist keine gültige Gruppierungsziffer (1–3 Ziffern erwartet) – ${where}`;
   }
-  const hauptgruppe = code[0]!;
+  const hauptgruppe = hauptgruppeOf(code);
   return (
     `Gruppierungsziffer ${code} gehört zur Hauptgruppe ${hauptgruppe} (${MASTER[hauptgruppe]?.title}) ` +
     `und ist bei ${where} nicht zulässig; erlaubt ist ${describeAllowed(section, side)}`
@@ -95,13 +150,16 @@ function invalidCodeMessage(path: PropertyKey[]): string {
 }
 
 function issueToMessage(issue: z.core.$ZodIssue): string {
-  if (issue.code === 'invalid_key' && issue.path[0] === 'betraege') return invalidCodeMessage(issue.path);
+  if (issue.code === 'invalid_key' && issue.path.length === 4) return invalidCodeMessage(issue.path);
   const path = formatPath(issue.path);
   const message = issue.code === 'invalid_type' && issue.input === undefined ? 'Pflichtfeld fehlt' : issue.message;
   return path ? `${path}: ${message}` : message;
 }
 
-/** Non-fatal findings: unknown Gruppen and stated totals that disagree with their parts. */
+// In group 63, the listed Untergruppen 638/639 are statistical codes, not a closed list.
+const OPEN_GROUPS = new Set(['63']);
+
+/** Non-fatal findings: codes the Gruppierungsplan does not know and totals smaller than their parts. */
 function collectWarnings(data: BudgetDataset): string[] {
   const warnings: string[] = [];
   for (const section of SECTIONS) {
@@ -109,21 +167,27 @@ function collectWarnings(data: BudgetDataset): string[] {
       const amounts = data.betraege[section][side];
       for (const code of Object.keys(amounts)) {
         const where = `Gruppierungsziffer ${code} (${SECTION_LABEL[section]}, ${SIDE_LABEL[side]})`;
-        const group = code.length === 3 ? parentCode(code)! : code;
+        const group = codeLevel(code) === 3 ? parentCode(code)! : code;
         if (!isKnownCode(group)) {
-          warnings.push(
-            `${where}: ${group.length === 2 ? 'Gruppe' : 'Hauptgruppe'} ${group} ist im Gruppierungsplan nicht vorgesehen`,
-          );
-        } else if (code !== group && !isKnownCode(code) && listedChildren(group).length > 0) {
+          warnings.push(`${where}: Gruppe ${group} ist im Gruppierungsplan nicht vorgesehen`);
+        } else if (
+          code !== group &&
+          !isKnownCode(code) &&
+          listedChildren(group).length > 0 &&
+          !OPEN_GROUPS.has(group)
+        ) {
           // Untergruppen may only be formed freely where the plan lists none for the Gruppe.
           warnings.push(
             `${where}: Untergruppe ${code} ist im Gruppierungsplan nicht vorgesehen; Gruppe ${group} (${codeTitle(group)}) kennt ${listedChildren(group).join(', ')}`,
           );
         }
       }
+      // A stated total above the sum of its parts is a partial breakdown ("nicht aufgeschlüsselt");
+      // below it, the figures contradict each other.
       for (const [code, { stated, computed }] of aggregate(amounts).mismatches) {
+        if (stated >= computed) continue;
         warnings.push(
-          `${code} ${codeTitle(code)} (${SECTION_LABEL[section]}, ${SIDE_LABEL[side]}): angegebene Summe ${formatEuro(stated)} weicht von der Summe der Untergliederung ${formatEuro(computed)} ab – es wird der angegebene Wert verwendet`,
+          `${code} ${codeTitle(code)} (${SECTION_LABEL[section]}, ${SIDE_LABEL[side]}): angegebene Summe ${formatEuro(stated)} ist kleiner als die Summe der Untergliederung ${formatEuro(computed)} – es wird der angegebene Wert verwendet`,
         );
       }
     }
