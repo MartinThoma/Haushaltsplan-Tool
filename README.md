@@ -106,6 +106,11 @@ python3 scripts/import_einzelplan.py \
   --status-plan Entwurf --quelle "Entwurf Haushaltsplan 2026 der Gemeinde Polling"
 ```
 
+Einzelpläne mit fünfstelligen Haushaltsstellen (`41400 Entgelte Beschäftigte`, drei Wertspalten) liest
+[`scripts/import_einzelplan_5stellig.py`](scripts/import_einzelplan_5stellig.py) und prüft jeden Block gegen
+seine Summenzeile. Zeigt die Vorjahresspalte einen Nachtragshaushalt, setzt `--status-vorjahr Nachtrag`
+den Status.
+
 Enthält der Haushaltsplan eine Gruppierungsübersicht (z. B. aus CIP-KOMMUNAL), ist
 [`scripts/import_gruppierungsuebersicht.py`](scripts/import_gruppierungsuebersicht.py) einfacher: Es liest
 Ansatz, Vorjahresansatz und Rechnungsergebnis direkt nach Gruppierung und prüft sie gegen alle gedruckten
@@ -154,12 +159,13 @@ eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine ander
 
 ## Mitgelieferte Daten
 
-| Kommune              | Jahre                                          | Quelle                                                                                          |
-| -------------------- | ---------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| Plattling            | 2024–2026 (Ansatz)                             | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen         |
-| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf) | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                      |
-| Osterhofen           | 2025–2026 (Ansatz)                             | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht |
-| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)       | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                       |
+| Kommune              | Jahre                                                | Quelle                                                                                          |
+| -------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| Plattling            | 2024–2026 (Ansatz)                                   | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen         |
+| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf)       | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                      |
+| Osterhofen           | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht |
+| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)             | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                       |
+| Haar                 | 2023–2024 (Ergebnis), 2025 (Nachtrag), 2026 (Ansatz) | Haushaltspläne 2025 und 2026, Einzelpläne aus dem Ratsinformationssystem                        |
 
 Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
 hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,
