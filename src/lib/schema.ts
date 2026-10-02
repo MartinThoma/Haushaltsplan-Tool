@@ -200,9 +200,11 @@ function collectWarnings(data: BudgetDataset): string[] {
         );
       }
       // A stated total above the sum of its parts is a partial breakdown ("nicht aufgeschlüsselt");
-      // below it, the figures contradict each other.
+      // below it, the figures contradict each other – unless the dataset explains the remainder,
+      // e.g. Untergruppen the Gruppierungsplan does not list whose corrections sum up negative.
+      const explained = data.nicht_aufgeschluesselt?.[section]?.[side] ?? {};
       for (const [code, { stated, computed }] of aggregate(amounts).mismatches) {
-        if (stated >= computed) continue;
+        if (stated >= computed || code in explained) continue;
         warnings.push(
           `${code} ${codeTitle(code)} (${SECTION_LABEL[section]}, ${SIDE_LABEL[side]}): angegebene Summe ${formatEuro(stated)} ist kleiner als die Summe der Untergliederung ${formatEuro(computed)} – es wird der angegebene Wert verwendet`,
         );

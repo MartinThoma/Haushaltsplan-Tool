@@ -101,6 +101,14 @@ describe('validateDataset', () => {
     expect(errorsOf(validateDataset(data))[0]).toContain('keinen Betrag für 4');
   });
 
+  it('accepts an explained negative remainder', () => {
+    const data = valid() as Record<string, any>;
+    data.betraege.vmh.ausgaben = { '93': 900, '932': 1000 };
+    expect(warningsOf(validateDataset(data))[0]).toContain('kleiner als die Summe der Untergliederung');
+    data.nicht_aufgeschluesselt = { vmh: { ausgaben: { '93': 'weitere Untergruppen der Kommune (934)' } } };
+    expect(warningsOf(validateDataset(data))).toEqual([]);
+  });
+
   it('accepts key figures with reference date and source, and rejects unknown ones', () => {
     const data = valid() as Record<string, any>;
     data.kennzahlen = {

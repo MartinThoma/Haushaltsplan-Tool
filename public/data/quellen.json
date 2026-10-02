@@ -1,5 +1,55 @@
 [
   {
+    "datei": "Augsburg/1._Nachtrag_2025_-_Reindruck.pdf",
+    "titel": "1. Nachtragshaushaltssatzung 2025 mit Nachtragshaushaltsplan",
+    "herausgeber": "Stadt Augsburg (Stadtkämmerei)",
+    "url": "https://www.augsburg.de/fileadmin/user_upload/buergerservice_rathaus/rathaus/finanzen/haushaltsplan/1._Nachtrag_2025_-_Reindruck.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "df13800f88c198715706c2bf08b7426bdbc8fc5bfe9ab6c6d5ab37e21c62b2cf",
+    "bytes": 6096230,
+    "datensaetze": ["09761000_2025"]
+  },
+  {
+    "datei": "Augsburg/1._Nachtrag_2026_-_Reindruck.pdf",
+    "titel": "1. Nachtragshaushaltssatzung 2026 mit Nachtragshaushaltsplan",
+    "herausgeber": "Stadt Augsburg (Stadtkämmerei)",
+    "url": "https://www.augsburg.de/fileadmin/user_upload/buergerservice_rathaus/rathaus/finanzen/haushaltsplan/1._Nachtrag_2026_-_Reindruck.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "7b2a390ccaed40f2c8e572429488dfc4690fa8a192fb892ba948beb25059812f",
+    "bytes": 7144234,
+    "datensaetze": ["09761000_2026"]
+  },
+  {
+    "datei": "Augsburg/1_Haushaltssatzung_2023_2024_mit_Anlagen_Reindruck_neu.pdf",
+    "titel": "Haushaltsplan 2023/2024: Haushaltssatzung mit Anlagen (u. a. Vorbericht, Gruppierungsübersicht)",
+    "herausgeber": "Stadt Augsburg (Stadtkämmerei)",
+    "url": "https://www.augsburg.de/fileadmin/user_upload/buergerservice_rathaus/rathaus/finanzen/haushaltsplan/1_Haushaltssatzung_2023_2024_mit_Anlagen_Reindruck_neu.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "47333787e33a824884744efe6569bd7f1839d7ad6cae12350f23d949536424ca",
+    "bytes": 12892975,
+    "datensaetze": ["09761000_2020", "09761000_2021", "09761000_2022", "09761000_2023", "09761000_2024"]
+  },
+  {
+    "datei": "Augsburg/1_Haushaltssatzung_2025_2025_mit_Anlagen_Reindruck.pdf",
+    "titel": "Haushaltsplan 2025/2026: Haushaltssatzung mit Anlagen (u. a. Vorbericht, Gruppierungsübersicht)",
+    "herausgeber": "Stadt Augsburg (Stadtkämmerei)",
+    "url": "https://www.augsburg.de/fileadmin/user_upload/buergerservice_rathaus/rathaus/finanzen/haushaltsplan/1_Haushaltssatzung_2025_2025_mit_Anlagen_Reindruck.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "490ad705298df4f010fa50a81d446fb9f0d17e5330b281cfcf298835e558ce81",
+    "bytes": 23335387,
+    "datensaetze": ["09761000_2022", "09761000_2023", "09761000_2024", "09761000_2025", "09761000_2026"]
+  },
+  {
+    "datei": "Augsburg/__Reindruck_2._Ntr._24.pdf",
+    "titel": "2. Nachtragshaushaltssatzung 2024 mit Nachtragshaushaltsplan",
+    "herausgeber": "Stadt Augsburg (Stadtkämmerei)",
+    "url": "https://www.augsburg.de/fileadmin/user_upload/buergerservice_rathaus/rathaus/finanzen/haushaltsplan/__Reindruck_2._Ntr._24.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "d1db7424a3586a1151b9f9c2a2c8c397cb57c89223e0867729707e410510238a",
+    "bytes": 5943804,
+    "datensaetze": ["09761000_2024"]
+  },
+  {
     "datei": "Deggendorf/HH-Internet-Ausg-Einn-Internetdarstellung-1-1.pdf",
     "titel": "Haushaltsübersicht 2018–2026: wichtigste Einnahme- und Ausgabearten (in 1.000 €)",
     "herausgeber": "Stadt Deggendorf (Stadtkämmerei)",
@@ -437,7 +487,7 @@
     "abgerufen": "2026-10-02",
     "sha256": "433fd8833ade4157bc7e46d05ea4c67a8573ff3c73eeca109f72d7bd0337ea6a",
     "bytes": 3906482,
-    "datensaetze": ["09271119_2020"]
+    "datensaetze": ["09271119_2020", "09761000_2020"]
   },
   {
     "datei": "Statistik/a1210c_202000.pdf",
@@ -447,7 +497,7 @@
     "abgerufen": "2026-10-02",
     "sha256": "8238230e9b1b94cd30235e7f7e015e6f349565eee6afc09dfd27483f1cdabf50",
     "bytes": 3199697,
-    "datensaetze": ["09271119_2021"]
+    "datensaetze": ["09271119_2021", "09761000_2021"]
   },
   {
     "datei": "Statistik/a1210c_202100.pdf",
@@ -457,7 +507,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "bbe3e96e1ae655ad8c173378b858fefa3621ea96f5f59bce5eaaa70c8049c7cf",
     "bytes": 3898052,
-    "datensaetze": ["09184131_2022", "09271119_2022"]
+    "datensaetze": ["09184131_2022", "09271119_2022", "09761000_2022"]
   },
   {
     "datei": "Statistik/a1210c_202200.pdf",
@@ -467,7 +517,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "b49110b75f211b6e63eddaa96ac424de7d5307ed69d90de4f56b3ae46de8a18a",
     "bytes": 5374408,
-    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023", "09271119_2023"]
+    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023", "09271119_2023", "09761000_2023"]
   },
   {
     "datei": "Statistik/a1210c_202300.pdf",
@@ -484,6 +534,7 @@
       "09190142_2024",
       "09271119_2024",
       "09271146_2024",
+      "09761000_2024",
       "09771145_2024"
     ]
   },
@@ -504,6 +555,7 @@
       "09271119_2025",
       "09271141_2025",
       "09271146_2025",
+      "09761000_2025",
       "09771145_2025"
     ]
   },
@@ -524,6 +576,7 @@
       "09271119_2026",
       "09271141_2026",
       "09271146_2026",
+      "09761000_2026",
       "09771145_2026"
     ]
   },
@@ -555,7 +608,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "d85c559e5cc719d413bb6fe00f4f14e6e76fd328ce038d4db9c384ee82661de4",
     "bytes": 3204068,
-    "datensaetze": ["09184131_2022", "09271119_2022", "09271119_2023"]
+    "datensaetze": ["09184131_2022", "09271119_2022", "09271119_2023", "09761000_2022", "09761000_2023"]
   },
   {
     "datei": "Statistik/l3100c_202300.pdf",
@@ -565,7 +618,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "d3e5fe03ad2ae9e9226dcbbd7e95cd273c0d967783f3d1ebe44b4dbfea155860",
     "bytes": 5818873,
-    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023", "09271119_2024"]
+    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023", "09271119_2024", "09761000_2024"]
   },
   {
     "datei": "Statistik/l3100c_202400.pdf",
@@ -588,7 +641,8 @@
       "09271119_2025",
       "09271141_2025",
       "09271146_2024",
-      "09271146_2025"
+      "09271146_2025",
+      "09761000_2025"
     ]
   },
   {

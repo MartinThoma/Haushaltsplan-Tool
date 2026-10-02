@@ -17,6 +17,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import import_gruppierungsuebersicht as gu  # noqa: E402
+import import_gruppierungsuebersicht_doppelhaushalt as dh  # noqa: E402
 from budget_import import pdf_lines  # noqa: E402
 
 FIXTURES = Path(__file__).resolve().parent / 'fixtures'
@@ -34,16 +35,30 @@ def overview(lines):
     return lines[start:end]
 
 
+def overview_doppelhaushalt(lines):
+    """The lines of a Doppelhaushalt's "3.3 Gruppierungsübersicht" up to its grand total."""
+    _, items, subtotals = dh.parse(lines)
+    if not items:
+        raise SystemExit('Keine Gruppierungsübersicht gefunden')
+    first = min(n for _, _, n in items) - 1
+    start = max(i for i, line in enumerate(lines[:first]) if dh.START.search(line))
+    end = max(n for _, _, n in items + subtotals)
+    return lines[start:end]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('pdf')
     parser.add_argument('name', help='Name der Fixture-Datei ohne Endung, z. B. kirchheim_2024')
     parser.add_argument('--gruppierungsuebersicht', action='store_true', help='nur die Gruppierungsübersicht')
+    parser.add_argument('--doppelhaushalt', action='store_true', help='nur die Gruppierungsübersicht (Doppelhaushalt)')
     args = parser.parse_args()
 
     lines = pdf_lines(args.pdf)
     if args.gruppierungsuebersicht:
         lines = overview(lines)
+    elif args.doppelhaushalt:
+        lines = overview_doppelhaushalt(lines)
     target = FIXTURES / f'{args.name}.txt.gz'
     # mtime=0 keeps the file byte-identical when it is recreated from the same PDF.
     target.write_bytes(gzip.compress(('\n'.join(lines) + '\n').encode('utf-8'), mtime=0))
