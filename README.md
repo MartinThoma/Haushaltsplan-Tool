@@ -192,7 +192,9 @@ Quellen der Kernzahlen (in jeder Datei pro Wert vermerkt):
 ## Datenschutz
 
 Die App lädt nur eigene statische Dateien, bindet keine externen Dienste ein und setzt keine
-Cookies. Geöffnete Dateien werden ausschließlich im Browser verarbeitet.
+Cookies. Geöffnete Dateien werden ausschließlich im Browser verarbeitet. Damit ein Neuladen – auch das
+automatische nach einem Update der App – sie nicht schließt, merkt sich der Browser-Tab ihren Inhalt im
+`sessionStorage`; er wird mit dem Tab gelöscht.
 
 ## Projektstruktur
 
