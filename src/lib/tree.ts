@@ -54,7 +54,7 @@ function buildSide(datasets: readonly BudgetDataset[], section: Section, side: S
   const codes = new Set(aggregations.flatMap((a) => [...a.values.keys()]));
   const nodes = new Map<string, TreeNode>();
   // Lexicographic order puts every parent before its children ("0" < "00" < "000" < "01" and "5/6" < "50").
-  for (const code of [...codes].sort()) {
+  for (const code of [...codes].toSorted()) {
     const node: TreeNode = {
       id: `${section}.${side}.${code}`,
       kind: 'code',

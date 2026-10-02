@@ -21,9 +21,10 @@ dev: node_modules
 test: node_modules
 	npm test
 
-## Everything the CI runs: types, formatting, tests incl. data validation, build, Python importers
+## Everything the CI runs: types, lint, formatting, tests incl. data validation, build, Python importers
 check: node_modules
 	npm run typecheck
+	npm run lint
 	npm run format:check
 	npm test
 	npm run build

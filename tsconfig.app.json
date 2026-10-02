@@ -1,0 +1,10 @@
+{
+  // Browser code: no Node.js types, so Node APIs cannot slip into the app.
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "types": ["vite/client", "vite-plugin-pwa/client"]
+  },
+  "include": ["src"],
+  "exclude": ["src/**/*.test.ts"]
+}

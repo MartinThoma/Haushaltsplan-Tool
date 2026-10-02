@@ -16,13 +16,13 @@ Gruppierungsübersicht – vollständig im Browser, ohne Server und ohne Trackin
 
 Voraussetzung: Node.js ≥ 20.
 
-| Befehl       | Zweck                                                                            |
-| ------------ | -------------------------------------------------------------------------------- |
-| `make build` | Erzeugt die statischen Dateien in `dist/` – deren Inhalt hochladen               |
-| `make serve` | Baut und startet einen lokalen Webserver auf http://localhost:4173               |
-| `make dev`   | Entwicklungsserver mit Hot Reload                                                |
-| `make test`  | Unit-Tests, inkl. Prüfung aller mitgelieferten Daten                             |
-| `make check` | Alle Prüfungen der CI: Typen, Formatierung, Tests, Build, Python-Importer (ruff) |
+| Befehl       | Zweck                                                                                           |
+| ------------ | ----------------------------------------------------------------------------------------------- |
+| `make build` | Erzeugt die statischen Dateien in `dist/` – deren Inhalt hochladen                              |
+| `make serve` | Baut und startet einen lokalen Webserver auf http://localhost:4173                              |
+| `make dev`   | Entwicklungsserver mit Hot Reload                                                               |
+| `make test`  | Unit-Tests, inkl. Prüfung aller mitgelieferten Daten                                            |
+| `make check` | Alle Prüfungen der CI: Typen, Lint (oxlint), Formatierung, Tests, Build, Python-Importer (ruff) |
 
 Die CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) führt dieselben Prüfungen bei jedem
 Push und Pull Request aus; der Build bricht bei ungültigen Daten ab.
@@ -201,9 +201,14 @@ public/data/          Datensätze, kommunen.json, generierte JSON-Schemas
 src/data/             Gruppierungsplan (Stammdaten)
 src/lib/              Schema (Zod), Aggregation, Baum, Vergleich, CSV – ohne UI, mit Tests
 src/components/       React-Komponenten
+src/state/            Laden der Datensätze, Ansichtszustand in der URL
 vite-plugins/         Datenprüfung beim Build, Erzeugung der JSON-Schemas
-scripts/              Import aus Einzelplan-PDFs
+scripts/              Import aus Haushaltsplan-PDFs (Python)
 import/               Original-PDFs (lokal, nicht im Repository)
 ```
 
-Technik: Vite, React, TypeScript, Tailwind CSS, Zod, Chart.js, Lucide Icons.
+Technik: Vite, React, TypeScript, Tailwind CSS, Zod, Chart.js, Lucide Icons. TypeScript prüft den
+Browser-Code ([`tsconfig.app.json`](tsconfig.app.json), ohne Node-Typen) getrennt von Build-Konfiguration
+und Tests ([`tsconfig.node.json`](tsconfig.node.json)); [oxlint](https://oxc.rs/docs/guide/usage/linter.html)
+prüft mit Typinformationen u. a. die Hook-Regeln von React und die Barrierefreiheit (jsx-a11y). ESLint
+mit typescript-eslint unterstützt TypeScript 7 nicht.

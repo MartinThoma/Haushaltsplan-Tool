@@ -59,7 +59,7 @@ export async function fetchMunicipalities(): Promise<Municipality[]> {
         jahr,
         einwohner,
       }))
-      .sort(byYear),
+      .toSorted(byYear),
   }));
 }
 
@@ -76,7 +76,7 @@ export function mergeUploads(
   builtin: readonly Municipality[],
   uploads: readonly { entry: CatalogEntry; kommune: string }[],
 ): Municipality[] {
-  const byAgs = new Map(builtin.map((m) => [m.ags, { ...m, entries: [...m.entries] }]));
+  const byAgs = new Map(builtin.map((m) => [m.ags, { ...m }]));
   for (const { entry, kommune } of uploads) {
     const municipality = byAgs.get(entry.ags) ?? {
       ags: entry.ags,
@@ -85,11 +85,10 @@ export function mergeUploads(
       bundesland: bundeslandFromAgs(entry.ags),
       entries: [],
     };
-    municipality.entries.push(entry);
-    municipality.entries.sort(byYear);
+    municipality.entries = [...municipality.entries, entry].toSorted(byYear);
     byAgs.set(entry.ags, municipality);
   }
-  return [...byAgs.values()].sort((a, b) => a.name.localeCompare(b.name, 'de'));
+  return [...byAgs.values()].toSorted((a, b) => a.name.localeCompare(b.name, 'de'));
 }
 
 /** "2026" or "2026 · hochgeladen" */
@@ -129,5 +128,5 @@ export function searchMunicipalities(municipalities: readonly Municipality[], qu
             : -1;
     if (score >= 0) scored.push({ m, score });
   }
-  return scored.sort((a, b) => a.score - b.score || a.m.name.localeCompare(b.m.name, 'de')).map((s) => s.m);
+  return scored.toSorted((a, b) => a.score - b.score || a.m.name.localeCompare(b.m.name, 'de')).map((s) => s.m);
 }

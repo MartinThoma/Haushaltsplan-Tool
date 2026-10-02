@@ -8,13 +8,25 @@ import {
   Tooltip,
   type ChartData,
   type ChartOptions,
+  type ChartType,
   type Plugin,
 } from 'chart.js';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { formatCompactEuro, formatEuro } from '../lib/format.ts';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
+
+interface EndLabelOptions {
+  /** One short label per dataset, drawn at the end of its line. */
+  labels: string[];
+}
+
+declare module 'chart.js' {
+  interface PluginOptionsByType<TType extends ChartType> {
+    endLabels?: EndLabelOptions;
+  }
+}
 
 const SERIES_SLOTS = 8;
 
@@ -84,22 +96,22 @@ function crosshair(tokens: Tokens): Plugin<'line'> {
 const END_LABEL_GAP = 14;
 
 /**
- * Direct labels at the line ends for 2–4 series, skipped when they would collide.
- * Reads the labels through a ref because Chart.js keeps the plugin instance it was created with.
+ * Direct labels at the line ends for 2–4 series, skipped when they would collide. The labels come
+ * from the chart options, which Chart.js updates on every render, unlike the plugin instance.
  */
-function endLabels(shortLabels: { current: string[] }, tokens: Tokens): Plugin<'line'> {
+function endLabels(tokens: Tokens): Plugin<'line', EndLabelOptions> {
   return {
     id: 'endLabels',
-    afterDatasetsDraw(chart) {
+    afterDatasetsDraw(chart, _args, options) {
       const datasets = chart.data.datasets;
       if (datasets.length < 2 || datasets.length > 4) return;
       const points = datasets.flatMap((dataset, i) => {
         const meta = chart.getDatasetMeta(i);
         const last = (dataset.data as (number | null)[]).findLastIndex((v) => v !== null);
         const point = meta.data[last];
-        return point && !meta.hidden ? [{ x: point.x, y: point.y, text: shortLabels.current[i] ?? '' }] : [];
+        return point && !meta.hidden ? [{ x: point.x, y: point.y, text: options.labels[i] ?? '' }] : [];
       });
-      const ys = points.map((p) => p.y).sort((a, b) => a - b);
+      const ys = points.map((p) => p.y).toSorted((a, b) => a - b);
       if (ys.some((y, i) => i > 0 && y - ys[i - 1]! < END_LABEL_GAP)) return;
       const { ctx } = chart;
       ctx.save();
@@ -114,9 +126,7 @@ function endLabels(shortLabels: { current: string[] }, tokens: Tokens): Plugin<'
 
 export function TrendChart({ labels, series }: Props) {
   const tokens = useTokens();
-  const shortLabels = useRef<string[]>([]);
-  shortLabels.current = series.map((s) => s.shortLabel);
-  const plugins = useMemo(() => [crosshair(tokens), endLabels(shortLabels, tokens)], [tokens]);
+  const plugins = useMemo(() => [crosshair(tokens), endLabels(tokens)], [tokens]);
 
   const data: ChartData<'line', (number | null)[], string> = {
     labels,
@@ -170,6 +180,7 @@ export function TrendChart({ labels, series }: Props) {
     plugins: {
       // The legend is rendered in HTML next to the chart.
       legend: { display: false },
+      endLabels: { labels: series.map((s) => s.shortLabel) },
       tooltip: {
         backgroundColor: tokens.surface,
         borderColor: tokens.border,

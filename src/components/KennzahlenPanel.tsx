@@ -47,6 +47,20 @@ function provenance(cell: KennzahlValue | null): string | undefined {
     .join(' · ');
 }
 
+function format(definition: KennzahlDefinition, value: number | null): string {
+  if (value === null) return DASH;
+  if (definition.unit === 'hebesatz') return `${formatInteger(value)} %`;
+  if (definition.unit === 'anteil') return formatShare(value);
+  return formatEuro(value);
+}
+
+function formatDelta(definition: KennzahlDefinition, a: number | null, b: number | null): string {
+  if (a === null || b === null) return DASH;
+  if (definition.unit === 'hebesatz') return formatPoints(b - a);
+  if (definition.unit === 'anteil') return formatPoints((b - a) * 100);
+  return formatSignedEuro(b - a);
+}
+
 export function KennzahlenPanel({ datasets, headers, unit, showDelta = false, stale = false }: Props) {
   if (!datasets) return null;
   const einwohner = datasets.map((d) => d.data.metadata.einwohner);
@@ -71,20 +85,6 @@ export function KennzahlenPanel({ datasets, headers, unit, showDelta = false, st
   // Values in the unit shown on screen: € figures follow the €/EW switch.
   const shown = (definition: KennzahlDefinition, cell: KennzahlValue | null, i: number) =>
     cell === null ? null : definition.unit === 'euro' ? toUnit(cell.wert, einwohner[i]!, unit) : cell.wert;
-
-  const format = (definition: KennzahlDefinition, value: number | null) => {
-    if (value === null) return DASH;
-    if (definition.unit === 'hebesatz') return `${formatInteger(value)} %`;
-    if (definition.unit === 'anteil') return formatShare(value);
-    return formatEuro(value);
-  };
-
-  const formatDelta = (definition: KennzahlDefinition, a: number | null, b: number | null) => {
-    if (a === null || b === null) return DASH;
-    if (definition.unit === 'hebesatz') return formatPoints(b - a);
-    if (definition.unit === 'anteil') return formatPoints((b - a) * 100);
-    return formatSignedEuro(b - a);
-  };
 
   const sources = new Map<string, string[]>();
   for (const d of datasets) {

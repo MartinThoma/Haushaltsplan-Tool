@@ -41,7 +41,7 @@ export function PairView({ datasets, stale, controls, threshold, onThreshold }: 
   const { rows, toggle, setLevel } = useTreeRows(trees, controls);
 
   const einwohner = datasets?.map((d) => d.data.metadata.einwohner) ?? [1, 1];
-  const value = (node: TreeNode, i: 0 | 1) => toUnit(node.values[i], einwohner[i]!, settings.unit);
+  const value = (node: TreeNode, i: 0 | 1) => toUnit(node.values[i] ?? null, einwohner[i]!, settings.unit);
   const unit = unitSuffix(settings.unit);
   // Labels follow the datasets on screen, which lag behind the selection while loading.
   const names = datasets?.map((d) => `${d.data.metadata.kommune} ${d.data.metadata.jahr}`) ?? ['A', 'B'];

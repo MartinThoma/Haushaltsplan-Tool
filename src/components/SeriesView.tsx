@@ -159,29 +159,29 @@ export function SeriesView({ datasets, stale, controls, chart, onChart }: Props)
     const pick = picks.find((p) => p.id === node.id);
     const full = !pick && picks.length >= MAX_SERIES;
     return (
-      <button
-        type="button"
-        role="checkbox"
-        aria-checked={!!pick}
-        disabled={full}
-        onClick={() => toggleChart(node.id)}
-        title={
-          full
-            ? `Höchstens ${MAX_SERIES} Linien im Diagramm`
-            : pick
-              ? 'Aus dem Diagramm entfernen'
-              : 'Im Diagramm anzeigen'
-        }
-        aria-label={`${seriesLabel(node)} im Diagramm ${pick ? 'ausblenden' : 'anzeigen'}`}
-        className="mt-0.5 mr-1 flex size-4 shrink-0 items-center justify-center rounded border border-line-strong bg-surface hover:border-ink-2 disabled:opacity-40"
-        style={
-          pick
-            ? { background: `var(--series-${pick.slot + 1})`, borderColor: `var(--series-${pick.slot + 1})` }
-            : undefined
-        }
-      >
-        {pick && <Check aria-hidden className="size-3 stroke-[3] text-white" />}
-      </button>
+      <span className="relative mt-0.5 mr-1 flex size-4 shrink-0 items-center justify-center">
+        <input
+          type="checkbox"
+          checked={!!pick}
+          disabled={full}
+          onChange={() => toggleChart(node.id)}
+          title={
+            full
+              ? `Höchstens ${MAX_SERIES} Linien im Diagramm`
+              : pick
+                ? 'Aus dem Diagramm entfernen'
+                : 'Im Diagramm anzeigen'
+          }
+          aria-label={`${seriesLabel(node)} im Diagramm`}
+          className="size-4 cursor-pointer appearance-none rounded border border-line-strong bg-surface hover:border-ink-2 disabled:cursor-default disabled:opacity-40"
+          style={
+            pick
+              ? { background: `var(--series-${pick.slot + 1})`, borderColor: `var(--series-${pick.slot + 1})` }
+              : undefined
+          }
+        />
+        {pick && <Check aria-hidden className="pointer-events-none absolute size-3 stroke-[3] text-white" />}
+      </span>
     );
   };
 

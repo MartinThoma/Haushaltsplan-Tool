@@ -17,28 +17,27 @@ describe('validateKommunen', () => {
   });
 
   it('rejects a Bundesland that contradicts the AGS', () => {
-    const result = validateKommunen([{ ...plattling, bundesland: 'BW' }]);
-    expect(result.ok).toBe(false);
-    if (!result.ok)
-      expect(result.errors[0]).toBe(
-        'Eintrag 1 (Plattling), bundesland: AGS 09271146 liegt in Bayern (BY), nicht in BW',
-      );
+    expect(validateKommunen([{ ...plattling, bundesland: 'BW' }])).toEqual({
+      ok: false,
+      errors: ['Eintrag 1 (Plattling), bundesland: AGS 09271146 liegt in Bayern (BY), nicht in BW'],
+    });
   });
 
   it('rejects malformed postal codes and duplicate AGS', () => {
-    const result = validateKommunen([{ ...plattling, plz: ['9444'] }, plattling]);
-    expect(result.ok).toBe(false);
-    if (!result.ok) expect(result.errors).toHaveLength(2);
+    expect(validateKommunen([{ ...plattling, plz: ['9444'] }, plattling])).toMatchObject({
+      ok: false,
+      errors: [expect.stringContaining('Postleitzahlen'), expect.stringContaining('doppelt')],
+    });
   });
 });
 
-describe('checkKommunenAgainstDatasets', () => {
-  const dataset = (einwohner: number) =>
-    validateDataset({
-      metadata: { kommune: 'Plattling', ags: '09271146', jahr: 2026, einwohner, status: 'Ansatz', waehrung: 'EUR' },
-      betraege: { vwh: { einnahmen: {}, ausgaben: {} }, vmh: { einnahmen: {}, ausgaben: {} } },
-    });
+const dataset = (einwohner: number) =>
+  validateDataset({
+    metadata: { kommune: 'Plattling', ags: '09271146', jahr: 2026, einwohner, status: 'Ansatz', waehrung: 'EUR' },
+    betraege: { vwh: { einnahmen: {}, ausgaben: {} }, vmh: { einnahmen: {}, ausgaben: {} } },
+  });
 
+describe('checkKommunenAgainstDatasets', () => {
   it('accepts matching files', () => {
     expect(checkKommunenAgainstDatasets([plattling], new Map([['09271146_2026.json', dataset(13100)]]))).toEqual([]);
   });
@@ -60,8 +59,9 @@ describe('checkKommunenAgainstDatasets', () => {
   });
 });
 
+const m = (name: string, plz: string[]): Municipality => ({ ags: name, name, plz, bundesland: 'BY', entries: [] });
+
 describe('searchMunicipalities', () => {
-  const m = (name: string, plz: string[]): Municipality => ({ ags: name, name, plz, bundesland: 'BY', entries: [] });
   const all = [
     m('Deggendorf', ['94469']),
     m('Plattling', ['94447']),

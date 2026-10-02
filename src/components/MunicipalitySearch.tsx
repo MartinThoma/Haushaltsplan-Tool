@@ -132,15 +132,20 @@ export function MunicipalitySearch({ label, municipalities, value, onSelect }: P
 
       {open && (
         <div className="absolute top-full right-0 left-0 z-50 mt-1 min-w-72 overflow-hidden rounded-xl border border-line bg-surface shadow-lg">
-          <ul id={listId} role="listbox" aria-label={label} className="max-h-80 overflow-y-auto py-1">
+          {/* ARIA combobox pattern: a native <select> or <datalist> cannot filter and show two-line results. */}
+          {/* oxlint-disable-next-line jsx-a11y/prefer-tag-over-role */}
+          <div id={listId} role="listbox" aria-label={label} className="max-h-80 overflow-y-auto py-1">
             {results.map((m) => {
               const disabled = m.entries.length === 0;
               const isActive = !disabled && selectable[active] === m;
               return (
-                <li
+                <div
                   key={m.ags}
                   id={`${id}-${m.ags}`}
+                  // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
                   role="option"
+                  // Focus stays in the input (aria-activedescendant), options only need to be focusable.
+                  tabIndex={-1}
                   aria-selected={isActive}
                   aria-disabled={disabled}
                   // mousedown keeps the input focused, so the blur handler does not close the list first
@@ -167,12 +172,16 @@ export function MunicipalitySearch({ label, municipalities, value, onSelect }: P
                   <span className="num shrink-0 text-xs text-ink-2">
                     {disabled ? 'noch keine Daten' : yearRange(m)}
                   </span>
-                </li>
+                </div>
               );
             })}
-          </ul>
+          </div>
           {/* preventDefault keeps focus in the input, so the mail link survives the blur-close */}
-          <div className="border-t border-line bg-surface-2 px-3 py-2.5" onMouseDown={(e) => e.preventDefault()}>
+          <div
+            role="none"
+            className="border-t border-line bg-surface-2 px-3 py-2.5"
+            onMouseDown={(e) => e.preventDefault()}
+          >
             {selectable.length === 0 ? <ContributeHint /> : <ContributeHint compact />}
           </div>
         </div>

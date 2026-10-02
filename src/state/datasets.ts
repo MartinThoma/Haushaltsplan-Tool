@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { DatasetError, fetchDataset, type CatalogEntry, type LoadedDataset } from '../lib/catalog.ts';
 
 // Module-level cache: datasets are immutable once loaded, uploads are put here directly.
@@ -22,41 +22,51 @@ function load(entry: CatalogEntry): Promise<LoadedDataset> {
   return promise;
 }
 
+type Outcome = { dataset: LoadedDataset } | { error: DatasetError };
+
 export interface DatasetsState {
   /** Same order as the requested entries; undefined while loading or failed. */
   items: (LoadedDataset | undefined)[];
-  loading: boolean;
   errors: { entry: CatalogEntry; error: DatasetError }[];
 }
 
+/**
+ * Loads the datasets of `entries`. The result is stable as long as `entries` (pass a memoized
+ * array) and the load outcomes do not change, so it can feed further memoization.
+ */
 export function useDatasets(entries: readonly CatalogEntry[]): DatasetsState {
-  const [, rerender] = useReducer((n: number) => n + 1, 0);
-  const [errors, setErrors] = useState<Record<string, DatasetError>>({});
-  const key = entries.map((e) => e.id).join('|');
+  const [outcomes, setOutcomes] = useState<ReadonlyMap<string, Outcome>>(() => new Map());
 
   useEffect(() => {
     let active = true;
+    const settle = (id: string, outcome: Outcome) => {
+      if (active) setOutcomes((prev) => new Map(prev).set(id, outcome));
+    };
     for (const entry of entries) {
       if (cache.has(entry.id)) continue;
-      load(entry)
-        .then(() => active && rerender())
-        .catch((error: unknown) => {
-          if (!active) return;
-          const err = error instanceof DatasetError ? error : new DatasetError(String(error));
-          setErrors((prev) => ({ ...prev, [entry.id]: err }));
-        });
+      load(entry).then(
+        (dataset) => settle(entry.id, { dataset }),
+        (error: unknown) =>
+          settle(entry.id, { error: error instanceof DatasetError ? error : new DatasetError(String(error)) }),
+      );
     }
     return () => {
       active = false;
     };
-    // `key` identifies the entries; the array itself is recreated on every render.
-  }, [key]);
+  }, [entries]);
 
-  return {
-    items: entries.map((e) => cache.get(e.id)),
-    loading: entries.some((e) => !cache.has(e.id) && !errors[e.id]),
-    errors: entries.flatMap((entry) => (errors[entry.id] ? [{ entry, error: errors[entry.id]! }] : [])),
-  };
+  return useMemo(() => {
+    const items = entries.map((e) => {
+      const outcome = outcomes.get(e.id);
+      return cache.get(e.id) ?? (outcome && 'dataset' in outcome ? outcome.dataset : undefined);
+    });
+    const errors = entries.flatMap((entry, i) => {
+      const outcome = outcomes.get(entry.id);
+      // A later successful load (e.g. after being offline) replaces the error.
+      return !items[i] && outcome && 'error' in outcome ? [{ entry, error: outcome.error }] : [];
+    });
+    return { items, errors };
+  }, [entries, outcomes]);
 }
 
 /**
@@ -64,7 +74,8 @@ export function useDatasets(entries: readonly CatalogEntry[]): DatasetsState {
  * selection dims the current view instead of blanking it.
  */
 export function useLastComplete<T>(value: T | undefined): { value: T | undefined; stale: boolean } {
-  const last = useRef<T | undefined>(undefined);
-  if (value !== undefined) last.current = value;
-  return { value: value ?? last.current, stale: value === undefined && last.current !== undefined };
+  const [last, setLast] = useState(value);
+  // Adjusting state while rendering, as React recommends for values derived from changing input.
+  if (value !== undefined && value !== last) setLast(value);
+  return { value: value ?? last, stale: value === undefined && last !== undefined };
 }
