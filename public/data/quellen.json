@@ -1,5 +1,95 @@
 [
   {
+    "datei": "Deggendorf/HH-Internet-Ausg-Einn-Internetdarstellung-1-1.pdf",
+    "titel": "Haushaltsübersicht 2018–2026: wichtigste Einnahme- und Ausgabearten (in 1.000 €)",
+    "herausgeber": "Stadt Deggendorf (Stadtkämmerei)",
+    "url": "https://anmelden.deggendorf.de/wp-content/deg-forms-analog/kaemmerei/HH-Internet-Ausg-Einn-Internetdarstellung-1-1.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "116b21a30d05fdffbab8fb93a125114911cd4fb12e4cd73744270b09755abfd6",
+    "bytes": 10749,
+    "datensaetze": [
+      "09271119_2018",
+      "09271119_2019",
+      "09271119_2020",
+      "09271119_2021",
+      "09271119_2022",
+      "09271119_2023",
+      "09271119_2024",
+      "09271119_2025",
+      "09271119_2026"
+    ]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-amtsblatt-01-2021.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 1 vom 22.01.2021 (Haushaltssatzung 2021)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-amtsblatt-01-2021.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "0be28f5747d0147400a604ef9130a55b44b4f749b437934f4bcdebef8f46d52b",
+    "bytes": 3762297,
+    "datensaetze": ["09271119_2021"]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-amtsblatt-01.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 1 vom 27.01.2023 (Haushaltssatzung 2023)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-amtsblatt-01.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "80ed9dffe3ff792f076a2b3059f37ce0a757ddbd155382ae39d4df5ac0ae46b1",
+    "bytes": 2163048,
+    "datensaetze": ["09271119_2023"]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-amtsblatt-02-2.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 2 vom 12.03.2025 (Haushaltssatzung 2025)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-amtsblatt-02-2.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "27e2f6ca72424528c867cd5a290b6756959e4a4729c116f85b97e0ba9bfcea78",
+    "bytes": 738746,
+    "datensaetze": ["09271119_2025"]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-amtsblatt-05-3.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 5 vom 19.03.2026 (Haushaltssatzung 2026)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-amtsblatt-05-3.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "a0d200b86693726f4268907e4ecf719ef66a730eb3c2892d8b48d53dcc95f249",
+    "bytes": 603152,
+    "datensaetze": ["09271119_2026"]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-amtsblatt2024-01.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 1 vom 19.01.2024 (Haushaltssatzung 2024)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-amtsblatt2024-01.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "6b5ac86a4523dc17e97e9cae35540319a2ec100ee9bf95791a24b3d3d88e3dbc",
+    "bytes": 612118,
+    "datensaetze": ["09271119_2024"]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-amtsblatt_01_2022.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 1 vom 28.01.2022 (Haushaltssatzung 2022)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-amtsblatt_01_2022.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "30e5047966ddde2b3e083d222dbf41b20077e7b7ab335ba49c7b4b0a6455f62d",
+    "bytes": 1118751,
+    "datensaetze": ["09271119_2022"]
+  },
+  {
+    "datei": "Deggendorf/stadt-deggendorf-deggendorf-amtsblatt-2020-01.pdf",
+    "titel": "Amtsblatt der Stadt Deggendorf Nr. 1 vom 15.01.2020 (Haushaltssatzung 2020)",
+    "herausgeber": "Stadt Deggendorf",
+    "url": "https://www.deggendorf.de/media/deg-media/_dokumente/stadt-deggendorf-deggendorf-amtsblatt-2020-01.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "04729c21d50a1876e8820d8f8531035887618e5e6f0a7ac2efb19d563a7402ca",
+    "bytes": 3793972,
+    "datensaetze": ["09271119_2020"]
+  },
+  {
     "datei": "Erding/Haushaltssatzung_Stadt_Erding_2026.pdf",
     "titel": "Haushaltssatzung 2026",
     "herausgeber": "Stadt Erding",
@@ -320,6 +410,46 @@
     "datensaetze": ["09190142_2026"]
   },
   {
+    "datei": "Statistik/a1210c_201700.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2017",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_201700_62450.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "e15a8489b28b530aad0aba7aa16aef6ff263c26b54c710a072dac2c0091fc138",
+    "bytes": 2880752,
+    "datensaetze": ["09271119_2018"]
+  },
+  {
+    "datei": "Statistik/a1210c_201800.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2018",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_201800.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "9025b139ade697c4b68a6caebfe11fd611398ae6e487605d92a0ed3247cfe84c",
+    "bytes": 2893700,
+    "datensaetze": ["09271119_2019"]
+  },
+  {
+    "datei": "Statistik/a1210c_201900.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2019",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_201900.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "433fd8833ade4157bc7e46d05ea4c67a8573ff3c73eeca109f72d7bd0337ea6a",
+    "bytes": 3906482,
+    "datensaetze": ["09271119_2020"]
+  },
+  {
+    "datei": "Statistik/a1210c_202000.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2020",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_202000.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "8238230e9b1b94cd30235e7f7e015e6f349565eee6afc09dfd27483f1cdabf50",
+    "bytes": 3199697,
+    "datensaetze": ["09271119_2021"]
+  },
+  {
     "datei": "Statistik/a1210c_202100.pdf",
     "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2021",
     "herausgeber": "Bayerisches Landesamt für Statistik",
@@ -327,7 +457,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "bbe3e96e1ae655ad8c173378b858fefa3621ea96f5f59bce5eaaa70c8049c7cf",
     "bytes": 3898052,
-    "datensaetze": ["09184131_2022"]
+    "datensaetze": ["09184131_2022", "09271119_2022"]
   },
   {
     "datei": "Statistik/a1210c_202200.pdf",
@@ -337,7 +467,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "b49110b75f211b6e63eddaa96ac424de7d5307ed69d90de4f56b3ae46de8a18a",
     "bytes": 5374408,
-    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023"]
+    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023", "09271119_2023"]
   },
   {
     "datei": "Statistik/a1210c_202300.pdf",
@@ -352,6 +482,7 @@
       "09184123_2024",
       "09184131_2024",
       "09190142_2024",
+      "09271119_2024",
       "09271146_2024",
       "09771145_2024"
     ]
@@ -370,6 +501,7 @@
       "09184123_2025",
       "09184131_2025",
       "09190142_2025",
+      "09271119_2025",
       "09271141_2025",
       "09271146_2025",
       "09771145_2025"
@@ -389,6 +521,7 @@
       "09184123_2026",
       "09184131_2026",
       "09190142_2026",
+      "09271119_2026",
       "09271141_2026",
       "09271146_2026",
       "09771145_2026"
@@ -422,7 +555,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "d85c559e5cc719d413bb6fe00f4f14e6e76fd328ce038d4db9c384ee82661de4",
     "bytes": 3204068,
-    "datensaetze": ["09184131_2022"]
+    "datensaetze": ["09184131_2022", "09271119_2022", "09271119_2023"]
   },
   {
     "datei": "Statistik/l3100c_202300.pdf",
@@ -432,7 +565,7 @@
     "abgerufen": "2026-10-01",
     "sha256": "d3e5fe03ad2ae9e9226dcbbd7e95cd273c0d967783f3d1ebe44b4dbfea155860",
     "bytes": 5818873,
-    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023"]
+    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023", "09271119_2024"]
   },
   {
     "datei": "Statistik/l3100c_202400.pdf",
@@ -452,6 +585,7 @@
       "09184131_2025",
       "09190142_2024",
       "09190142_2025",
+      "09271119_2025",
       "09271141_2025",
       "09271146_2024",
       "09271146_2025"

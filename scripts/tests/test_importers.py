@@ -11,6 +11,7 @@ from pathlib import Path
 import import_einzelplan as kic
 import import_einzelplan_5stellig as five
 import import_gruppierungsuebersicht as gu
+import import_uebersicht_deggendorf as deggendorf
 import pytest
 from budget_import import COLUMN_OFFSET, DATA_DIR, build_betraege
 
@@ -87,6 +88,17 @@ def test_reproduces_dataset(importer, name, column, dataset):
     betraege, labels = build_betraege(entries)
     assert betraege == data['betraege']
     assert labels == data.get('nicht_aufgeschluesselt', {})
+
+
+def test_deggendorf_overview_reproduces_datasets():
+    statuses, rows = deggendorf.parse(fixture('deggendorf_uebersicht'))
+    # Exact totals from the Haushaltssatzungen, as passed with --gesamt.
+    gesamt = {2025: {'vwh': 103_725_400, 'vmh': 23_423_400}, 2026: {'vwh': 105_852_200, 'vmh': 35_268_000}}
+    assert sorted(statuses) == list(range(2018, 2027))
+    for year, status in statuses.items():
+        data = load_dataset(f'{deggendorf.AGS}_{year}')
+        assert data['metadata']['status'] == status
+        assert deggendorf.betraege_for(rows, year, gesamt.get(year)) == data['betraege']
 
 
 def test_every_imported_dataset_has_a_golden_test():
