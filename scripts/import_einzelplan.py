@@ -93,6 +93,11 @@ def check_subtotals(items, subtotals, label):
     return problems
 
 
+def column_entries(items, column):
+    """(Gruppierung, value) pairs of one column, as the datasets book them."""
+    return [(item['hhst'][:3], item['values'][COLUMNS.index(column)]) for item in items]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--vwh', required=True, help='PDF mit den Einzelplänen des Verwaltungshaushalts')
@@ -112,10 +117,7 @@ def main():
         f'{len(vwh_subtotals) + len(vmh_subtotals)} Unterabschnitts-Summen stimmen.'
     )
 
-    entries = {
-        column: [(item['hhst'][:3], item['values'][COLUMNS.index(column)]) for item in vwh_items + vmh_items]
-        for column in args.spalten
-    }
+    entries = {column: column_entries(vwh_items + vmh_items, column) for column in args.spalten}
     write_datasets(
         args,
         year,

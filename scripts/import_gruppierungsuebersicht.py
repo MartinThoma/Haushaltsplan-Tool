@@ -35,6 +35,8 @@ CODE = re.compile(r'^(?:\d{1,3}(?:-\d{1,4})?|5/6|\d{2,3}(?:,\d{2,3})+)$')
 # The plan's combined Gruppe "94, 95, 96 Baumaßnahmen".
 BAUMASSNAHMEN = {'94,95,96': '94-96'}
 END = 'Ende der Liste "Gruppierungsübersicht"'
+# The overview is section 3 of the Gesamtplan (or of the Jahresrechnung); "Grupp.-Nr." also heads other tables.
+START = re.compile(r'\b3\.\s+(Rechnungs-)?Gruppierungsübersicht')
 
 
 ZERO = {'-', '–'}
@@ -85,9 +87,7 @@ def parse(lines):
         if END in raw:
             break
         if not inside:
-            # The overview is section 3 of the Gesamtplan (or of the Jahresrechnung);
-            # "Grupp.-Nr." also heads other tables.
-            found = re.search(r'\b3\.\s+(Rechnungs-)?Gruppierungsübersicht', raw)
+            found = START.search(raw)
             inside, rechnung = bool(found), bool(found and found.group(1))
         if not inside:
             continue
@@ -144,6 +144,11 @@ def covered(spec, code):
     return code.startswith(spec)
 
 
+def column_entries(columns, leaves, column):
+    """(code, value) pairs of one column, as the datasets book them."""
+    return [(leaf_code(raw), values[columns.index(column)]) for raw, values, _ in leaves]
+
+
 def check(columns, leaves, subtotals):
     problems = []
     for spec, printed, lineno in subtotals:
@@ -177,10 +182,7 @@ def main():
     if unknown := [c for c in args.spalten if c not in columns]:
         raise SystemExit(f'Diese Übersicht enthält die Spalten {", ".join(columns)}, nicht {", ".join(unknown)}')
 
-    entries = {
-        column: [(leaf_code(raw), values[columns.index(column)]) for raw, values, _ in leaves]
-        for column in args.spalten
-    }
+    entries = {column: column_entries(columns, leaves, column) for column in args.spalten}
     source = 'der Jahresrechnung' if columns == RECHNUNG_COLUMNS else 'des Haushaltsplans'
     write_datasets(
         args,

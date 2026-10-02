@@ -1,0 +1,3 @@
+# Tools for the importer tests and checks (the importers themselves only need Python and poppler-utils).
+pytest
+ruff

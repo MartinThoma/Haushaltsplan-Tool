@@ -16,16 +16,24 @@ Gruppierungsübersicht – vollständig im Browser, ohne Server und ohne Trackin
 
 Voraussetzung: Node.js ≥ 20.
 
-| Befehl       | Zweck                                                                                           |
-| ------------ | ----------------------------------------------------------------------------------------------- |
-| `make build` | Erzeugt die statischen Dateien in `dist/` – deren Inhalt hochladen                              |
-| `make serve` | Baut und startet einen lokalen Webserver auf http://localhost:4173                              |
-| `make dev`   | Entwicklungsserver mit Hot Reload                                                               |
-| `make test`  | Unit-Tests, inkl. Prüfung aller mitgelieferten Daten                                            |
-| `make check` | Alle Prüfungen der CI: Typen, Lint (oxlint), Formatierung, Tests, Build, Python-Importer (ruff) |
+| Befehl       | Zweck                                                                                |
+| ------------ | ------------------------------------------------------------------------------------ |
+| `make build` | Erzeugt die statischen Dateien in `dist/` – deren Inhalt hochladen                   |
+| `make serve` | Baut und startet einen lokalen Webserver auf http://localhost:4173                   |
+| `make dev`   | Entwicklungsserver mit Hot Reload                                                    |
+| `make test`  | Unit-Tests, inkl. Prüfung aller mitgelieferten Daten                                 |
+| `make e2e`   | End-to-End-Tests (Playwright) in Google Chrome gegen den Produktions-Build           |
+| `make check` | Alle Prüfungen der CI: Typen, Lint, Formatierung, alle Tests, Build, Python-Importer |
 
 Die CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) führt dieselben Prüfungen bei jedem
-Push und Pull Request aus; der Build bricht bei ungültigen Daten ab.
+Push und Pull Request aus; der Build bricht bei ungültigen Daten ab. Tests:
+
+- **Unit-Tests** (Vitest, `src/**/*.test.ts`): Fachlogik und Gültigkeit aller mitgelieferten Daten.
+- **End-to-End-Tests** (Playwright, [`e2e/`](e2e/)): Vergleich, Suche, Zeitreihe, CSV-Export, Öffnen
+  eigener Dateien, Ladefehler, kleine Bildschirme und Offline-Betrieb gegen den Produktions-Build.
+- **Importer-Tests** (pytest, [`scripts/tests/`](scripts/tests/)): Die PDF-Importer müssen jeden importierten
+  Datensatz aus einem Textauszug seines PDFs exakt reproduzieren. Werkzeuge:
+  `pip install -r scripts/requirements-dev.txt`.
 
 `dist/` funktioniert auf jedem statischen Hosting (GitHub Pages, GitLab Pages, Cloudflare Pages,
 eigener Webspace) – auch in einem Unterverzeichnis, da alle Pfade relativ sind.
@@ -125,6 +133,11 @@ Untergruppen, die der Gruppierungsplan nicht kennt (z. B. die frei gebildeten 10
 Gruppe 10), werden ihrer Gruppe zugerechnet, damit Kommunen vergleichbar bleiben. Beim erneuten
 Import (`--force`) bleiben vorhandene `kennzahlen` erhalten.
 
+Zu jedem importierten Datensatz gehört ein Golden-Test: `python3 scripts/tests/make_fixture.py PDF NAME`
+(mit `--gruppierungsuebersicht` nur die Übersicht) legt den Textauszug in `scripts/tests/fixtures/` ab, dazu
+kommt ein Eintrag in `CASES` in [`test_importers.py`](scripts/tests/test_importers.py). Fehlt er, schlägt
+ein Test fehl.
+
 ### 2. Eintrag in `kommunen.json`
 
 ```json
@@ -205,7 +218,8 @@ src/lib/              Schema (Zod), Aggregation, Baum, Vergleich, CSV – ohne U
 src/components/       React-Komponenten
 src/state/            Laden der Datensätze, Ansichtszustand in der URL
 vite-plugins/         Datenprüfung beim Build, Erzeugung der JSON-Schemas
-scripts/              Import aus Haushaltsplan-PDFs (Python)
+scripts/              Import aus Haushaltsplan-PDFs (Python), Tests in scripts/tests/
+e2e/                  End-to-End-Tests (Playwright)
 import/               Original-PDFs (lokal, nicht im Repository)
 ```
 

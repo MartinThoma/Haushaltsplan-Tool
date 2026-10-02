@@ -39,8 +39,17 @@ export const KOMMUNEN_FILE = 'kommunen.json';
 
 const byYear = (a: CatalogEntry, b: CatalogEntry) => a.jahr - b.jahr || a.source.localeCompare(b.source);
 
+/** fetch() that reports network failures (offline, server unreachable) in German. */
+async function request(file: string, init?: RequestInit): Promise<Response> {
+  try {
+    return await fetch(DATA_BASE + file, init);
+  } catch {
+    throw new DatasetError(`${file} konnte nicht geladen werden – keine Verbindung zum Server`);
+  }
+}
+
 export async function fetchMunicipalities(): Promise<Municipality[]> {
-  const response = await fetch(DATA_BASE + KOMMUNEN_FILE, { cache: 'no-cache' });
+  const response = await request(KOMMUNEN_FILE, { cache: 'no-cache' });
   if (response.status === 404) return [];
   if (!response.ok) throw new DatasetError(`${KOMMUNEN_FILE} konnte nicht geladen werden (HTTP ${response.status})`);
   const result = validateKommunen(await response.json());
@@ -64,7 +73,7 @@ export async function fetchMunicipalities(): Promise<Municipality[]> {
 }
 
 export async function fetchDataset(entry: CatalogEntry): Promise<LoadedDataset> {
-  const response = await fetch(DATA_BASE + entry.file);
+  const response = await request(entry.file);
   if (!response.ok) throw new DatasetError(`${entry.file} konnte nicht geladen werden (HTTP ${response.status})`);
   const result = validateDatasetText(await response.text());
   if (!result.ok) throw new DatasetError(`${entry.file} ist ungültig`, result.errors);
