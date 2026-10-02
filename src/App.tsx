@@ -11,11 +11,13 @@ import type { SectionChoice, ViewSettings } from './components/Toolbar.tsx';
 import type { ExpansionState, ViewControls } from './components/viewModel.tsx';
 import {
   fetchMunicipalities,
+  fetchSources,
   mergeUploads,
   type CatalogEntry,
   type LoadedDataset,
   type Municipality,
 } from './lib/catalog.ts';
+import type { Quelle } from './lib/quellen.ts';
 import { putDataset, useDatasets, useLastComplete } from './state/datasets.ts';
 import { useHashParams, type HashParams } from './state/hashState.ts';
 import { openFile, rememberFile, type OpenedFile, type Upload } from './state/uploads.ts';
@@ -39,6 +41,7 @@ interface Props {
 export default function App({ restored }: Props) {
   const [params, setParams] = useHashParams();
   const [builtin, setBuiltin] = useState<Municipality[] | null>(null);
+  const [sources, setSources] = useState<ReadonlyMap<string, Quelle[]>>(() => new Map());
   const [uploads, setUploads] = useState<Upload[]>(() => restored.files.map((f) => f.upload));
   const [notices, setNotices] = useState<Notice[]>(() =>
     restored.invalid.length > 0
@@ -71,6 +74,7 @@ export default function App({ restored }: Props) {
         setBuiltin([]);
         notify({ tone: 'error', title: error.message, details: error.details });
       });
+    void fetchSources().then(setSources);
   }, [notify]);
 
   const municipalities = useMemo(() => mergeUploads(builtin ?? [], uploads), [builtin, uploads]);
@@ -181,6 +185,7 @@ export default function App({ restored }: Props) {
           <PairMode
             municipalities={municipalities}
             withData={withData}
+            sources={sources}
             params={params}
             setParams={setParams}
             controls={controls}
@@ -191,6 +196,7 @@ export default function App({ restored }: Props) {
           <SeriesMode
             municipalities={municipalities}
             withData={withData}
+            sources={sources}
             params={params}
             setParams={setParams}
             controls={controls}
@@ -278,6 +284,8 @@ function LoadErrors({ errors }: { errors: ReturnType<typeof useDatasets>['errors
 interface ModeProps {
   municipalities: Municipality[];
   withData: Municipality[];
+  /** Source documents per dataset id (quellen.json). */
+  sources: ReadonlyMap<string, Quelle[]>;
   params: HashParams;
   setParams: (patch: HashParams) => void;
   controls: ViewControls;
@@ -292,6 +300,7 @@ function findEntry(municipalities: Municipality[], id: string | undefined): Cata
 function PairMode({
   municipalities,
   withData,
+  sources,
   params,
   setParams,
   controls,
@@ -312,6 +321,7 @@ function PairMode({
         municipalities={municipalities}
         entries={entries}
         datasets={items}
+        sources={sources}
         onSelect={(slot, entry) => setParams(slot === 0 ? { a: entry.id } : { b: entry.id })}
         onSwap={() => setParams({ a: b.id, b: a.id })}
       />
@@ -330,6 +340,7 @@ function PairMode({
 function SeriesMode({
   municipalities,
   withData,
+  sources,
   params,
   setParams,
   controls,
@@ -355,6 +366,7 @@ function SeriesMode({
         municipalities={municipalities}
         municipality={municipality}
         selected={selected}
+        sources={sources}
         onMunicipality={(m) => setParams({ kommune: m.ags, jahre: '' })}
         onToggle={(entry) => {
           const next = selected.includes(entry) ? selected.filter((e) => e !== entry) : [...selected, entry];

@@ -3,6 +3,10 @@
     {
       "fileMatch": ["public/data/kommunen.json"],
       "url": "./public/data/schema/kommunen-schema.json"
+    },
+    {
+      "fileMatch": ["public/data/quellen.json"],
+      "url": "./public/data/schema/quellen-schema.json"
     }
   ]
 }

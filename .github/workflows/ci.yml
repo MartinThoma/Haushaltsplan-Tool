@@ -31,8 +31,8 @@ jobs:
       - run: npm test
       # Fails on invalid data and regenerates the JSON Schemas from the Zod schemas.
       - run: npm run build
-      - name: JSON-Schemas sind aktuell
-        run: git diff --exit-code -- public/data/schema
+      - name: JSON-Schemas sind aktuell und eingecheckt
+        run: git status --porcelain -- public/data/schema && test -z "$(git status --porcelain -- public/data/schema)"
       # Runs against the production build in the preinstalled Google Chrome.
       - run: npm run test:e2e
       - uses: actions/upload-artifact@v7

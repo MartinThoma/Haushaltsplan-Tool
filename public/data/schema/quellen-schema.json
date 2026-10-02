@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "datei": {
+        "type": "string",
+        "pattern": "^[^/\\\\]+\\/[^/\\\\]+$",
+        "description": "Lokale Kopie, relativ zum Ordner import/ (nicht im Repository)"
+      },
+      "titel": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Bezeichnung des Dokuments"
+      },
+      "herausgeber": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Kommune oder Behörde, die das Dokument veröffentlicht"
+      },
+      "url": {
+        "description": "Adresse, unter der das Dokument abgerufen wurde",
+        "type": "string",
+        "format": "uri"
+      },
+      "herkunft": {
+        "description": "Woher das Dokument stammt, wenn es keine öffentliche Adresse hat",
+        "type": "string",
+        "minLength": 1
+      },
+      "abgerufen": {
+        "type": "string",
+        "format": "date",
+        "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
+        "description": "Datum des Abrufs (JJJJ-MM-TT)"
+      },
+      "sha256": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$",
+        "description": "Prüfsumme der Datei"
+      },
+      "bytes": {
+        "type": "integer",
+        "exclusiveMinimum": 0,
+        "maximum": 9007199254740991,
+        "description": "Dateigröße in Bytes"
+      },
+      "datensaetze": {
+        "minItems": 1,
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^\\d{8}_\\d{4}$"
+        },
+        "description": "Datensätze, deren Beträge oder Kernzahlen auf dem Dokument beruhen"
+      }
+    },
+    "required": [
+      "datei",
+      "titel",
+      "herausgeber",
+      "abgerufen",
+      "sha256",
+      "bytes",
+      "datensaetze"
+    ],
+    "additionalProperties": false
+  }
+}

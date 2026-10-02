@@ -1,0 +1,490 @@
+[
+  {
+    "datei": "Erding/Haushaltssatzung_Stadt_Erding_2026.pdf",
+    "titel": "Haushaltssatzung 2026",
+    "herausgeber": "Stadt Erding",
+    "url": "https://www.erding.de/files/Erding/2024/Rathaus/Allgemeine%20Informationen/Ortsrecht/Satzungen/Dokumente/Haushalt/Haushaltssatzung%20Stadt%20Erding%202026.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "713a3652a60718ac6e20b5ef3a4d8ada5a05412b0a38889ae8e778714ce86c2a",
+    "bytes": 330137,
+    "datensaetze": ["09177117_2026"]
+  },
+  {
+    "datei": "Erding/HH_Stadt_0525.pdf",
+    "titel": "Haushaltssatzung 2025",
+    "herausgeber": "Stadt Erding",
+    "url": "https://www.erding.de/files/Erding/2024/Rathaus/Allgemeine%20Informationen/Ortsrecht/Satzungen/Dokumente/Haushalt/HH%20Stadt%200525.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "d71d3deab40c91b773b94b9c96482d3ecb4be05f8f774031201b588fcfd30128",
+    "bytes": 164100,
+    "datensaetze": ["09177117_2025"]
+  },
+  {
+    "datei": "Haar/2023_Beschluss_Haushaltssatzung_2023.pdf",
+    "titel": "Beschluss der Haushaltssatzung 2023 (Gemeinderat, 29.11.2022)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=5&document_relation_id=ni_AD-767%7CAD-7798%7C1&agenda_item_id=ni_AD-767%7CAD-7798%7C1&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "8455d7195696db58f3f14552a52a6ce2d15b8a7bb6f048eb6a132053a3ce1f69",
+    "bytes": 150261,
+    "datensaetze": ["09184123_2023"]
+  },
+  {
+    "datei": "Haar/2025_1_EP_d._VwHH_2025.pdf",
+    "titel": "Haushaltsplan 2025: Einzelpläne des Verwaltungshaushalts (Gemeinderat, 26.11.2024)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20241911100374%7C20241122083523-0.pdf%7C&submission_attachment_id=20241911100374%7C20241122083523-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "d92d21943c0722c77b0a2ac104ba30fedd3d955d7e5b86e2beb58910b4ec0b51",
+    "bytes": 1867890,
+    "datensaetze": ["09184123_2023"]
+  },
+  {
+    "datei": "Haar/2025_2_EP_d._VmHH_2025.pdf",
+    "titel": "Haushaltsplan 2025: Einzelpläne des Vermögenshaushalts (Gemeinderat, 26.11.2024)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20241911100374%7C20241122083551-0.pdf%7C&submission_attachment_id=20241911100374%7C20241122083551-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "0edd37066d3b157c531fc69f3b1080d3e210eb585502b53b305d4e784cc876cd",
+    "bytes": 580304,
+    "datensaetze": ["09184123_2023"]
+  },
+  {
+    "datei": "Haar/2025_Beschluss_Haushaltssatzung_2025.pdf",
+    "titel": "Beschluss der Haushaltssatzung 2025 (Gemeinderat, 26.11.2024)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=5&document_relation_id=ni_2024-GR-260%7C20242111100388%7C1&agenda_item_id=ni_2024-GR-260%7C20242111100388%7C1&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "96bb268897a0f8d02f4d407b78929ab55a9d7673493fd949bb3aee32838c78fd",
+    "bytes": 60826,
+    "datensaetze": ["09184123_2025"]
+  },
+  {
+    "datei": "Haar/2026_03_2_Verwaltungshaushalt_2026_-_Einzelplan.pdf",
+    "titel": "Haushaltsplan 2026: Einzelpläne des Verwaltungshaushalts (Stadtrat, 25.11.2025)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20250511100306%7C20251120102514-0.pdf%7C&submission_attachment_id=20250511100306%7C20251120102514-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "0ad19d95736208bf06c7c6a05b57560bdce0102b1bb6d120e121362b807b3d4c",
+    "bytes": 14313787,
+    "datensaetze": ["09184123_2024", "09184123_2025", "09184123_2026"]
+  },
+  {
+    "datei": "Haar/2026_04_3_Vermögenshaushalt_2026_-_Einzelplan.pdf",
+    "titel": "Haushaltsplan 2026: Einzelpläne des Vermögenshaushalts (Stadtrat, 25.11.2025)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20250511100306%7C20251120102534-0.pdf%7C&submission_attachment_id=20250511100306%7C20251120102534-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "b7af01bc821d803ee44fc699370a52ce3af3069cdcb11069804ba078e9985add",
+    "bytes": 3740772,
+    "datensaetze": ["09184123_2024", "09184123_2025", "09184123_2026"]
+  },
+  {
+    "datei": "Haar/2026_12_11_Übersicht_über_den_Stand_der_Rücklagen.pdf",
+    "titel": "Haushaltsplan 2026: Übersicht über den Stand der Rücklagen",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20250511100306%7C20251120150845-0.pdf%7C&submission_attachment_id=20250511100306%7C20251120150845-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "61fe40409f9479d8c994250065692271cf37c28c8634593e5979ee1f5886bc6c",
+    "bytes": 15271,
+    "datensaetze": ["09184123_2025", "09184123_2026"]
+  },
+  {
+    "datei": "Haar/2026_14_13_Übersicht_über_d._vor._Stand_d._Schulden_Seite_1.pdf",
+    "titel": "Haushaltsplan 2026: Übersicht über den voraussichtlichen Stand der Schulden, Seite 1",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20250511100306%7C20251120125500-0.pdf%7C&submission_attachment_id=20250511100306%7C20251120125500-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "49f792f71b6f405e5c536bfcd204b2daff2946cbeed4aac8a58516093638a233",
+    "bytes": 89727,
+    "datensaetze": ["09184123_2026"]
+  },
+  {
+    "datei": "Haar/2026_15_13_Übersicht_über_d._vor._Stand_d._Schulden_Seite_2.pdf",
+    "titel": "Haushaltsplan 2026: Übersicht über den voraussichtlichen Stand der Schulden, Seite 2",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20250511100306%7C20251120125506-0.pdf%7C&submission_attachment_id=20250511100306%7C20251120125506-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "415eccae2aa4ffb0b45281762098559032265a3a922322dfdb63a2801c2a2cfd",
+    "bytes": 19917,
+    "datensaetze": ["09184123_2026"]
+  },
+  {
+    "datei": "Haar/Haushaltssatzung-2026.pdf",
+    "titel": "Haushaltssatzung 2026",
+    "herausgeber": "Stadt Haar",
+    "url": "https://www.stadt-haar.de/ceasy/serve/usage/main.php?view=publish&item=statute&id=1052",
+    "abgerufen": "2026-10-02",
+    "sha256": "01a41d81aebcc5892cd601d7968b147db43b5a94c7df212b5302408d4cb735ca",
+    "bytes": 105544,
+    "datensaetze": ["09184123_2026"]
+  },
+  {
+    "datei": "Haar/Hebesatzsatzung-Grundsteuer-2025.pdf",
+    "titel": "Hebesatzsatzung vom 23.12.2024",
+    "herausgeber": "Stadt Haar",
+    "url": "https://www.stadt-haar.de/ceasy/serve/usage/main.php?view=publish&item=statute&id=1080",
+    "abgerufen": "2026-10-02",
+    "sha256": "43f3555d4e2eb40ab853ce6a57eb3e30ab5dbd957eba47a9586234e501019565",
+    "bytes": 73268,
+    "datensaetze": ["09184123_2025"]
+  },
+  {
+    "datei": "Haar/Nachtrag2025_Satzung_Nachtragshaushaltsplan_2025.pdf",
+    "titel": "Nachtragshaushaltssatzung 2025 (Stadtrat, 29.07.2025)",
+    "herausgeber": "Stadt Haar",
+    "url": "https://haar.gremien.info/api.php?document_type_id=13&document_relation_id=20250307100174%7C20250715142158-0.pdf%7C&submission_attachment_id=20250307100174%7C20250715142158-0.pdf%7C&id=69&json=1&platform=web&system=ris",
+    "abgerufen": "2026-10-02",
+    "sha256": "ae58d1af4a4bff84fb7bfcd6c73d3e10932094bcf1f82580c510e1dc29d891dd",
+    "bytes": 33804,
+    "datensaetze": ["09184123_2025"]
+  },
+  {
+    "datei": "Kirchheim/Haushalt-2023.pdf",
+    "titel": "Haushaltsplan 2023 mit Haushaltssatzung",
+    "herausgeber": "Gemeinde Kirchheim b. München",
+    "url": "https://www.kirchheim-heimstetten.de/wp-content/uploads/2024/04/Haushalt-2023.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "39cc65abb64b858fbc05f57c293f25bd410532da95abd2ee6a9b411cbf23e18e",
+    "bytes": 13062394,
+    "datensaetze": ["09184131_2023"]
+  },
+  {
+    "datei": "Kirchheim/Haushalt-2024.pdf",
+    "titel": "Haushaltsplan 2024 mit Haushaltssatzung",
+    "herausgeber": "Gemeinde Kirchheim b. München",
+    "url": "https://www.kirchheim-heimstetten.de/wp-content/uploads/2025/05/Haushalt-2024.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "b89c695ea99debc7edf31c8fb6e51432fa3ad413bf35c4bb30afbf7ce1b39977",
+    "bytes": 13712678,
+    "datensaetze": ["09184131_2022", "09184131_2024"]
+  },
+  {
+    "datei": "Kirchheim/Haushalt-2025.pdf",
+    "titel": "Haushaltsplan 2025 mit Haushaltssatzung",
+    "herausgeber": "Gemeinde Kirchheim b. München",
+    "url": "https://www.kirchheim-heimstetten.de/wp-content/uploads/2025/05/Haushalt-2025.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "b02a2bea1b2439114d15b0e527055b0e0b0f07a53db5a685058e44190936fb6e",
+    "bytes": 12005422,
+    "datensaetze": ["09184131_2023", "09184131_2025"]
+  },
+  {
+    "datei": "Kirchheim/Haushalt-2026-aktualisiert_.pdf",
+    "titel": "Haushaltsplan 2026 mit Haushaltssatzung (aktualisierte Fassung)",
+    "herausgeber": "Gemeinde Kirchheim b. München",
+    "url": "https://www.kirchheim-heimstetten.de/wp-content/uploads/2026/07/Haushalt-2026-aktualisiert_.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "8b3cae19ed1191ad173387bf062139e827b2ddc0dad0dccb0a4d34a9a06067e6",
+    "bytes": 17709725,
+    "datensaetze": ["09184131_2024", "09184131_2025", "09184131_2026"]
+  },
+  {
+    "datei": "Merching/gde-hh-2-haushaltssatzung-2026.pdf",
+    "titel": "Haushaltssatzung 2026",
+    "herausgeber": "Gemeinde Merching",
+    "url": "https://www.gemeinde-merching.de/download/gde-hh-2-haushaltssatzung-2026/?wpdmdl=9309",
+    "abgerufen": "2026-10-02",
+    "sha256": "b8ce66d88bc5a05a4998c52babe5ce5e9f9ca539bf2924de7c5f6f873ded10b2",
+    "bytes": 141557,
+    "datensaetze": ["09771145_2026"]
+  },
+  {
+    "datei": "Merching/gde-hh-4-darlehen-2026.pdf",
+    "titel": "Haushaltsplan 2026: Darlehen (Zusammenstellung nach Einzeldarlehen)",
+    "herausgeber": "Gemeinde Merching",
+    "url": "https://www.gemeinde-merching.de/download/gde-hh-4-darlehen-2026/?wpdmdl=9311",
+    "abgerufen": "2026-10-02",
+    "sha256": "e6538752d45d17d4d2a087e187e7512ddf4f01512800a1728e164d88167c67f7",
+    "bytes": 135076,
+    "datensaetze": ["09771145_2024", "09771145_2025", "09771145_2026"]
+  },
+  {
+    "datei": "Merching/gde-hh-6-haushaltsplan-mit-finanzplan-2026.pdf",
+    "titel": "Haushaltsplan 2026 mit Finanzplan",
+    "herausgeber": "Gemeinde Merching",
+    "url": "https://www.gemeinde-merching.de/download/gde-hh-6-haushaltsplan-mit-finanzplan-2026/?wpdmdl=9313",
+    "abgerufen": "2026-10-02",
+    "sha256": "965045c14cfb3bda3daa887ef653be4807fb1595d55daded7643e2d9e40d4849",
+    "bytes": 1597725,
+    "datensaetze": ["09771145_2024", "09771145_2025", "09771145_2026"]
+  },
+  {
+    "datei": "Merching/gde-hh-8-anlagen-2026.pdf",
+    "titel": "Haushaltsplan 2026: Anlagen (u. a. Stand der Rücklagen)",
+    "herausgeber": "Gemeinde Merching",
+    "url": "https://www.gemeinde-merching.de/download/gde-hh-8-anlagen-2026/?wpdmdl=9315",
+    "abgerufen": "2026-10-02",
+    "sha256": "10de938b0d1f9ec150cd711e279252a945958fe4e544a095d8be33bfb1f3d2eb",
+    "bytes": 141381,
+    "datensaetze": ["09771145_2025", "09771145_2026"]
+  },
+  {
+    "datei": "Osterhofen/Haushaltssatzung-2025-Bekanntmachung.pdf",
+    "titel": "Bekanntmachung der Haushaltssatzung 2025",
+    "herausgeber": "Stadt Osterhofen",
+    "url": "https://nbg1.your-objectstorage.com/townhall/workspace-155/attachments/17c17645.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "6e91be1ffee008172a0bb6ecdd5fcf09315f6b4f632aa6b4bb7c1b8071ca5343",
+    "bytes": 198798,
+    "datensaetze": ["09271141_2025"]
+  },
+  {
+    "datei": "Osterhofen/Haushaltssatzung-2026-Bekanntmachung.pdf",
+    "titel": "Bekanntmachung der Haushaltssatzung 2026",
+    "herausgeber": "Stadt Osterhofen",
+    "url": "https://osterhofen.de/wp-content/uploads/2026/04/Haushaltssatzung-2026-Bekanntmachung-Stadt-Osterhofen-fuer-Homepage.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "f02a7f54cf51e3f9d027e1ea17c4f49b2b167473493672d88529b28192a2ab2c",
+    "bytes": 165644,
+    "datensaetze": ["09271141_2026"]
+  },
+  {
+    "datei": "Plattling/faltblatt-2026.pdf",
+    "titel": "Faltblatt „Ein Streifzug durch den Haushaltsplan 2026“",
+    "herausgeber": "Stadt Plattling (Stadtkämmerei)",
+    "url": "https://www.plattling.de/media/66939/faltblatt-2026.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "fe1f3a02220380a92e668c3267c7592cdd33e814b31c64e65f3f31dbae03e940",
+    "bytes": 356037,
+    "datensaetze": ["09271146_2026"]
+  },
+  {
+    "datei": "Plattling/faltblatt-zum-haushalt-2024.pdf",
+    "titel": "Faltblatt „Ein Streifzug durch den Haushaltsplan 2024“",
+    "herausgeber": "Stadt Plattling (Stadtkämmerei)",
+    "herkunft": "Ohne öffentliche Adresse im Repository bereitgestellt (erster Commit cfd3dcc)",
+    "abgerufen": "2026-10-01",
+    "sha256": "d15124738fb26957b5adc64c8780a8affdc1755fa3cab4fd914c9827f3cebd8b",
+    "bytes": 713955,
+    "datensaetze": ["09271146_2024"]
+  },
+  {
+    "datei": "Plattling/faltblatt-zum-haushalt-2025.pdf",
+    "titel": "Faltblatt „Ein Streifzug durch den Haushaltsplan 2025“",
+    "herausgeber": "Stadt Plattling (Stadtkämmerei)",
+    "herkunft": "Ohne öffentliche Adresse im Repository bereitgestellt (erster Commit cfd3dcc)",
+    "abgerufen": "2026-10-01",
+    "sha256": "643929417e50322da57949c3f25095e50cd8d4fdccc345ec6beb28586fe4da55",
+    "bytes": 714231,
+    "datensaetze": ["09271146_2025"]
+  },
+  {
+    "datei": "Polling/2024-11-22-Hebesatzsatzung.pdf",
+    "titel": "Hebesatzsatzung vom 22.11.2024",
+    "herausgeber": "Gemeinde Polling",
+    "url": "https://polling.de/wp-content/uploads/2024/12/2024-11-22-Hebesatzsatzung.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "5da34a0a24e69e22af347104571d04430bed9017b591c1d88b94adaa1c5328d9",
+    "bytes": 55656,
+    "datensaetze": ["09190142_2025"]
+  },
+  {
+    "datei": "Polling/EntwurfVermögenshaushalt2026.pdf",
+    "titel": "Entwurf Haushaltsplan 2026: Einzelpläne des Vermögenshaushalts",
+    "herausgeber": "Gemeinde Polling",
+    "herkunft": "Ohne öffentliche Adresse im Repository bereitgestellt (erster Commit cfd3dcc)",
+    "abgerufen": "2026-10-01",
+    "sha256": "f00406e3910cab73cec9e39287721113c2dfd2b8f056cc333bd85bcda5eb0127",
+    "bytes": 387518,
+    "datensaetze": ["09190142_2024", "09190142_2025", "09190142_2026"]
+  },
+  {
+    "datei": "Polling/EntwurfVerwaltungshaushalt2026.pdf",
+    "titel": "Entwurf Haushaltsplan 2026: Einzelpläne des Verwaltungshaushalts",
+    "herausgeber": "Gemeinde Polling",
+    "herkunft": "Ohne öffentliche Adresse im Repository bereitgestellt (erster Commit cfd3dcc)",
+    "abgerufen": "2026-10-01",
+    "sha256": "d63be7d29bebfe084d16d201a1cb01cd51f9df4b5276e18d99602d3c0b3d61ec",
+    "bytes": 622861,
+    "datensaetze": ["09190142_2024", "09190142_2025", "09190142_2026"]
+  },
+  {
+    "datei": "Polling/Haushalt-2026-kurz-in-Zahlen.pdf",
+    "titel": "Haushalt 2026 kurz in Zahlen",
+    "herausgeber": "Gemeinde Polling",
+    "url": "https://polling.de/wp-content/uploads/2026/06/Haushalt-2026-kurz-in-Zahlen.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "d3895d03d58b32bd38e4310da895adfb8ffd7b70e0016679600e4ad2bab9922f",
+    "bytes": 120380,
+    "datensaetze": ["09190142_2026"]
+  },
+  {
+    "datei": "Polling/Haushaltssatzung2026.pdf",
+    "titel": "Haushaltssatzung 2026",
+    "herausgeber": "Gemeinde Polling",
+    "url": "https://polling.de/wp-content/uploads/2026/06/Haushaltssatzung2026.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "98d5283c6e7f7579904e282626a96225b5969304a4b847d0f0dd82d9b95add20",
+    "bytes": 38080,
+    "datensaetze": ["09190142_2026"]
+  },
+  {
+    "datei": "Statistik/a1210c_202100.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2021",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_202100.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "bbe3e96e1ae655ad8c173378b858fefa3621ea96f5f59bce5eaaa70c8049c7cf",
+    "bytes": 3898052,
+    "datensaetze": ["09184131_2022"]
+  },
+  {
+    "datei": "Statistik/a1210c_202200.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2022",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_202200.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "b49110b75f211b6e63eddaa96ac424de7d5307ed69d90de4f56b3ae46de8a18a",
+    "bytes": 5374408,
+    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023"]
+  },
+  {
+    "datei": "Statistik/a1210c_202300.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2023",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_202300.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "e604a4444a1fbc606eb9cec83cc0378cf749829ace0e193b5cca97563a6d6641",
+    "bytes": 3983282,
+    "datensaetze": [
+      "09173147_2024",
+      "09184123_2024",
+      "09184131_2024",
+      "09190142_2024",
+      "09271146_2024",
+      "09771145_2024"
+    ]
+  },
+  {
+    "datei": "Statistik/a1210c_202400.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2024",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_202400.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "62df818d07dab7745b2ff038d169e78b955ce6ae48f6d9a74de9ee90c3409faa",
+    "bytes": 4084947,
+    "datensaetze": [
+      "09173147_2025",
+      "09177117_2025",
+      "09184123_2025",
+      "09184131_2025",
+      "09190142_2025",
+      "09271141_2025",
+      "09271146_2025",
+      "09771145_2025"
+    ]
+  },
+  {
+    "datei": "Statistik/a1210c_202500.pdf",
+    "titel": "Statistischer Bericht A1210C: Einwohnerzahlen am 31. Dezember 2025",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/a1210c_202500.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "b2f5004a53ae7fb795dbaeaf616bad84c6394d593a48b047a5a723abfb7b1e7f",
+    "bytes": 3488585,
+    "datensaetze": [
+      "09173147_2026",
+      "09177117_2026",
+      "09184123_2026",
+      "09184131_2026",
+      "09190142_2026",
+      "09271141_2026",
+      "09271146_2026",
+      "09771145_2026"
+    ]
+  },
+  {
+    "datei": "Statistik/hebesaetze-gemeinden-2024.csv",
+    "titel": "Hebesätze der Realsteuern 2024 (Daten der Karte „Hebesätze der Gemeinden 2024“)",
+    "herausgeber": "Statistisches Bundesamt",
+    "url": "https://service.destatis.de/DE/karten/hebesaetze-gemeinden-2024/data/hebesaetze-gemeinden-2024.csv",
+    "abgerufen": "2026-10-01",
+    "sha256": "296d73dd8ee63e22849d4bfebfe1f1bf34e2f243304890533f9164f51a87f91f",
+    "bytes": 468757,
+    "datensaetze": ["09173147_2024", "09184123_2024", "09190142_2024", "09271146_2024", "09771145_2024"]
+  },
+  {
+    "datei": "Statistik/Hebesätze der Realsteuern 2022.xlsx",
+    "titel": "Hebesätze der Realsteuern 2022",
+    "herausgeber": "Statistische Ämter des Bundes und der Länder",
+    "url": "https://www.statistikportal.de/sites/default/files/2023-08/Hebes%C3%A4tze%20der%20Realsteuern%202022_0.xlsx",
+    "abgerufen": "2026-10-01",
+    "sha256": "8631b6b96ecaa15b7d658e095f0e7163f22bca6fb8cfa5b164953e1339a0a67d",
+    "bytes": 1185356,
+    "datensaetze": ["09184131_2022"]
+  },
+  {
+    "datei": "Statistik/l3100c_202200.pdf",
+    "titel": "Statistischer Bericht L3100C: Staats- und Kommunalschulden in Bayern am 31. Dezember 2022",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistischebibliothek.de/mir/servlets/MCRFileNodeServlet/BYHeft_derivate_00008040/L3100C%20202200.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "d85c559e5cc719d413bb6fe00f4f14e6e76fd328ce038d4db9c384ee82661de4",
+    "bytes": 3204068,
+    "datensaetze": ["09184131_2022"]
+  },
+  {
+    "datei": "Statistik/l3100c_202300.pdf",
+    "titel": "Statistischer Bericht L3100C: Staats- und Kommunalschulden in Bayern am 31. Dezember 2023",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/l3100c_202300.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "d3e5fe03ad2ae9e9226dcbbd7e95cd273c0d967783f3d1ebe44b4dbfea155860",
+    "bytes": 5818873,
+    "datensaetze": ["09173147_2023", "09184123_2023", "09184131_2023"]
+  },
+  {
+    "datei": "Statistik/l3100c_202400.pdf",
+    "titel": "Statistischer Bericht L3100C: Staats- und Kommunalschulden in Bayern am 31. Dezember 2024",
+    "herausgeber": "Bayerisches Landesamt für Statistik",
+    "url": "https://www.statistik.bayern.de/mam/produkte/veroffentlichungen/statistische_berichte/l3100c_202400.pdf",
+    "abgerufen": "2026-10-01",
+    "sha256": "79d176181e61b58d2c3353480e125cf789724d0d2025b7d2ff1ae68b79c1bad6",
+    "bytes": 3740312,
+    "datensaetze": [
+      "09173147_2024",
+      "09173147_2025",
+      "09177117_2025",
+      "09184123_2024",
+      "09184123_2025",
+      "09184131_2024",
+      "09184131_2025",
+      "09190142_2024",
+      "09190142_2025",
+      "09271141_2025",
+      "09271146_2024",
+      "09271146_2025"
+    ]
+  },
+  {
+    "datei": "Wolfratshausen/Haushaltplan_2025_Stadt_Wolfratshausen.pdf",
+    "titel": "Haushaltsplan 2025",
+    "herausgeber": "Stadt Wolfratshausen",
+    "url": "https://www.wolfratshausen.de/fileadmin/Stadt_Wolfratshausen/Dateien/Finanzen/Haushaltsplaene/Haushaltplan_2025_Stadt_Wolfratshausen.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "ce481ff3de3edd7213a3883eb1372e8e9d31fe61d55382ce7dae23d4a5043552",
+    "bytes": 4306272,
+    "datensaetze": ["09173147_2023", "09173147_2025"]
+  },
+  {
+    "datei": "Wolfratshausen/Haushaltsplan_2026_Stadt_Wolfratshausen_pdf.pdf",
+    "titel": "Haushaltsplan 2026",
+    "herausgeber": "Stadt Wolfratshausen",
+    "url": "https://www.wolfratshausen.de/fileadmin/Stadt_Wolfratshausen/Dateien/Finanzen/Haushaltsplaene/Haushaltsplan_2026_Stadt_Wolfratshausen_pdf.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "57a73be19bcfe0cf89d3f91e5254b7688bdb4b8c69ea910ea7d22bc51fbf218b",
+    "bytes": 13553476,
+    "datensaetze": ["09173147_2024", "09173147_2026"]
+  },
+  {
+    "datei": "Wolfratshausen/Rechenschaftsbericht_2025_incl._Budgetabschlussbericht.pdf",
+    "titel": "Rechenschaftsbericht 2025 mit Budgetabschlussbericht",
+    "herausgeber": "Stadt Wolfratshausen",
+    "url": "https://www.wolfratshausen.de/fileadmin/Stadt_Wolfratshausen/Dateien/Finanzen/Rechenschaftsbericht/Rechenschaftsbericht_2025_incl._Budgetabschlussbericht.pdf",
+    "abgerufen": "2026-10-02",
+    "sha256": "a5e4fb29d85e591c58694d26fca763ff10cadd180e9d1419dfa3911c0d51a6f2",
+    "bytes": 6468175,
+    "datensaetze": ["09173147_2024", "09173147_2025", "09173147_2026"]
+  }
+]

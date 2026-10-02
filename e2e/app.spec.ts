@@ -37,6 +37,19 @@ test('compares two budgets with key figures', async ({ page }) => {
   await expect(page.getByRole('alert')).toHaveCount(0);
 });
 
+test('links the original documents behind a dataset', async ({ page }) => {
+  await page.goto('/#a=09184131_2026&b=09173147_2026');
+  const a = dataset('A', page);
+  await a.getByText(/^Quelldokumente/).click();
+  await expect(
+    a.getByRole('link', { name: 'Haushaltsplan 2026 mit Haushaltssatzung (aktualisierte Fassung)' }),
+  ).toHaveAttribute(
+    'href',
+    'https://www.kirchheim-heimstetten.de/wp-content/uploads/2026/07/Haushalt-2026-aktualisiert_.pdf',
+  );
+  await expect(a).toContainText('abgerufen am 01.10.2026');
+});
+
 test('finds municipalities by postal code and offers to contribute missing ones', async ({ page }) => {
   await page.goto('/#a=09184131_2026&b=09173147_2026');
   const search = dataset('A', page).getByRole('combobox', { name: 'Kommune' });
