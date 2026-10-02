@@ -9,3 +9,7 @@ select = ["E", "F", "W", "B", "UP", "SIM", "I"]
 
 [tool.ruff.format]
 quote-style = "single"
+
+[tool.pytest.ini_options]
+testpaths = ["scripts/tests"]
+pythonpath = ["scripts"]

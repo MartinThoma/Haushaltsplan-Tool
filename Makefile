@@ -1,6 +1,7 @@
-.PHONY: build serve dev test check clean
+.PHONY: build serve dev test e2e check clean
 
 PORT ?= 4173
+PYTEST ?= python3 -m pytest
 
 node_modules: package.json package-lock.json
 	npm ci
@@ -21,7 +22,11 @@ dev: node_modules
 test: node_modules
 	npm test
 
-## Everything the CI runs: types, lint, formatting, tests incl. data validation, build, Python importers
+## End-to-end tests in Google Chrome against the production build
+e2e: node_modules
+	npm run test:e2e
+
+## Everything the CI runs: types, lint, formatting, unit and e2e tests, build, Python importers
 check: node_modules
 	npm run typecheck
 	npm run lint
@@ -29,8 +34,10 @@ check: node_modules
 	npm test
 	npm run build
 	git diff --exit-code -- public/data/schema
+	npm run test:e2e
 	ruff check scripts
 	ruff format --check scripts
+	$(PYTEST)
 
 clean:
 	rm -rf dist

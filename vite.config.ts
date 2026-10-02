@@ -37,5 +37,7 @@ export default defineConfig({
   ],
   test: {
     environment: 'node',
+    // e2e/ holds the Playwright tests (npm run test:e2e).
+    include: ['src/**/*.test.ts'],
   },
 });

@@ -104,6 +104,24 @@ def amounts_by_code(entries):
     return dict(sorted(amounts.items())), labels
 
 
+def build_betraege(entries):
+    """
+    The `betraege` and `nicht_aufgeschluesselt` parts of a dataset from (code, value) pairs across
+    both sections, as written by write_datasets.
+    """
+    unexpected = [code for code, _ in entries if code[0] not in '0123456789']
+    if unexpected:
+        raise SystemExit(f'Unerwartete Gruppierungsziffer {unexpected[0]}')
+    betraege, labels = {}, {}
+    for section, income, expense in SECTIONS:
+        einnahmen, labels_e = amounts_by_code([(c, v) for c, v in entries if c[0] in income])
+        ausgaben, labels_a = amounts_by_code([(c, v) for c, v in entries if c[0] in expense])
+        betraege[section] = {'einnahmen': einnahmen, 'ausgaben': ausgaben}
+        if labels_e or labels_a:
+            labels[section] = {k: v for k, v in (('einnahmen', labels_e), ('ausgaben', labels_a)) if v}
+    return betraege, labels
+
+
 def write_datasets(args, year, entries_by_column, hinweis):
     """
     Write one dataset per selected column. `entries_by_column` maps a column name to its
@@ -119,18 +137,7 @@ def write_datasets(args, year, entries_by_column, hinweis):
         if target.exists() and not args.force:
             raise SystemExit(f'{target.name} existiert bereits (--force zum Überschreiben)')
 
-        entries = entries_by_column[column]
-        unexpected = [code for code, _ in entries if code[0] not in '0123456789']
-        if unexpected:
-            raise SystemExit(f'Unerwartete Gruppierungsziffer {unexpected[0]}')
-        betraege, labels = {}, {}
-        for section, income, expense in SECTIONS:
-            einnahmen, labels_e = amounts_by_code([(c, v) for c, v in entries if c[0] in income])
-            ausgaben, labels_a = amounts_by_code([(c, v) for c, v in entries if c[0] in expense])
-            betraege[section] = {'einnahmen': einnahmen, 'ausgaben': ausgaben}
-            if labels_e or labels_a:
-                labels[section] = {k: v for k, v in (('einnahmen', labels_e), ('ausgaben', labels_a)) if v}
-
+        betraege, labels = build_betraege(entries_by_column[column])
         status = {'ansatz': args.status_plan, 'ansatz_vorjahr': args.status_vorjahr, **COLUMN_STATUS}[column]
         metadata = {
             'kommune': args.kommune,

@@ -90,6 +90,11 @@ def parse(lines, label, with_ve):
     return year, items, problems
 
 
+def column_entries(items, column):
+    """(Gruppierung, value) pairs of one column, as the datasets book them."""
+    return [(code[:3], values[COLUMNS.index(column)]) for code, values, _ in items]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--vwh', required=True, help='PDF mit den Einzelplänen des Verwaltungshaushalts')
@@ -119,10 +124,7 @@ def main():
     if args.nur_pruefen:
         return
 
-    entries = {
-        column: [(code[:3], values[COLUMNS.index(column)]) for code, values, _ in vwh_items + vmh_items]
-        for column in args.spalten
-    }
+    entries = {column: column_entries(vwh_items + vmh_items, column) for column in args.spalten}
     write_datasets(
         args,
         year,
