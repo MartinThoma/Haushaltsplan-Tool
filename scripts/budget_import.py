@@ -51,10 +51,19 @@ def add_common_arguments(parser, spalten):
     parser.add_argument('--einwohner', nargs='+', required=True, metavar='JAHR=ANZAHL')
     parser.add_argument('--einwohner-stichtag', choices=['vorjahr'], help='"vorjahr": 31.12. des Vorjahres')
     parser.add_argument('--status-plan', default='Ansatz', choices=['Entwurf', 'Ansatz', 'Nachtrag'])
-    parser.add_argument('--status-vorjahr', default='Ansatz', choices=['Ansatz', 'Nachtrag'],
-                        help='Status der Spalte "Ansatz Vorjahr", z. B. Nachtrag, wenn sie den Nachtragshaushalt zeigt')
-    parser.add_argument('--spalten', nargs='+', default=['ansatz', 'ansatz_vorjahr', 'ergebnis_vorvorjahr'],
-                        choices=spalten, help='zu importierende Spalten')
+    parser.add_argument(
+        '--status-vorjahr',
+        default='Ansatz',
+        choices=['Ansatz', 'Nachtrag'],
+        help='Status der Spalte "Ansatz Vorjahr", z. B. Nachtrag, wenn sie den Nachtragshaushalt zeigt',
+    )
+    parser.add_argument(
+        '--spalten',
+        nargs='+',
+        default=['ansatz', 'ansatz_vorjahr', 'ergebnis_vorvorjahr'],
+        choices=spalten,
+        help='zu importierende Spalten',
+    )
     parser.add_argument('--quelle', required=True)
     parser.add_argument('--force', action='store_true', help='vorhandene Datensätze überschreiben')
 
@@ -89,7 +98,7 @@ def amounts_by_code(entries):
         if children:
             # The Gruppe has listed Untergruppen too: state the total, the free part shows as remainder.
             amounts[group] = round(value + children, 2)
-            labels[group] = f"weitere Untergruppen der Kommune ({', '.join(sorted(free_codes[group]))})"
+            labels[group] = f'weitere Untergruppen der Kommune ({", ".join(sorted(free_codes[group]))})'
         else:
             amounts[group] = round(value, 2)
     return dict(sorted(amounts.items())), labels
@@ -155,8 +164,13 @@ def update_kommunen(args, written):
     kommunen = json.loads(path.read_text(encoding='utf-8')) if path.exists() else []
     entry = next((k for k in kommunen if k['ags'] == args.ags), None)
     if entry is None:
-        entry = {'ags': args.ags, 'name': args.kommune, 'plz': args.plz,
-                 'bundesland': LANDS[int(args.ags[:2]) - 1], 'jahre': []}
+        entry = {
+            'ags': args.ags,
+            'name': args.kommune,
+            'plz': args.plz,
+            'bundesland': LANDS[int(args.ags[:2]) - 1],
+            'jahre': [],
+        }
         kommunen.append(entry)
     elif args.plz:
         entry['plz'] = args.plz

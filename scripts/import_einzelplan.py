@@ -87,7 +87,7 @@ def check_subtotals(items, subtotals, label):
     for uab in sorted(set(sums) | set(subtotals)):
         for side in ('Einnahmen', 'Ausgaben'):
             printed = subtotals.get(uab, {}).get(side, [0.0] * 7)
-            for column, expected, got in zip(COLUMNS, printed, sums[uab][side]):
+            for column, expected, got in zip(COLUMNS, printed, sums[uab][side], strict=True):
                 if abs(expected - got) > 0.005:
                     problems.append(f'{label} UAB {uab} {side} {column}: PDF {expected:,.2f}, gelesen {got:,.2f}')
     return problems
@@ -107,8 +107,10 @@ def main():
     problems = check_subtotals(vwh_items, vwh_subtotals, 'VwH') + check_subtotals(vmh_items, vmh_subtotals, 'VmH')
     if problems:
         raise SystemExit('Abweichungen von den gedruckten Zwischensummen:\n  ' + '\n  '.join(problems))
-    print(f'{len(vwh_items)} + {len(vmh_items)} Haushaltsstellen gelesen, alle '
-          f'{len(vwh_subtotals) + len(vmh_subtotals)} Unterabschnitts-Summen stimmen.')
+    print(
+        f'{len(vwh_items)} + {len(vmh_items)} Haushaltsstellen gelesen, alle '
+        f'{len(vwh_subtotals) + len(vmh_subtotals)} Unterabschnitts-Summen stimmen.'
+    )
 
     entries = {
         column: [(item['hhst'][:3], item['values'][COLUMNS.index(column)]) for item in vwh_items + vmh_items]

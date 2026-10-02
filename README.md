@@ -16,12 +16,16 @@ Gruppierungsübersicht – vollständig im Browser, ohne Server und ohne Trackin
 
 Voraussetzung: Node.js ≥ 20.
 
-| Befehl       | Zweck                                                              |
-| ------------ | ------------------------------------------------------------------ |
-| `make build` | Erzeugt die statischen Dateien in `dist/` – deren Inhalt hochladen |
-| `make serve` | Baut und startet einen lokalen Webserver auf http://localhost:4173 |
-| `make dev`   | Entwicklungsserver mit Hot Reload                                  |
-| `make test`  | Unit-Tests, inkl. Prüfung aller mitgelieferten Daten               |
+| Befehl       | Zweck                                                                            |
+| ------------ | -------------------------------------------------------------------------------- |
+| `make build` | Erzeugt die statischen Dateien in `dist/` – deren Inhalt hochladen               |
+| `make serve` | Baut und startet einen lokalen Webserver auf http://localhost:4173               |
+| `make dev`   | Entwicklungsserver mit Hot Reload                                                |
+| `make test`  | Unit-Tests, inkl. Prüfung aller mitgelieferten Daten                             |
+| `make check` | Alle Prüfungen der CI: Typen, Formatierung, Tests, Build, Python-Importer (ruff) |
+
+Die CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) führt dieselben Prüfungen bei jedem
+Push und Pull Request aus; der Build bricht bei ungültigen Daten ab.
 
 `dist/` funktioniert auf jedem statischen Hosting (GitHub Pages, GitLab Pages, Cloudflare Pages,
 eigener Webspace) – auch in einem Unterverzeichnis, da alle Pfade relativ sind.

@@ -1,4 +1,4 @@
-.PHONY: build serve dev test clean
+.PHONY: build serve dev test check clean
 
 PORT ?= 4173
 
@@ -20,6 +20,16 @@ dev: node_modules
 
 test: node_modules
 	npm test
+
+## Everything the CI runs: types, formatting, tests incl. data validation, build, Python importers
+check: node_modules
+	npm run typecheck
+	npm run format:check
+	npm test
+	npm run build
+	git diff --exit-code -- public/data/schema
+	ruff check scripts
+	ruff format --check scripts
 
 clean:
 	rm -rf dist
