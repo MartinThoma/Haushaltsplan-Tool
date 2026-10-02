@@ -17,14 +17,13 @@ export function useHashParams(): [HashParams, (patch: HashParams) => void] {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  // The URL is the source of truth: read it, write it, then mirror it into state.
   const update = useCallback((patch: HashParams) => {
-    setParams((prev) => {
-      const next = { ...prev, ...patch };
-      for (const [k, v] of Object.entries(next)) if (v === '') delete next[k];
-      const hash = new URLSearchParams(next).toString();
-      window.history.replaceState(null, '', hash ? `#${hash}` : window.location.pathname + window.location.search);
-      return next;
-    });
+    const next = { ...readHash(), ...patch };
+    for (const [k, v] of Object.entries(next)) if (v === '') delete next[k];
+    const hash = new URLSearchParams(next).toString();
+    window.history.replaceState(null, '', hash ? `#${hash}` : window.location.pathname + window.location.search);
+    setParams(next);
   }, []);
 
   return [params, update];

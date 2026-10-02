@@ -16,9 +16,9 @@ import {
   type LoadedDataset,
   type Municipality,
 } from './lib/catalog.ts';
-import { validateDatasetText } from './lib/schema.ts';
 import { putDataset, useDatasets, useLastComplete } from './state/datasets.ts';
 import { useHashParams, type HashParams } from './state/hashState.ts';
+import { openFile, rememberFile, type OpenedFile, type Upload } from './state/uploads.ts';
 
 type Mode = 'vergleich' | 'zeitreihe';
 
@@ -30,13 +30,28 @@ const MODE_OPTIONS = [
 const SECTION_CHOICES: readonly SectionChoice[] = ['vwh', 'vmh', 'beide'];
 
 let noticeId = 0;
-let uploadId = 0;
 
-export default function App() {
+interface Props {
+  /** Files opened earlier in this tab, restored after a reload (see state/uploads.ts). */
+  restored: { files: OpenedFile[]; invalid: string[] };
+}
+
+export default function App({ restored }: Props) {
   const [params, setParams] = useHashParams();
   const [builtin, setBuiltin] = useState<Municipality[] | null>(null);
-  const [uploads, setUploads] = useState<{ entry: CatalogEntry; kommune: string }[]>([]);
-  const [notices, setNotices] = useState<Notice[]>([]);
+  const [uploads, setUploads] = useState<Upload[]>(() => restored.files.map((f) => f.upload));
+  const [notices, setNotices] = useState<Notice[]>(() =>
+    restored.invalid.length > 0
+      ? [
+          {
+            id: ++noticeId,
+            tone: 'warning',
+            title: 'Zuvor geöffnete Dateien passen nicht zum aktuellen Datenformat und wurden geschlossen',
+            details: restored.invalid,
+          },
+        ]
+      : [],
+  );
   const [search, setSearch] = useState('');
   const [expansion, setExpansion] = useState<ExpansionState>({ ids: null, level: 1 });
   const [threshold, setThreshold] = useState(0.2);
@@ -79,36 +94,28 @@ export default function App() {
 
   const handleFiles = useCallback(
     async (files: File[]) => {
-      const added: { entry: CatalogEntry; kommune: string }[] = [];
+      const added: Upload[] = [];
       for (const file of files) {
         if (!/\.json$/i.test(file.name) && file.type !== 'application/json') {
           notify({ tone: 'error', title: `${file.name} ist keine JSON-Datei` });
           continue;
         }
-        const result = validateDatasetText(await file.text());
+        const text = await file.text();
+        const result = openFile(file.name, text);
         if (!result.ok) {
           notify({ tone: 'error', title: `${file.name} konnte nicht geöffnet werden`, details: result.errors });
           continue;
         }
-        const { metadata } = result.data;
-        const id = `upload:${++uploadId}:${file.name}`;
-        putDataset(id, { data: result.data, warnings: result.warnings });
-        added.push({
-          entry: {
-            id,
-            source: 'upload',
-            file: file.name,
-            ags: metadata.ags,
-            jahr: metadata.jahr,
-            einwohner: metadata.einwohner,
-          },
-          kommune: metadata.kommune,
-        });
-        const hints = result.warnings.length;
+        const { upload, dataset } = result.file;
+        putDataset(upload.entry.id, dataset);
+        rememberFile(upload.entry.id, file.name, text);
+        added.push(upload);
+        const { metadata } = dataset.data;
+        const hints = dataset.warnings.length;
         notify({
           tone: hints ? 'warning' : 'success',
           title: `${file.name}: ${metadata.kommune} ${metadata.jahr} geöffnet${hints ? ` – ${hints} ${hints === 1 ? 'Hinweis' : 'Hinweise'}` : ''}`,
-          details: result.warnings,
+          details: dataset.warnings,
         });
       }
       if (added.length === 0) return;
