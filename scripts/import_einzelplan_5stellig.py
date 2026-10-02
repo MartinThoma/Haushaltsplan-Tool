@@ -78,9 +78,11 @@ def parse(lines, label, with_ve):
             if pending[side]:  # otherwise a repeated sum of the Unterabschnitt, Abschnitt or Einzelplan
                 printed = [to_number(m.groups()[i]) for i in indices]
                 sums = [sum(v[i] for v in pending[side]) for i in range(3)]
-                for column, expected, got in zip(COLUMNS, printed, sums):
+                for column, expected, got in zip(COLUMNS, printed, sums, strict=True):
                     if abs(expected - got) > 0.005:
-                        problems.append(f'{label} Zeile {lineno} {side} {column}: PDF {expected:,.2f}, gelesen {got:,.2f}')
+                        problems.append(
+                            f'{label} Zeile {lineno} {side} {column}: PDF {expected:,.2f}, gelesen {got:,.2f}'
+                        )
                 pending[side] = []
     for side, rest in pending.items():
         if rest:
@@ -106,7 +108,9 @@ def main():
     problems = vwh_problems + vmh_problems + [f'Haushaltsstelle im falschen Haushalt: {m}' for m in misplaced]
     if problems:
         raise SystemExit('Abweichungen:\n  ' + '\n  '.join(problems))
-    print(f'Haushaltsjahr {year}: {len(vwh_items)} + {len(vmh_items)} Haushaltsstellen gelesen, alle Blocksummen stimmen.')
+    print(
+        f'Haushaltsjahr {year}: {len(vwh_items)} + {len(vmh_items)} Haushaltsstellen gelesen, alle Blocksummen stimmen.'
+    )
     for name, items in (('VwH', vwh_items), ('VmH', vmh_items)):
         for i, column in enumerate(COLUMNS):
             e = sum(v[i] for c, v, _ in items if c[0] in '0123')

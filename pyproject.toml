@@ -1,0 +1,11 @@
+# Tool settings for the PDF importers in scripts/ (the web app is configured in package.json).
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "UP", "SIM", "I"]
+
+[tool.ruff.format]
+quote-style = "single"

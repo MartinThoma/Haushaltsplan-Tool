@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Import a Bavarian kameral budget from the "Gruppierungsübersicht" of its Haushaltsplan PDF.
 
-The Gruppierungsübersicht (CIP-KOMMUNAL / GRUBAYH or "GRN – Gruppierungsübersicht (neu)") lists every Gruppe and Untergruppe with
-the Ansatz of the plan year, the Ansatz of the previous year and the Rechnungsergebnis two years
-back, optionally with a per-resident column after the first value. The script
+The Gruppierungsübersicht (CIP-KOMMUNAL / GRUBAYH or "GRN – Gruppierungsübersicht (neu)") lists
+every Gruppe and Untergruppe with the Ansatz of the plan year, the Ansatz of the previous year and
+the Rechnungsergebnis two years back, optionally with a per-resident column after the first value.
+The "Rechnungs-Gruppierungsübersicht" of a Jahresrechnung lists the result of the year itself. The
+script
 
 1. extracts the text with `pdftotext -layout` (poppler-utils),
 2. reads the amounts of all Gruppen and Untergruppen between the first table header and
@@ -148,8 +150,8 @@ def check(columns, leaves, subtotals):
         sums = [0.0] * len(columns)
         for raw, values, _ in leaves:
             if covered(spec, leaf_code(raw)):
-                sums = [s + v for s, v in zip(sums, values)]
-        for column, expected, got in zip(columns, printed, sums):
+                sums = [s + v for s, v in zip(sums, values, strict=True)]
+        for column, expected, got in zip(columns, printed, sums, strict=True):
             if abs(expected - got) > 0.005:
                 problems.append(f'Zeile {lineno}, Summe {spec}, {column}: PDF {expected:,.2f}, gelesen {got:,.2f}')
     return problems
