@@ -122,15 +122,24 @@ def build_betraege(entries):
     return betraege, labels
 
 
-def write_datasets(args, year, entries_by_column, hinweis):
+def write_datasets(args, year, entries_by_column, hinweis, columns=None):
     """
     Write one dataset per selected column. `entries_by_column` maps a column name to its
-    (code, value) pairs across both sections. Existing key figures are kept.
+    (code, value) pairs across both sections. Existing key figures are kept. Layouts whose
+    columns name their year themselves pass `columns`: column -> {'jahr', 'status', 'label'}
+    and optionally an additional 'hinweis'.
     """
     einwohner = parse_einwohner(args.einwohner)
     written = []
     for column in args.spalten:
-        jahr = year - COLUMN_OFFSET[column]
+        if columns:
+            info = columns[column]
+            jahr, status, label = info['jahr'], info['status'], info['label']
+            note = f'{hinweis} {info["hinweis"]}' if info.get('hinweis') else hinweis
+        else:
+            jahr = year - COLUMN_OFFSET[column]
+            status = {'ansatz': args.status_plan, 'ansatz_vorjahr': args.status_vorjahr, **COLUMN_STATUS}[column]
+            label, note = COLUMN_LABEL[column], hinweis
         if jahr not in einwohner:
             raise SystemExit(f'Einwohnerzahl für {jahr} fehlt (--einwohner {jahr}=...)')
         target = DATA_DIR / f'{args.ags}_{jahr}.json'
@@ -138,7 +147,6 @@ def write_datasets(args, year, entries_by_column, hinweis):
             raise SystemExit(f'{target.name} existiert bereits (--force zum Überschreiben)')
 
         betraege, labels = build_betraege(entries_by_column[column])
-        status = {'ansatz': args.status_plan, 'ansatz_vorjahr': args.status_vorjahr, **COLUMN_STATUS}[column]
         metadata = {
             'kommune': args.kommune,
             'ags': args.ags,
@@ -147,8 +155,8 @@ def write_datasets(args, year, entries_by_column, hinweis):
             **({'einwohner_stichtag': f'{jahr - 1}-12-31'} if args.einwohner_stichtag == 'vorjahr' else {}),
             'status': status,
             'waehrung': 'EUR',
-            'quelle': f'{args.quelle}, Spalte „{COLUMN_LABEL[column]} {jahr}“',
-            'hinweis': hinweis,
+            'quelle': f'{args.quelle}, Spalte „{label} {jahr}“',
+            'hinweis': note,
         }
         dataset = {'$schema': './schema/budget-schema.json', 'metadata': metadata}
         if target.exists():

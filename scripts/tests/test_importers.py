@@ -11,6 +11,7 @@ from pathlib import Path
 import import_einzelplan as kic
 import import_einzelplan_5stellig as five
 import import_gruppierungsuebersicht as gu
+import import_gruppierungsuebersicht_doppelhaushalt as dh
 import import_uebersicht_deggendorf as deggendorf
 import pytest
 from budget_import import COLUMN_OFFSET, DATA_DIR, build_betraege
@@ -27,7 +28,7 @@ def fixture(name):
 def read_gruppierungsuebersicht(name, column):
     columns, year, leaves, subtotals = gu.parse(fixture(name))
     assert gu.check(columns, leaves, subtotals) == []
-    return year, gu.column_entries(columns, leaves, column)
+    return year - COLUMN_OFFSET[column], gu.column_entries(columns, leaves, column)
 
 
 def read_einzelplan_5stellig(name, column):
@@ -35,7 +36,7 @@ def read_einzelplan_5stellig(name, column):
     vmh_year, vmh, vmh_problems = five.parse(fixture(f'{name}_vmh'), 'VmH', with_ve=True)
     assert vwh_problems + vmh_problems == []
     assert year == vmh_year
-    return year, five.column_entries(vwh + vmh, column)
+    return year - COLUMN_OFFSET[column], five.column_entries(vwh + vmh, column)
 
 
 def read_einzelplan(name, column):
@@ -43,13 +44,25 @@ def read_einzelplan(name, column):
     vmh, vmh_subtotals, vmh_year = kic.parse(fixture(f'{name}_vmh'))
     assert kic.check_subtotals(vwh, vwh_subtotals, 'VwH') + kic.check_subtotals(vmh, vmh_subtotals, 'VmH') == []
     assert year == vmh_year
-    return year, kic.column_entries(vwh + vmh, column)
+    return year - COLUMN_OFFSET[column], kic.column_entries(vwh + vmh, column)
+
+
+# Printed sums that include positions the PDF does not print (explained in the datasets' hinweis).
+KNOWN_DEVIATIONS = {'augsburg_2025_2026': {'40', '4', '65', '6', '4-9'}}
+
+
+def read_gruppierungsuebersicht_doppelhaushalt(name, column):
+    columns, items, subtotals = dh.parse(fixture(name))
+    assert dh.check(columns, items, subtotals, known=KNOWN_DEVIATIONS.get(name, set())) == []
+    label, year = column.split()
+    return int(year), dh.column_entries(columns, items, (label, int(year)))
 
 
 READERS = {
     'gruppierungsuebersicht': read_gruppierungsuebersicht,
     'einzelplan_5stellig': read_einzelplan_5stellig,
     'einzelplan': read_einzelplan,
+    'gruppierungsuebersicht_doppelhaushalt': read_gruppierungsuebersicht_doppelhaushalt,
 }
 
 # (importer, fixture, column, dataset)
@@ -73,6 +86,13 @@ CASES = [
     ('einzelplan', 'polling_2026', 'ergebnis_vorvorjahr', '09190142_2024'),
     ('einzelplan', 'polling_2026', 'ansatz_vorjahr', '09190142_2025'),
     ('einzelplan', 'polling_2026', 'ansatz', '09190142_2026'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2023_2024', 'Ergebnis 2020', '09761000_2020'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2023_2024', 'Ergebnis 2021', '09761000_2021'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2025_2026', 'Ergebnis 2022', '09761000_2022'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2025_2026', 'Ergebnis 2023', '09761000_2023'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2025_2026', 'Ansatz 2024', '09761000_2024'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2025_2026', 'Ansatz 2025', '09761000_2025'),
+    ('gruppierungsuebersicht_doppelhaushalt', 'augsburg_2025_2026', 'Ansatz 2026', '09761000_2026'),
 ]
 
 
@@ -82,9 +102,9 @@ def load_dataset(name):
 
 @pytest.mark.parametrize(('importer', 'name', 'column', 'dataset'), CASES, ids=[case[3] for case in CASES])
 def test_reproduces_dataset(importer, name, column, dataset):
-    year, entries = READERS[importer](name, column)
+    jahr, entries = READERS[importer](name, column)
     data = load_dataset(dataset)
-    assert year - COLUMN_OFFSET[column] == data['metadata']['jahr']
+    assert jahr == data['metadata']['jahr']
     betraege, labels = build_betraege(entries)
     assert betraege == data['betraege']
     assert labels == data.get('nicht_aufgeschluesselt', {})
