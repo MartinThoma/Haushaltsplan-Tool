@@ -1,0 +1,9 @@
+{
+  // Build configuration, Vite plugins and tests, which run in Node.js.
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "types": ["node"]
+  },
+  "include": ["vite.config.ts", "vite-plugins", "src/**/*.test.ts", "e2e", "playwright.config.ts"]
+}

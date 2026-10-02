@@ -35,14 +35,12 @@ export function useTreeRows(trees: readonly SectionTree[], controls: ViewControl
 
   return {
     rows,
-    toggle(id: string) {
+    toggle: (id: string) => {
       const ids = new Set(expanded);
       if (!ids.delete(id)) ids.add(id);
       setExpansion({ ids, level: null });
     },
-    setLevel(level: number) {
-      setExpansion({ ids: null, level });
-    },
+    setLevel: (level: number) => setExpansion({ ids: null, level }),
   };
 }
 

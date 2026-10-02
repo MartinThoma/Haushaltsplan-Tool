@@ -67,7 +67,7 @@ export function parentCode(code: string): string | null {
 /** Valid keys for one budget side: Hauptgruppen ("4", "5/6", …), Gruppen and Untergruppen. */
 export function codePattern(section: Section, side: Side): string {
   const digits = ALLOWED_HAUPTGRUPPEN[section][side];
-  const hauptgruppen = [...digits].filter((d) => d !== '5' && d !== '6');
+  const hauptgruppen = digits.split('').filter((d) => d !== '5' && d !== '6');
   if (digits.includes('5')) hauptgruppen.push(HAUPTGRUPPE_5_6);
   const combined = digits.includes('9') ? `|${BAUMASSNAHMEN}` : '';
   return `^(?:${hauptgruppen.join('|')}|[${digits}][0-9]{1,2}${combined})$`;
@@ -79,7 +79,7 @@ export function isKnownCode(code: string): boolean {
 
 const CHILDREN = new Map<string, string[]>();
 for (const [code, entry] of Object.entries(MASTER)) {
-  if (entry.parent) CHILDREN.set(entry.parent, [...(CHILDREN.get(entry.parent) ?? []), code].sort());
+  if (entry.parent) CHILDREN.set(entry.parent, [...(CHILDREN.get(entry.parent) ?? []), code].toSorted());
 }
 
 /** Codes listed directly below `code` in the Gruppierungsplan. */

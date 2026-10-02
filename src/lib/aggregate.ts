@@ -24,7 +24,7 @@ export function aggregate(amounts: Record<string, number>): Aggregation {
   const childSums = new Map<string, number>();
 
   // Deepest codes first, so every child is final before its parent is visited.
-  for (const code of [...codes].sort((a, b) => codeLevel(b) - codeLevel(a))) {
+  for (const code of [...codes].toSorted((a, b) => codeLevel(b) - codeLevel(a))) {
     const stated = amounts[code];
     const computed = childSums.has(code) ? roundCents(childSums.get(code)!) : undefined;
     if (stated !== undefined && computed !== undefined && Math.abs(stated - computed) >= 0.005) {

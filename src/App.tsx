@@ -246,11 +246,9 @@ function EmptyCatalog({ onOpen }: { onOpen: () => void }) {
 /** Loads the datasets of `entries` and keeps the previous ones on screen while loading. */
 function useLoaded(entries: readonly CatalogEntry[]) {
   const { items, errors } = useDatasets(entries);
-  const loadedKey = entries.map((e, i) => (items[i] ? e.id : '')).join('|');
   const complete = useMemo(
-    () => (items.length > 0 && items.every(Boolean) ? (items as LoadedDataset[]) : undefined),
-    // Cached datasets are stable per id, so the ids of the loaded entries identify `items`.
-    [loadedKey],
+    () => (items.length > 0 && items.every((item) => item !== undefined) ? items : undefined),
+    [items],
   );
   const { value, stale } = useLastComplete(complete);
   return { items, errors, datasets: value, stale };
@@ -294,11 +292,11 @@ function PairMode({
   onThreshold,
 }: ModeProps & { threshold: number; onThreshold: (t: number) => void }) {
   // By default, compare the municipalities with the longest data series.
-  const byYears = [...withData].sort((x, y) => y.entries.length - x.entries.length);
+  const byYears = withData.toSorted((x, y) => y.entries.length - x.entries.length);
   const a = findEntry(withData, params.a) ?? byYears[0]!.entries.at(-1)!;
   const other = byYears.find((m) => m.ags !== a.ags);
   const b = findEntry(withData, params.b) ?? (other ? closestEntry(other, a.jahr) : (byYears[0]!.entries.at(-2) ?? a));
-  const entries: [CatalogEntry, CatalogEntry] = [a, b];
+  const entries = useMemo((): [CatalogEntry, CatalogEntry] => [a, b], [a, b]);
   const { items, errors, datasets, stale } = useLoaded(entries);
 
   return (
@@ -334,9 +332,11 @@ function SeriesMode({
   const municipality =
     withData.find((m) => m.ags === params.kommune) ??
     withData.reduce((best, m) => (m.entries.length > best.entries.length ? m : best));
-  const wanted = new Set(params.jahre?.split(',') ?? []);
-  const picked = municipality.entries.filter((e) => wanted.has(e.id));
-  const selected = picked.length > 0 ? picked : municipality.entries;
+  const selected = useMemo(() => {
+    const wanted = new Set(params.jahre?.split(',') ?? []);
+    const picked = municipality.entries.filter((e) => wanted.has(e.id));
+    return picked.length > 0 ? picked : municipality.entries;
+  }, [municipality, params.jahre]);
   const { errors, datasets, stale } = useLoaded(selected);
 
   const setYears = (entries: CatalogEntry[]) =>
