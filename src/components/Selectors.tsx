@@ -2,7 +2,8 @@ import { ArrowLeftRight, ChevronDown } from 'lucide-react';
 import type { ReactNode, SelectHTMLAttributes } from 'react';
 import { sideAmount } from '../lib/tree.ts';
 import { entryLabel, type CatalogEntry, type LoadedDataset, type Municipality } from '../lib/catalog.ts';
-import { formatCompactEuro, formatInteger } from '../lib/format.ts';
+import { formatCompactEuro, formatDate, formatInteger } from '../lib/format.ts';
+import type { Quelle } from '../lib/quellen.ts';
 import { MunicipalitySearch } from './MunicipalitySearch.tsx';
 
 export function Select({ label, children, ...props }: SelectHTMLAttributes<HTMLSelectElement> & { label: string }) {
@@ -27,7 +28,36 @@ export function closestEntry(municipality: Municipality, year: number | undefine
   return municipality.entries.find((e) => e.jahr === year) ?? municipality.entries.at(-1)!;
 }
 
-function DatasetFacts({ dataset }: { dataset: LoadedDataset | undefined }) {
+/** The original documents behind a dataset, with where and when they were retrieved. */
+function SourceList({ quellen }: { quellen: readonly Quelle[] }) {
+  if (quellen.length === 0) return null;
+  return (
+    <details className="text-xs text-ink-3">
+      <summary className="w-fit cursor-pointer hover:text-ink">Quelldokumente ({quellen.length})</summary>
+      <ul className="mt-1 space-y-0.5">
+        {quellen.map((q) => (
+          <li key={q.datei}>
+            {q.url ? (
+              <a
+                href={q.url}
+                target="_blank"
+                rel="noreferrer"
+                className="text-ink-2 underline decoration-line-strong underline-offset-2 hover:text-ink"
+              >
+                {q.titel}
+              </a>
+            ) : (
+              <span className="text-ink-2">{q.titel}</span>
+            )}{' '}
+            · {q.herausgeber}, {q.url ? `abgerufen am ${formatDate(q.abgerufen)}` : q.herkunft}
+          </li>
+        ))}
+      </ul>
+    </details>
+  );
+}
+
+function DatasetFacts({ dataset, quellen }: { dataset: LoadedDataset | undefined; quellen: readonly Quelle[] }) {
   if (!dataset) return <p className="h-4 text-xs text-ink-3">Lädt …</p>;
   const { metadata } = dataset.data;
   const volume = (section: 'vwh' | 'vmh') => sideAmount(dataset.data, section, 'ausgaben');
@@ -42,6 +72,7 @@ function DatasetFacts({ dataset }: { dataset: LoadedDataset | undefined }) {
         <span title="Volumen des Vermögenshaushalts (Summe der Ausgaben)">VmH {formatCompactEuro(volume('vmh'))}</span>
       </p>
       {metadata.hinweis && <p className="text-ink-3">{metadata.hinweis}</p>}
+      <SourceList quellen={quellen} />
     </div>
   );
 }
@@ -50,11 +81,12 @@ interface PairSelectorProps {
   municipalities: Municipality[];
   entries: [CatalogEntry, CatalogEntry];
   datasets: (LoadedDataset | undefined)[];
+  sources: ReadonlyMap<string, Quelle[]>;
   onSelect: (slot: 0 | 1, entry: CatalogEntry) => void;
   onSwap: () => void;
 }
 
-export function PairSelector({ municipalities, entries, datasets, onSelect, onSwap }: PairSelectorProps) {
+export function PairSelector({ municipalities, entries, datasets, sources, onSelect, onSwap }: PairSelectorProps) {
   const picker = (slot: 0 | 1) => {
     const entry = entries[slot];
     const municipality = municipalities.find((m) => m.ags === entry.ags);
@@ -84,7 +116,7 @@ export function PairSelector({ municipalities, entries, datasets, onSelect, onSw
             ))}
           </Select>
         </div>
-        <DatasetFacts dataset={datasets[slot]} />
+        <DatasetFacts dataset={datasets[slot]} quellen={sources.get(entry.id) ?? []} />
       </DatasetCard>
     );
   };
@@ -127,6 +159,7 @@ interface SeriesSelectorProps {
   municipalities: Municipality[];
   municipality: Municipality;
   selected: readonly CatalogEntry[];
+  sources: ReadonlyMap<string, Quelle[]>;
   onMunicipality: (municipality: Municipality) => void;
   onToggle: (entry: CatalogEntry) => void;
   onAll: () => void;
@@ -136,10 +169,12 @@ export function SeriesSelector({
   municipalities,
   municipality,
   selected,
+  sources,
   onMunicipality,
   onToggle,
   onAll,
 }: SeriesSelectorProps) {
+  const quellen = [...new Map(selected.flatMap((e) => sources.get(e.id) ?? []).map((q) => [q.datei, q])).values()];
   return (
     <div className="flex flex-wrap items-end gap-x-6 gap-y-3 rounded-xl border border-line bg-surface p-3.5">
       <div className="w-full sm:w-80">
@@ -182,6 +217,11 @@ export function SeriesSelector({
           )}
         </div>
       </fieldset>
+      {quellen.length > 0 && (
+        <div className="w-full">
+          <SourceList quellen={quellen} />
+        </div>
+      )}
     </div>
   );
 }

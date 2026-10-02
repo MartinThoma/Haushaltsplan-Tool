@@ -33,7 +33,7 @@ check: node_modules
 	npm run format:check
 	npm test
 	npm run build
-	git diff --exit-code -- public/data/schema
+	@git status --porcelain -- public/data/schema; test -z "$$(git status --porcelain -- public/data/schema)"
 	npm run test:e2e
 	ruff check scripts
 	ruff format --check scripts

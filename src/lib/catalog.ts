@@ -1,4 +1,5 @@
 import { bundeslandFromAgs, validateKommunen, type Bundesland } from './kommunen.ts';
+import { QUELLEN_FILE, quellenByDataset, validateQuellen, type Quelle } from './quellen.ts';
 import { validateDatasetText, type BudgetDataset } from './schema.ts';
 
 export interface CatalogEntry {
@@ -70,6 +71,18 @@ export async function fetchMunicipalities(): Promise<Municipality[]> {
       }))
       .toSorted(byYear),
   }));
+}
+
+/** Source documents per dataset id; empty if the register is missing or invalid, as it is optional for the app. */
+export async function fetchSources(): Promise<ReadonlyMap<string, Quelle[]>> {
+  try {
+    const response = await request(QUELLEN_FILE, { cache: 'no-cache' });
+    if (!response.ok) return new Map();
+    const result = validateQuellen(await response.json());
+    return result.ok ? quellenByDataset(result.data) : new Map();
+  } catch {
+    return new Map();
+  }
 }
 
 export async function fetchDataset(entry: CatalogEntry): Promise<LoadedDataset> {

@@ -155,11 +155,30 @@ ein Test fehl.
 Name und PLZ sind in der Kommunensuche durchsuchbar. Eine Kommune darf auch mit leerer
 `jahre`-Liste eingetragen sein; sie erscheint dann in der Suche als „noch keine Daten“.
 
-### 3. Prüfen
+### 3. Quellenverzeichnis `quellen.json`
+
+Jedes Originaldokument, auf dem Beträge oder Kernzahlen beruhen, steht in
+[`public/data/quellen.json`](public/data/quellen.json): lokale Kopie in `import/`, Titel, Herausgeber,
+URL (oder Herkunft, wenn es keine öffentliche Adresse gibt), Abrufdatum, SHA-256, Größe und die
+Datensätze, die es verwenden. Die App verlinkt die Dokumente unter „Quelldokumente“.
+
+```bash
+python3 scripts/quellen.py eintragen import/Haar/Haushaltssatzung-2026.pdf \
+    --titel "Haushaltssatzung 2026" --herausgeber "Stadt Haar" \
+    --url "https://…" --datensaetze 09184123_2026
+python3 scripts/quellen.py pruefen            # lokale Kopien gegen die Prüfsummen
+python3 scripts/quellen.py pruefen --online   # zusätzlich jede URL herunterladen und vergleichen
+```
+
+`eintragen` berechnet Prüfsumme und Größe und übernimmt als Abrufdatum das Änderungsdatum der Datei.
+Die PDFs selbst bleiben außerhalb des Repositorys; über die Prüfsumme lässt sich jede Kopie eindeutig
+wiedererkennen.
+
+### 4. Prüfen
 
 `make build` (und `make test`) prüfen alle Dateien mit demselben Schema wie die App und brechen bei
 Fehlern ab, z. B. wenn eine Datei fehlt, nicht in `kommunen.json` eingetragen ist, Einwohnerzahl oder
-Name nicht übereinstimmen oder das Bundesland nicht zum AGS passt. `make dev` meldet solche Probleme
+Name nicht übereinstimmen, das Bundesland nicht zum AGS passt oder ein Datensatz kein Quelldokument hat. `make dev` meldet solche Probleme
 laufend in der Konsole.
 
 ## Gruppierungsplan
@@ -212,7 +231,7 @@ automatische nach einem Update der App – sie nicht schließt, merkt sich der B
 ## Projektstruktur
 
 ```
-public/data/          Datensätze, kommunen.json, generierte JSON-Schemas
+public/data/          Datensätze, kommunen.json, quellen.json, generierte JSON-Schemas
 src/data/             Gruppierungsplan (Stammdaten)
 src/lib/              Schema (Zod), Aggregation, Baum, Vergleich, CSV – ohne UI, mit Tests
 src/components/       React-Komponenten
