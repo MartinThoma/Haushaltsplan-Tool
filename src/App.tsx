@@ -136,7 +136,7 @@ export default function App({ restored }: Props) {
   return (
     <div className="flex min-h-dvh flex-col">
       <header className="border-b border-line bg-surface">
-        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-6 gap-y-3 px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-[1440px] flex-wrap items-center gap-x-3 gap-y-3 px-4 py-3 sm:gap-x-6 sm:px-6">
           <div className="flex items-center gap-2.5">
             <img src="./favicon.svg" alt="" className="size-7" />
             <div>
@@ -155,11 +155,12 @@ export default function App({ restored }: Props) {
           <button
             type="button"
             onClick={() => fileInput.current?.click()}
-            className="ml-auto inline-flex h-9 items-center gap-2 rounded-lg bg-ink px-3.5 text-sm font-medium text-surface hover:opacity-90"
+            // Opening own files is a rarely needed power-user feature, so the button stays in the background.
+            className="relative ml-auto inline-flex h-8 items-center gap-1.5 rounded-lg px-2 text-xs text-ink-3 hover:bg-surface-2 hover:text-ink"
             title="Eigene Haushaltsdatei (JSON) öffnen – sie wird nur lokal ausgewertet"
           >
             <FolderOpen aria-hidden className="size-4" />
-            Datei öffnen
+            <span className="max-sm:sr-only">Datei öffnen</span>
           </button>
           <input
             ref={fileInput}
