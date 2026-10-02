@@ -1,0 +1,47 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Deggendorf",
+    "ags": "09271119",
+    "jahr": 2018,
+    "einwohner": 33373,
+    "einwohner_stichtag": "2017-12-31",
+    "status": "Ergebnis",
+    "waehrung": "EUR",
+    "quelle": "Stadt Deggendorf, Haushaltsübersicht 2018–2026 der Stadtkämmerei (Angaben in 1.000 €), Spalte „RE 2018“",
+    "hinweis": "Aus der Haushaltsübersicht der Stadtkämmerei, in 1.000 € gerundet; der Haushaltsplan selbst ist nicht veröffentlicht. Zugeordnet sind Realsteuern, Gemeinschaftssteuern, Schlüsselzuweisungen, Personal- und Sachaufwand, Kreis- und Gewerbesteuerumlage, Zinsen, Zuführung, Beiträge, Investitionszuweisungen, Veräußerungen, Rücklagenentnahme, Baumaßnahmen, Grund- und Vermögenserwerb (Gruppe 93) und Investitionszuschüsse. Nicht aufgeschlüsselt sind u. a. laufende Zuweisungen und Zuschüsse, Gebühren, sonstige Einnahmen, Tilgung und Zuführungen an Rücklagen."
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "00": 28335000,
+        "01": 22404000,
+        "04": 4974000
+      },
+      "ausgaben": {
+        "4": 21436000,
+        "5/6": 11436000,
+        "80": 568000,
+        "810": 5588000,
+        "832": 16574000,
+        "86": 15552000
+      },
+      "gesamt": 84924000
+    },
+    "vmh": {
+      "einnahmen": {
+        "30": 15552000,
+        "31": 5052000,
+        "34": 1971000,
+        "35": 510000,
+        "36": 2781000
+      },
+      "ausgaben": {
+        "93": 3663000,
+        "94-96": 10165000,
+        "98": 1042000
+      },
+      "gesamt": 26891000
+    }
+  }
+}

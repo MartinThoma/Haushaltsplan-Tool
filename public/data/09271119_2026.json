@@ -1,0 +1,65 @@
+{
+  "$schema": "./schema/budget-schema.json",
+  "metadata": {
+    "kommune": "Deggendorf",
+    "ags": "09271119",
+    "jahr": 2026,
+    "einwohner": 35166,
+    "einwohner_stichtag": "2025-12-31",
+    "status": "Ansatz",
+    "waehrung": "EUR",
+    "quelle": "Stadt Deggendorf, Haushaltsübersicht 2018–2026 der Stadtkämmerei (Angaben in 1.000 €), Spalte „Plan 2026“; Gesamtbeträge laut Haushaltssatzung 2026",
+    "hinweis": "Aus der Haushaltsübersicht der Stadtkämmerei, in 1.000 € gerundet; der Haushaltsplan selbst ist nicht veröffentlicht. Zugeordnet sind Realsteuern, Gemeinschaftssteuern, Schlüsselzuweisungen, Personal- und Sachaufwand, Kreis- und Gewerbesteuerumlage, Zinsen, Zuführung, Beiträge, Investitionszuweisungen, Veräußerungen, Rücklagenentnahme, Baumaßnahmen, Grund- und Vermögenserwerb (Gruppe 93) und Investitionszuschüsse. Nicht aufgeschlüsselt sind u. a. laufende Zuweisungen und Zuschüsse, Gebühren, sonstige Einnahmen, Tilgung und Zuführungen an Rücklagen."
+  },
+  "kennzahlen": {
+    "hebesatz_grundsteuer_a": {
+      "wert": 330,
+      "quelle": "Stadt Deggendorf, Haushaltssatzung 2026 (Amtsblatt der Stadt Deggendorf Nr. 5 vom 19.03.2026)"
+    },
+    "hebesatz_grundsteuer_b": {
+      "wert": 330,
+      "quelle": "Stadt Deggendorf, Haushaltssatzung 2026 (Amtsblatt der Stadt Deggendorf Nr. 5 vom 19.03.2026)"
+    },
+    "hebesatz_gewerbesteuer": {
+      "wert": 350,
+      "quelle": "Stadt Deggendorf, Haushaltssatzung 2026 (Amtsblatt der Stadt Deggendorf Nr. 5 vom 19.03.2026)"
+    },
+    "kassenkredite_hoechstbetrag": {
+      "wert": 15000000,
+      "quelle": "Stadt Deggendorf, Haushaltssatzung 2026 (Amtsblatt der Stadt Deggendorf Nr. 5 vom 19.03.2026)"
+    }
+  },
+  "betraege": {
+    "vwh": {
+      "einnahmen": {
+        "00": 30164000,
+        "01": 30621000,
+        "04": 6082000
+      },
+      "ausgaben": {
+        "4": 31878000,
+        "5/6": 16888000,
+        "80": 778000,
+        "810": 2490000,
+        "832": 28528000,
+        "86": 3108000
+      },
+      "gesamt": 105852200
+    },
+    "vmh": {
+      "einnahmen": {
+        "30": 3108000,
+        "31": 18792000,
+        "34": 2110000,
+        "35": 985000,
+        "36": 6899000
+      },
+      "ausgaben": {
+        "93": 3863000,
+        "94-96": 24849000,
+        "98": 592000
+      },
+      "gesamt": 35268000
+    }
+  }
+}

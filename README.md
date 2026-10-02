@@ -133,6 +133,10 @@ Untergruppen, die der Gruppierungsplan nicht kennt (z. B. die frei gebildeten 10
 Gruppe 10), werden ihrer Gruppe zugerechnet, damit Kommunen vergleichbar bleiben. Beim erneuten
 Import (`--force`) bleiben vorhandene `kennzahlen` erhalten.
 
+Deggendorf veröffentlicht nur eine Haushaltsübersicht der wichtigsten Einnahme- und Ausgabearten
+(in 1.000 €); [`scripts/import_uebersicht_deggendorf.py`](scripts/import_uebersicht_deggendorf.py) bucht
+die Zeilen, die genau einer Gruppierung entsprechen, und lässt den Rest „nicht aufgeschlüsselt“.
+
 Zu jedem importierten Datensatz gehört ein Golden-Test: `python3 scripts/tests/make_fixture.py PDF NAME`
 (mit `--gruppierungsuebersicht` nur die Übersicht) legt den Textauszug in `scripts/tests/fixtures/` ab, dazu
 kommt ein Eintrag in `CASES` in [`test_importers.py`](scripts/tests/test_importers.py). Fehlt er, schlägt
@@ -196,16 +200,17 @@ eine abschließende Liste (z. B. Realsteuern: 000, 001, 003), erzeugt eine ander
 
 ## Mitgelieferte Daten
 
-| Kommune              | Jahre                                                | Quelle                                                                                                          |
-| -------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Plattling            | 2024–2026 (Ansatz)                                   | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen                         |
-| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf)       | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                                      |
-| Osterhofen           | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht                 |
-| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)             | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                                       |
-| Haar                 | 2023–2024 (Ergebnis), 2025 (Nachtrag), 2026 (Ansatz) | Haushaltspläne 2025 und 2026, Einzelpläne aus dem Ratsinformationssystem                                        |
-| Merching             | 2024 (Ergebnis), 2025–2026 (Ansatz)                  | Haushaltsplan 2026, Gruppierungsübersicht                                                                       |
-| Wolfratshausen       | 2023–2025 (Ergebnis), 2026 (Ansatz)                  | Haushaltspläne 2025 und 2026, Gruppierungsübersicht; Rechenschaftsbericht 2025, Rechnungs-Gruppierungsübersicht |
-| Erding               | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht                 |
+| Kommune              | Jahre                                                | Quelle                                                                                                                                                 |
+| -------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Plattling            | 2024–2026 (Ansatz)                                   | Faltblätter „Ein Streifzug durch den Haushaltsplan“ der Stadtkämmerei; teils nur Summen                                                                |
+| Polling              | 2024 (Ergebnis), 2025 (Ansatz), 2026 (Entwurf)       | Entwurf Haushaltsplan 2026, Einzelpläne Verwaltungs- und Vermögenshaushalt                                                                             |
+| Osterhofen           | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht                                                        |
+| Kirchheim b. München | 2022–2024 (Ergebnis), 2025–2026 (Ansatz)             | Haushaltspläne 2024, 2025 und 2026, Gruppierungsübersicht                                                                                              |
+| Haar                 | 2023–2024 (Ergebnis), 2025 (Nachtrag), 2026 (Ansatz) | Haushaltspläne 2025 und 2026, Einzelpläne aus dem Ratsinformationssystem                                                                               |
+| Merching             | 2024 (Ergebnis), 2025–2026 (Ansatz)                  | Haushaltsplan 2026, Gruppierungsübersicht                                                                                                              |
+| Wolfratshausen       | 2023–2025 (Ergebnis), 2026 (Ansatz)                  | Haushaltspläne 2025 und 2026, Gruppierungsübersicht; Rechenschaftsbericht 2025, Rechnungs-Gruppierungsübersicht                                        |
+| Erding               | 2025–2026 (Ansatz)                                   | Haushaltssatzungen 2025 und 2026: nur Gesamtbeträge, der Haushaltsplan ist nicht veröffentlicht                                                        |
+| Deggendorf           | 2018–2024 (Ergebnis), 2025–2026 (Ansatz)             | Haushaltsübersicht der Stadtkämmerei (in 1.000 €, nur Hauptpositionen); Gesamtbeträge 2025/2026 und Kernzahlen aus den Haushaltssatzungen im Amtsblatt |
 
 Die Original-PDFs liegen nur lokal in `import/` (per `.gitignore` ausgeschlossen); welche Quelle
 hinter einem Datensatz steht, vermerkt dessen Feld `quelle`. Einwohnerzahlen: Bayerisches Landesamt für Statistik,
